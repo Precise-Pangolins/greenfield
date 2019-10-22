@@ -1,4 +1,5 @@
 import React from "react";
+import QandA from "./components/britt/QandA.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +8,12 @@ class App extends React.Component {
   }
 
   render() {
-    return <div>Hello {name}</div>;
+    return (
+      <div>
+        Hello
+        <QandA />
+      </div>
+    );
   }
 }
 
