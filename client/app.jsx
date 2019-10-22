@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import Overview from './components/overview-components/Overview.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +8,11 @@ class App extends React.Component {
   }
 
   render() {
-    return <div id="hello">Hello</div>;
+    return (
+      <div>
+        <Overview />
+      </div>
+    );
   }
 }
 
