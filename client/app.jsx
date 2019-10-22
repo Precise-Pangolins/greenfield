@@ -1,19 +1,14 @@
 import React from "react";
 import Overview from "./components/overview-components/Overview.jsx";
+import state from "../src/redux/store/index.js";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <Overview />
-      </div>
-    );
-  }
-}
+const App = () => {
+  console.log(state.getState());
+  return (
+    <div>
+      <Overview />
+    </div>
+  );
+};
 
 export default App;
