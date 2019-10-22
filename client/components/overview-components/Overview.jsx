@@ -44,15 +44,6 @@ function Overview() {
         <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>Add to Cart</Paper>
         </Grid>
-        {/* <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid> */}
       </Grid>
     </div>
   );
