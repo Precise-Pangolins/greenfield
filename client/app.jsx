@@ -10,10 +10,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello
         <QandA />
+        <div id="hello">Hello</div>
       </div>
     );
+    return;
   }
 }
 
