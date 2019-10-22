@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class ProductInfo extends Component {
   render() {
-    return <div>Component Displays </div>;
+    return <div>Genuine Fur Coat: Limited Edition </div>;
   }
 }
 

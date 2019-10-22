@@ -5,6 +5,10 @@ import Grid from '@material-ui/core/Grid';
 //import materialUI grid
 //each imported component will be a grid item
 //Overview is a grid container
+import ImgGallery from './ImgGallery';
+import ProductInfo from './ProductInfo';
+import StyleSelector from './StyleSelector';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -16,37 +20,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export class Overview extends Component {
-  render() {
-    const classes = useStyles();
-    return (
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>xs=12</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>xs=12 sm=6</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper className={classes.paper}>xs=6 sm=3</Paper>
-          </Grid>
+function Overview() {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            Image Gallery
+            <ImgGallery />
+          </Paper>
         </Grid>
-      </div>
-    );
-  }
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            Product Description <ProductInfo />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper className={classes.paper}>
+            Style Selector <StyleSelector />
+          </Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>Add to Cart</Paper>
+        </Grid>
+        {/* <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+        </Grid> */}
+      </Grid>
+    </div>
+  );
 }
 
 export default Overview;
