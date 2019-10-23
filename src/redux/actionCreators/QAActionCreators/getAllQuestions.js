@@ -3,7 +3,6 @@ import loadQsList from "../../actions/QAActions/qActions";
 
 const getAllQuestions = product_id => {
   return dispatch => {
-    dispatch(loadQsList());
     return axios
       .get(`http:18.223.1.30/qa/${product_id}`)
       .then(results => {

@@ -1,5 +1,5 @@
 import Redux from 'redux';
-import loadAsList from '../../actions/QAActions/aActions';
+import LOAD_ALL_ANSWERS from '../../actions/QAActions/aActions';
 
 const initialState = {
   answers = []

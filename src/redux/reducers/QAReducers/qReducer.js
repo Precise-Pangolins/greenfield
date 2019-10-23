@@ -1,6 +1,5 @@
-import Redux from 'redux';
-import loadQsList from "../../actions/QAActions/qActions";
-
+import Redux from "redux";
+import LOAD_ALL_QUESTIONS from "../../actions/QAActions/qActions";
 
 const initialState = {
   questions: []
