@@ -8,7 +8,6 @@ export const getProdList = () => {
     return axios
       .get(`${apiUrl}/products/list`)
       .then(res => {
-        console.log({ getRequest: res });
         dispatch(getProdListSuccess(res.data));
       })
       .catch(err => {

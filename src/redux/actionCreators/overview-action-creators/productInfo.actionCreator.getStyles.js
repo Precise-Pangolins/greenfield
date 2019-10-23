@@ -8,7 +8,6 @@ export const getProdStyles = id => {
     return axios
       .get(`${apiUrl}/products/${id}/styles`)
       .then(res => {
-        console.log(res);
         dispatch(prodStylesSuccess(res.data));
       })
       .catch(err => {

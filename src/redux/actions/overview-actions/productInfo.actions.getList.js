@@ -9,3 +9,5 @@ export const getProdListSuccess = data => {
     }
   };
 };
+
+export default getProdListSuccess;
