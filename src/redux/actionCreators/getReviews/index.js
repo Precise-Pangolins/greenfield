@@ -1,12 +1,15 @@
+const redux = require("redux");
 const axios = require("axios");
-const getAction = require("../../actions/getReviews.js");
+const getAction = require("../../actions/ReviewActions/getReviews.js");
 const getReviews = id => {
-  return axios
-    .get(`http://18.223.1.30/reviews/${id}/list`)
-    .then(result => {
-      console.log(result);
-    })
-    .catch(error => console.error(error));
+  return dispatch => {
+    return axios
+      .get(`http://18.223.1.30/reviews/${id}/list`)
+      .then(({ data }) => {
+        dispatch(getAction(data.results));
+      })
+      .catch(error => console.error(error));
+  };
 };
 
 module.exports = getReviews;
