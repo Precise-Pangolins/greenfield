@@ -6,8 +6,14 @@ const Reviews = ({ reviews, handleGetReviewsRequest }) => {
   useEffect(() => {
     handleGetReviewsRequest(1);
   }, []);
-  console.log(reviews, handleGetReviewsRequest);
-  return <div>{reviews.map(review => {})}</div>;
+  return (
+    <div>
+      {reviews.map(review => {
+        console.log(review);
+        return <Review review={review} key={review.review_id} />;
+      })}
+    </div>
+  );
 };
 
 export default Reviews;
