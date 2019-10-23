@@ -1,12 +1,8 @@
-// import POST_CART from './productInfo.actions.types';
-
 const POST_CART = 'POST_CART';
-export const postToCartSuccess = data => {
+const postToCartSuccess = data => {
   return {
     type: POST_CART,
-    payload: {
-      results: data.results //need to adjust for post
-    }
+    payload: 'Successfully Posted New Item to Cart'
   };
 };
 
