@@ -1,6 +1,6 @@
 import React from "react";
 
-const Main = props => {
+const QABody = props => {
   return (
     <div>
       <Search />
@@ -9,3 +9,5 @@ const Main = props => {
     </div>
   );
 };
+
+export default QABody;
