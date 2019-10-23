@@ -4,8 +4,7 @@ const QABody = props => {
   return (
     <div>
       <Search />
-      <QuestionsEntry />
-      <AnswersEntry />
+      <QuestionsListContainer />
     </div>
   );
 };
