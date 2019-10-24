@@ -24,14 +24,13 @@ const Reviews = ({ reviews, handleGetReviewsRequest }) => {
       {reviews.map(review => {
         return (
           <div>
-            <Review review={review} key={review.review_id} />;
+            <Review review={review} key={review.review_id} />
           </div>
         );
       })}
       <Button
         onClick={() => {
           setPage(page + 1);
-          console.log(page);
           handleGetReviewsRequest(1, page);
         }}
         variant="outlined"
