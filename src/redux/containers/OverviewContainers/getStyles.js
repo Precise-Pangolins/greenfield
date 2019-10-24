@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getStyles from '../../actionCreators/overview-action-creators/productInfo.actionCreator.getStyles.js';
+import getStyles from '../../actionCreators/overview-action-creators/getStyles.js';
 import ImgGallery from '../../../../client/components/overview-components/ImgGallery';
 
 const mapStateToProps = store => {

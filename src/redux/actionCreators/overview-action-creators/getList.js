@@ -1,4 +1,4 @@
-import getProdListSuccess from '../../actions/overview-actions/productInfo.actions.getList.js';
+import getProdListSuccess from '../../actions/overview-actions/getList.js';
 import axios from 'axios';
 
 const apiUrl = 'http://18.223.1.30';

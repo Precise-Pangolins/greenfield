@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import postToCartSuccess from '../../actions/overview-actions/productInfo.actions.postToCart.js';
+import postToCartSuccess from '../../actions/overview-actions/postToCart.js';
 
 const apiUrl = 'http://18.223.1.30';
 

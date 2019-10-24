@@ -1,4 +1,4 @@
-import prodStylesSuccess from '../../actions/overview-actions/productInfo.actions.getStyles.js';
+import prodStylesSuccess from '../../actions/overview-actions/getStyles.js';
 import axios from 'axios';
 
 const apiUrl = 'http://18.223.1.30';

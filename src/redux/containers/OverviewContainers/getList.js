@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import getList from '../../actionCreators/overview-action-creators/productInfo.actionCreator.getList.js';
-import ProductInfo from '../../../../client/components/overview-components/ProductInfo';
+import getList from '../../actionCreators/overview-action-creators/getList.js';
+import ProductList from '../../../../client/components/overview-components/ProductList';
 
 const mapStateToProps = store => {
   return { list: store.list };
@@ -14,6 +14,6 @@ const mapDispatchToProps = dispatch => {
 const ListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductInfo);
+)(ProductList);
 
 export default ListContainer;

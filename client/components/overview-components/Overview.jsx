@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 
 import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
 import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
+import InfoContainer from '../../../src/redux/containers/OverviewContainers/getInfo.js';
 
 import StyleSelector from './StyleSelector';
 
@@ -28,6 +29,8 @@ function Overview() {
           <Paper className={classes.paper}>
             Image Gallery
             <ImagesContainer />
+            Features
+            <InfoContainer />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
