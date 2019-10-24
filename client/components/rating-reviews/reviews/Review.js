@@ -107,7 +107,32 @@ const Review = ({ review }) => {
           <ImageList tileData={review.photos} />
         </ListItem>
       ) : null}
-
+      {review.response ? (
+        <ListItem>
+          <List>
+            <ListItem>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                {"Response from Seller"}
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                {review.response}
+              </Typography>
+            </ListItem>
+          </List>
+        </ListItem>
+      ) : null}
       <ListItem>
         <Typography
           component="span"
