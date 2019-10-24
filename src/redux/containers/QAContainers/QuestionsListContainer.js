@@ -1,14 +1,18 @@
 import { connect } from "react-redux";
+import getAllQuestions from "../../actionCreators/QAActionCreators/getAllQuestions.js";
 import QuestionsList from "../../../../client/components/qanda-components/QuestionsList.jsx";
-import loadQsList from "../../actions/QAActions/loadQs";
 
 const mapStateToProps = store => ({ questions: store.questions });
 
-//does not need mapDispatchToProps.
+const mapDispatchToProps = dispatch => {
+  return {
+    getAllQuestionsRequest: () => dispatch(getAllQuestions())
+  };
+};
 
 const QuestionsListContainer = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(QuestionsList);
 
 export default QuestionsListContainer;
