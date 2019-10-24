@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
+import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
+
 import ImgGallery from './ImgGallery';
 import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
@@ -26,7 +28,8 @@ function Overview() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             Image Gallery
-            <ImgGallery />
+            {/* <ImgGallery /> */}
+            <ImagesContainer />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>

@@ -1,5 +1,6 @@
-import postToCartSuccess from '../../actions/overview-actions/productInfo.actions.postToCart.js';
 import axios from 'axios';
+
+import postToCartSuccess from '../../actions/overview-actions/productInfo.actions.postToCart.js';
 
 const apiUrl = 'http://18.223.1.30';
 
@@ -20,7 +21,6 @@ const postToCart = (sessionId, productId) => {
         product_id: productId
       })
       .then(res => {
-        console.log(res);
         dispatch(postToCartSuccess(res.data));
       })
       .catch(err => {
