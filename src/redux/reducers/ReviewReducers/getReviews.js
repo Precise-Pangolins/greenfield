@@ -3,7 +3,8 @@ import Redux from "redux";
 const getReviewsReducer = (state = [], action) => {
   switch (action.type) {
     case "GET_REVIEWS":
-      return Object.assign([], state, action.reviews);
+      console.log(action.reviews);
+      return state.concat(action.reviews);
     default:
       return state;
   }

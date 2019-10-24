@@ -5,7 +5,7 @@ import Reviews from "../../../../client/components/rating-reviews/reviews/Review
 const mapStateToProps = store => ({ reviews: store.reviews });
 const mapDispatchToProps = dispatch => {
   return {
-    handleGetReviewsRequest: id => dispatch(getReviews(id))
+    handleGetReviewsRequest: (id, page) => dispatch(getReviews(id, page))
   };
 };
 

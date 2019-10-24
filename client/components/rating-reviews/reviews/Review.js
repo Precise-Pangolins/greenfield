@@ -23,6 +23,7 @@ const Review = ({ review }) => {
             rating: {review.rating}
             date: {review.date}
           </Grid>
+          <Grid item xs={6}></Grid>
           <Grid item xs={12}>
             <h3>{review.summary}</h3>
           </Grid>
