@@ -11,6 +11,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
 import Fab from "@material-ui/core/Fab";
+import AddReview from "./AddReview.jsx";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -147,6 +148,9 @@ const Review = ({ review }) => {
         <Fab variant="extended" aria-label="delete" className={classes.fab}>
           Helpful
         </Fab>
+      </ListItem>
+      <ListItem>
+        <AddReview />
       </ListItem>
       <Divider light />
     </List>
