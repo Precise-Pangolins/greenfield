@@ -10,6 +10,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
+import Fab from "@material-ui/core/Fab";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -33,7 +34,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Review = ({ review }) => {
-  console.log(review);
   const classes = useStyles();
   return (
     <List className={classes.root2}>
@@ -55,7 +55,12 @@ const Review = ({ review }) => {
         />
       </ListItem>
       <ListItem>
-        <Rating name="half-rating" value={review.rating} precision={0.25} />
+        <Rating
+          name="half-rating"
+          value={review.rating}
+          precision={0.25}
+          disabled
+        />
         <Typography
           component="span"
           variant="subtitle1"
@@ -83,7 +88,7 @@ const Review = ({ review }) => {
             className={classes.inline}
             color="textPrimary"
           >
-            I reccomend this product
+            I recommend this product
           </Typography>
         </ListItem>
       ) : null}
@@ -97,9 +102,12 @@ const Review = ({ review }) => {
           {review.body}
         </Typography>
       </ListItem>
-      <ListItem>
-        <ImageList tileData={review.photos} />
-      </ListItem>
+      {review.photos.length > 0 ? (
+        <ListItem>
+          <ImageList tileData={review.photos} />
+        </ListItem>
+      ) : null}
+
       <ListItem>
         <Typography
           component="span"
@@ -107,41 +115,16 @@ const Review = ({ review }) => {
           className={classes.inline}
           color="textPrimary"
         >
-          Was this helpful?
+          {review.helpfulness + " people found this helpful"}
         </Typography>
+      </ListItem>
+      <ListItem>
+        <Fab variant="extended" aria-label="delete" className={classes.fab}>
+          Helpful
+        </Fab>
       </ListItem>
       <Divider light />
     </List>
-    // <div className={classes.root}>
-    //   <Grid container spacing={3}>
-    //     <Grid style={{ borderBottom: "black solid 1px" }} item xs={12}>
-    //       <Grid item xs={12}>
-    //         <h4>{review.reviewer_name}</h4>
-    //         {review.recommend ? <p>I recommend this product!</p> : null}
-    //       </Grid>
-    //       <Grid item xs={12}>
-    //         rating: {review.rating}
-    //         date: {review.date}
-    //       </Grid>
-    //       <Grid item xs={6}></Grid>
-    //       <Grid item xs={12}>
-    //         <h3>{review.summary}</h3>
-    //       </Grid>
-    //       <Grid item xs={12}>
-    //         <p>{review.body}</p>
-    //       </Grid>
-    //       <Grid item xs={12}>
-    //         <ImageList tileData={review.photos} />
-    //       </Grid>
-    //       <Grid container spacing={2}>
-    //         <Grid item xs={6}>
-    //           <p>Was this helpful? Yes No</p>
-    //           <p>Helpfullness({review.helpfulness})</p>
-    //         </Grid>
-    //       </Grid>
-    //     </Grid>
-    //   </Grid>
-    // </div>
   );
 };
 
