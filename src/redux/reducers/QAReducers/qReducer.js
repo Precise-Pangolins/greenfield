@@ -1,10 +1,3 @@
-// import Redux from "redux";
-// import LOAD_ALL_QUESTIONS from "../../actions/QAActions/loadAs";
-
-// const initialState = {
-//   questions: []
-// };
-
 const questionsListReducer = (state = [], action) => {
   switch (action.type) {
     case "LOAD_ALL_QUESTIONS":
@@ -16,4 +9,3 @@ const questionsListReducer = (state = [], action) => {
 };
 
 export default questionsListReducer;
- 

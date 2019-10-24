@@ -6,7 +6,7 @@ const mapStateToProps = store => ({ questions: store.questions });
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllQuestionsRequest: () => dispatch(getAllQuestions())
+    getAllQuestionsRequest: product_id => dispatch(getAllQuestions(product_id))
   };
 };
 
