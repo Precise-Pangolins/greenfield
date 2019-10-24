@@ -4,9 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
+import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
 
-import ImgGallery from './ImgGallery';
-import ProductInfo from './ProductInfo';
 import StyleSelector from './StyleSelector';
 
 const useStyles = makeStyles(theme => ({
@@ -28,13 +27,13 @@ function Overview() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             Image Gallery
-            {/* <ImgGallery /> */}
             <ImagesContainer />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            Product Description <ProductInfo />
+            Product Description
+            <DescriptionContainer />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>

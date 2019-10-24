@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import '@babel/polyfill';
 
-class ProductInfo extends Component {
-  render() {
-    return <div>Genuine Fur Coat: Limited Edition </div>;
-  }
+function ProductList({ list, handleGetListRequest }) {
+  useEffect(() => {
+    handleGetListRequest();
+  }, []);
+  return <div>{list.length > 0 ? <div>{list[0].description}</div> : null}</div>;
 }
 
-export default ProductInfo;
+export default ProductList;

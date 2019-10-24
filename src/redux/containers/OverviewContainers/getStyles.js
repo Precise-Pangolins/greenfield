@@ -3,7 +3,7 @@ import getStyles from '../../actionCreators/overview-action-creators/productInfo
 import ImgGallery from '../../../../client/components/overview-components/ImgGallery';
 
 const mapStateToProps = store => {
-  console.log({ insideContainer: store.styles });
+  // console.log({ insideContainer: store.styles });
   return { styles: store.styles };
 };
 const mapDispatchToProps = dispatch => {
