@@ -1,9 +1,8 @@
-import Redux from "redux";
+import Redux from 'redux';
 
 const getReviewsReducer = (state = [], action) => {
   switch (action.type) {
-    case "GET_REVIEWS":
-      console.log(action.reviews);
+    case 'GET_REVIEWS':
       return state.concat(action.reviews);
     default:
       return state;

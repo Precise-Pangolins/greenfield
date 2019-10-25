@@ -1,16 +1,11 @@
-import Redux from 'redux';
-import loadAsList from '../../actions/QAActions/aActions';
-
-const initialState = {
-  answers = []
-};
-
-export function answersListReducer(state = initialState, action) {
-  switch(action.type) {
-    case 'LOAD_ALL_ANSWERS':
-      let obj = Object.assign([], state, action.questions.answers);
+const answersListReducer = (state = [], action) => {
+  switch (action.type) {
+    case "LOAD_ALL_ANSWERS":
+      let obj = Object.assign([], state, action.answers);
       return obj;
     default:
       return state;
   }
-}
+};
+
+export default answersListReducer;

@@ -47,7 +47,6 @@ const useStyles = makeStyles(theme => ({
  */
 export default function SingleLineGridList({ tileData }) {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
