@@ -33,9 +33,6 @@ function Overview() {
             <ImagesContainer />
             Styles
             <ThumbnailsContainer />
-            Features
-            <InfoContainer />
-            <AddToCartModal />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -47,13 +44,16 @@ function Overview() {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             Style Selector <StyleSelector />
-          </Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
+            Features
+            <InfoContainer />
             <AddToCartModal />
           </Paper>
         </Grid>
+        {/* <Grid item xs={6} sm={3}>
+          <Paper className={classes.paper}>
+            <AddToCartModal />
+          </Paper>
+        </Grid> */}
       </Grid>
     </div>
   );

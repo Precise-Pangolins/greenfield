@@ -1,6 +1,8 @@
 import Redux from 'redux';
 
-const getStylesReducer = (state = [], action) => {
+import { emptyProduct } from './initialState.js';
+
+const getStylesReducer = (state = emptyProduct.styles, action) => {
   switch (action.type) {
     case 'FETCH_STYLES':
       let obj = Object.assign([], state, action.styles);
