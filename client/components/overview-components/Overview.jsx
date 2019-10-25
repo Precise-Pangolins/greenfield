@@ -9,6 +9,7 @@ import ImagesContainer from '../../../src/redux/containers/OverviewContainers/ge
 import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
 import InfoContainer from '../../../src/redux/containers/OverviewContainers/getInfo.js';
 import ThumbnailsContainer from '../../../src/redux/containers/OverviewContainers/getThumbnails.js';
+import AddToCartModal from '../overview-components/AddToCart';
 
 import StyleSelector from './StyleSelector';
 
@@ -36,6 +37,7 @@ function Overview() {
             <ThumbnailsContainer />
             Features
             <InfoContainer />
+            <AddToCartModal />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -50,7 +52,9 @@ function Overview() {
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>Add to Cart</Paper>
+          <Paper className={classes.paper}>
+            <AddToCartModal />
+          </Paper>
         </Grid>
       </Grid>
     </div>
