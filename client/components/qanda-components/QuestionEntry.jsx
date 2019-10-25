@@ -1,4 +1,3 @@
-import React from "react";
 import AnswersListContainer from "../../../src/redux/containers/QAContainers/AnswersListContainer.js";
 import React from "react";
 
