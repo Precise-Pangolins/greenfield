@@ -49,11 +49,11 @@ function Overview() {
             Style Selector <StyleSelector />
           </Paper>
         </Grid>
-        <Grid item xs={6} sm={3}>
+        {/* <Grid item xs={6} sm={3}>
           <Paper className={classes.paper}>
             <AddToCartModal />
           </Paper>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

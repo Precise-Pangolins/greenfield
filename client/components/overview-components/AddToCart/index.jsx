@@ -8,6 +8,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import SizeDropdown from './SizeDropdown.jsx';
+
 export default function AddToCartModal() {
   const [open, setOpen] = React.useState(false);
 
@@ -33,16 +35,17 @@ export default function AddToCartModal() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To add items, please select a size and a style below:
+            To add items, please select a size and quantity:
           </DialogContentText>
-          <TextField
+          {/* <TextField
             autoFocus
             margin='dense'
             id='name'
             label='select size and style'
             type='email'
             fullWidth
-          />
+          /> */}
+          <SizeDropdown />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color='primary'>

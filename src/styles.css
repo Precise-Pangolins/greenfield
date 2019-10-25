@@ -2,3 +2,7 @@ body {
   color: white;
   background-color: black;
 }
+
+.thumbnail {
+  border-radius: 50%;
+}
