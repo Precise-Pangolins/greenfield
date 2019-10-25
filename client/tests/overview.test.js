@@ -2,9 +2,9 @@ import React from 'react';
 import { shallow, render, mount } from 'enzyme';
 
 import Overview from '../components/overview-components/Overview.jsx';
-import getProdStyles from '../../src/redux/actionCreators/overview-action-creators/productInfo.actionCreator.getStyles.js';
-import getProdInfo from '../../src/redux/actionCreators/overview-action-creators/productInfo.actionCreator.getInfo.js';
-import getProdList from '../../src/redux/actionCreators/overview-action-creators/productInfo.actionCreator.getList.js';
+import getProdStyles from '../../src/redux/actionCreators/overview-action-creators/getStyles.js';
+import getProdInfo from '../../src/redux/actionCreators/overview-action-creators/getInfo.js';
+import getProdList from '../../src/redux/actionCreators/overview-action-creators/getList.js';
 
 describe('Get Overview Actions and Creators', function() {
   it('Should retrieve a list of products', async () => {
