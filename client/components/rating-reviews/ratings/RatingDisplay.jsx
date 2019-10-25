@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Rating from "@material-ui/lab/Rating";
 
-const RatingDisplay = ({ productInfo }) => {
+const RatingDisplay = ({ productInfo, handleGetRatingsRequest }) => {
+  useEffect(() => {
+    handleGetRatingsRequest(productInfo.id);
+  }, []);
   return (
     <div>
       <Grid container spacing={2}>
