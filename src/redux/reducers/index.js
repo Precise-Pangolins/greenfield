@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 import styles from '../reducers/overview-reducers/stylesReducer.js';
 import list from '../reducers/overview-reducers/listReducer.js';
 import info from '../reducers/overview-reducers/infoReducer.js';
-
+import questions from '../reducers/QAReducers/qReducer';
 import reviews from '../reducers/ReviewReducers/getReviews.js';
 
 export default combineReducers({
@@ -14,5 +14,6 @@ export default combineReducers({
   styles,
   reviews,
   list,
-  info
+  info,
+  questions
 });
