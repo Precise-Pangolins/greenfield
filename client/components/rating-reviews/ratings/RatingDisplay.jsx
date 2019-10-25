@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Ratings
 
 const RatingDisplay = () => {
   return (
@@ -9,9 +8,7 @@ const RatingDisplay = () => {
         <Grid item xs={6}>
           3.5
         </Grid>
-        <Grid item xs={6}>
-
-        </Grid>
+        <Grid item xs={6}></Grid>
       </Grid>
     </div>
   );
