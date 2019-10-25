@@ -1,12 +1,4 @@
-import Redux from 'redux';
-import loadQsList from "../../actions/QAActions/qActions";
-
-
-const initialState = {
-  questions: []
-};
-
-export function questionsListReducer(state = initialState, action) {
+const questionsListReducer = (state = [], action) => {
   switch (action.type) {
     case "LOAD_ALL_QUESTIONS":
       let obj = Object.assign([], state, action.questions);
@@ -14,4 +6,6 @@ export function questionsListReducer(state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default questionsListReducer;
