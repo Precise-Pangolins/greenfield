@@ -9,7 +9,7 @@ const AnswersList = ({ answers, getAllAnswersRequest }) => {
     getAllAnswersRequest(1);
   }, []);
 
-  console.log('answers props', answers);
+  console.log("answers props", answers);
 
   return (
     <div>
@@ -23,3 +23,5 @@ const AnswersList = ({ answers, getAllAnswersRequest }) => {
     </div>
   );
 };
+
+export default AnswersList;

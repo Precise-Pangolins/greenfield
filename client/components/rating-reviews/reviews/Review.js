@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     textAlign: "center",
     color: theme.palette.text.secondary
   },
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper
   },
   dividerFullWidth: {
-    margin: `5px 0 0 ${theme.spacing(2)}px`
+    margin: `5px 0 0 ${theme.spacing(1)}px`
   },
   dividerInset: {
     margin: `5px 0 0 ${theme.spacing(9)}px`
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 const Review = ({ review }) => {
   const classes = useStyles();
   return (
-    <List className={classes.root2}>
+    <List spacing={0} className={classes.root2}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar></Avatar>
@@ -107,7 +107,32 @@ const Review = ({ review }) => {
           <ImageList tileData={review.photos} />
         </ListItem>
       ) : null}
-
+      {review.response ? (
+        <ListItem>
+          <List>
+            <ListItem>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                {"Response from Seller"}
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                {review.response}
+              </Typography>
+            </ListItem>
+          </List>
+        </ListItem>
+      ) : null}
       <ListItem>
         <Typography
           component="span"
@@ -123,6 +148,7 @@ const Review = ({ review }) => {
           Helpful
         </Fab>
       </ListItem>
+
       <Divider light />
     </List>
   );
