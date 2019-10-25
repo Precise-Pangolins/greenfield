@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
 
 import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
 import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
