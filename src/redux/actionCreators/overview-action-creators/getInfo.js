@@ -7,8 +7,8 @@ export const getProdInfo = id => {
   return dispatch => {
     return axios
       .get(`${apiUrl}/products/${id}`)
-      .then(res => {
-        dispatch(prodInfoSuccess(res.data));
+      .then(({ data }) => {
+        dispatch(prodInfoSuccess(data));
       })
       .catch(err => {
         console.log('error getting product info', err);

@@ -7,8 +7,8 @@ export const getProdList = () => {
   return dispatch => {
     return axios
       .get(`${apiUrl}/products/list`)
-      .then(res => {
-        dispatch(getProdListSuccess(res.data));
+      .then(({ data }) => {
+        dispatch(getProdListSuccess(data));
       })
       .catch(err => {
         console.log('error getting product list', err);

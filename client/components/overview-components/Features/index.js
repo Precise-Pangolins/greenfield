@@ -8,8 +8,13 @@ function Features({ info, handleGetInfoRequest }) {
   }, []);
   return (
     <div>
-      List of Features like Buttons, cloth-type, etc:
-      {info ? <div>{info.features[0].feature}</div> : null}
+      {info.features ? (
+        <div>
+          {info.features.map(feature => {
+            return <div>{feature.feature}</div>;
+          })}
+        </div>
+      ) : null}
     </div>
   );
 }

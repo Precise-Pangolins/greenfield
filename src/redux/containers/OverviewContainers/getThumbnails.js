@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import getStyles from '../../actionCreators/overview-action-creators/getStyles.js';
-import ImgGallery from '../../../../client/components/overview-components/ImgGallery';
 import Thumbnails from '../../../../client/components/overview-components/ImgGallery/Thumbnails.jsx';
 
 const mapStateToProps = store => {
@@ -8,13 +7,13 @@ const mapStateToProps = store => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    handleGetStylesRequest: id => dispatch(getStyles(id))
+    handleGetThumbnailsRequest: id => dispatch(getStyles(id))
   };
 };
 
-const StylesContainer = connect(
+const ThumbnailsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ImgGallery);
+)(Thumbnails);
 
-export default StylesContainer;
+export default ThumbnailsContainer;

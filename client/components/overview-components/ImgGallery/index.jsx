@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-
-// import getProdStyles from '../../../../src/redux/actionCreators/overview-action-creators/productInfo.actionCreator.getStyles.js';
 import '@babel/polyfill';
+// import Thumbnails from './Thumbnails';
 
 function ImgGallery({ styles, handleGetStylesRequest }) {
   useEffect(() => {
@@ -10,10 +9,12 @@ function ImgGallery({ styles, handleGetStylesRequest }) {
   }, []);
 
   return (
-    <div>
-      {styles.length > 0 ? <img src={styles[0].photos[0].url} /> : null}
-      <p> WOOO!! Images Here!!</p>
-    </div>
+    <>
+      <div>
+        {styles.length > 0 ? <img src={styles[0].photos[0].url} /> : null}
+      </div>
+      {/* <Thumbnails /> */}
+    </>
   );
 }
 

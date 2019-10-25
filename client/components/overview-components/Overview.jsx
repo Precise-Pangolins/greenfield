@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 
 import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
 import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
 import InfoContainer from '../../../src/redux/containers/OverviewContainers/getInfo.js';
+import ThumbnailsContainer from '../../../src/redux/containers/OverviewContainers/getThumbnails.js';
 
 import StyleSelector from './StyleSelector';
 
@@ -29,6 +32,8 @@ function Overview() {
           <Paper className={classes.paper}>
             Image Gallery
             <ImagesContainer />
+            Styles
+            <ThumbnailsContainer />
             Features
             <InfoContainer />
           </Paper>

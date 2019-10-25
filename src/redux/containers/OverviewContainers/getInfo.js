@@ -3,7 +3,7 @@ import getInfo from '../../actionCreators/overview-action-creators/getInfo.js';
 import Features from '../../../../client/components/overview-components/Features';
 
 const mapStateToProps = store => {
-  return { list: store.list };
+  return { info: store.info };
 };
 const mapDispatchToProps = dispatch => {
   return {

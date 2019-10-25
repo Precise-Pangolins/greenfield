@@ -7,8 +7,8 @@ export const getProdStyles = id => {
   return dispatch => {
     return axios
       .get(`${apiUrl}/products/${id}/styles`)
-      .then(res => {
-        dispatch(prodStylesSuccess(res.data));
+      .then(({ data }) => {
+        dispatch(prodStylesSuccess(data));
       })
       .catch(err => {
         console.log('error getting product styles', err);
