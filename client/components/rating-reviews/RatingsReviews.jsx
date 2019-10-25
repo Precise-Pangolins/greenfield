@@ -1,8 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import ReviewsContainer from '../../../src/redux/containers/ReviewsContainers/getReviews';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import ReviewsContainer from "../../../src/redux/containers/ReviewsContainers/getReviews";
+import RatingContainer from "../../../src/redux/containers/RatingContainers/RatingsContainer";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary
   }
 }));
@@ -23,7 +24,9 @@ const RatingsReviews = () => {
           <Paper className={classes.paper}>Ratings and Reviews</Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}>Ratings</Paper>
+          <Paper className={classes.paper}>
+            <RatingContainer />
+          </Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
