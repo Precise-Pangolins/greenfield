@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 const Review = ({ review }) => {
   const classes = useStyles();
   return (
-    <List spacing={1} className={classes.root2}>
+    <List spacing={0} className={classes.root2}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar></Avatar>
