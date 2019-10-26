@@ -15,7 +15,7 @@ const RatingBars = ({ total, ratings, handleClick }) => {
           .map(rating => {
             return (
               <Grid item xs={12}>
-                <label for={`${rating} Stars`}>
+                <label htmlFor={`${rating} Stars`}>
                   <a
                     href=""
                     style={{ textDecoration: "underline" }}
@@ -30,6 +30,7 @@ const RatingBars = ({ total, ratings, handleClick }) => {
                   id={`${rating} Stars`}
                   max="100"
                   value={getPercentage(ratings[rating], total)}
+                  key={`${rating} Stars`}
                 ></progress>
               </Grid>
             );

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Rating from "@material-ui/lab/Rating";
 import RatingBars from "./RatingBars.jsx";
+import ProductBreakDown from "./ProductBreakdown.jsx";
 
 const RatingDisplay = ({
   productInfo,
@@ -53,6 +54,9 @@ const RatingDisplay = ({
               handleClick={handleFilterRatingsRequest}
               id={productInfo.id}
             />
+          </Grid>
+          <Grid item xs={12}>
+            <ProductBreakDown characteristics={metaData.characteristics} />
           </Grid>
         </Grid>
       ) : (
