@@ -1,7 +1,14 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-const RatingBars = ({ total, ratings, handleClick }) => {
+const RatingBars = ({
+  total,
+  ratings,
+  handleClick,
+  filter,
+  setFilter,
+  handleClearFilter
+}) => {
   const getPercentage = (numerator, denominator) => {
     let rating = Math.floor(100 * (numerator / denominator));
 
@@ -10,6 +17,22 @@ const RatingBars = ({ total, ratings, handleClick }) => {
   return (
     <div className="ratingBars">
       <Grid container>
+        {filter ? (
+          <Grid item xs={12}>
+            filterApplied
+            <a
+              href=""
+              style={{ textDecoration: "none" }}
+              onClick={event => {
+                event.preventDefault();
+
+                handleClearFilter();
+              }}
+            >
+              (clear filter)
+            </a>
+          </Grid>
+        ) : null}
         {Object.keys(ratings)
           .reverse()
           .map(rating => {
@@ -21,6 +44,7 @@ const RatingBars = ({ total, ratings, handleClick }) => {
                     style={{ textDecoration: "underline" }}
                     onClick={event => {
                       event.preventDefault();
+                      setFilter(true);
                       handleClick(1, rating);
                     }}
                   >{`${rating} stars `}</a>

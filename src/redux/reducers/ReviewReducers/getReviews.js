@@ -5,7 +5,8 @@ const getReviewsReducer = (state = [], action) => {
     case "GET_REVIEWS":
       return state.concat(action.reviews);
     case "FILTER_STARS":
-      console.log("action in filter stars", action);
+      return action.reviews;
+    case "CLEAR_FILTER":
       return action.reviews;
     default:
       return state;

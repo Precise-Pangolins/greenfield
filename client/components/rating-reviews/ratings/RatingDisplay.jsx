@@ -8,10 +8,14 @@ const RatingDisplay = ({
   productInfo,
   handleGetRatingsRequest,
   metaData,
-  handleFilterRatingsRequest
+  handleFilterRatingsRequest,
+  handleReviewsRequest
 }) => {
-  console.log("info", productInfo.id);
-  console.log("data", metaData);
+  const [filter, setFilter] = React.useState(false);
+  const clearFilter = () => {
+    setFilter(false);
+    handleReviewsRequest(1);
+  };
   const getTotal = ratings => {
     let total = 0;
     for (let rating in ratings) {
@@ -33,7 +37,6 @@ const RatingDisplay = ({
     <div>
       {metaData.ratings ? (
         <Grid container spacing={2}>
-          {console.log("props in ratingdisplay", productInfo)}
           <Grid item xs={6}>
             {getAverage(metaData.ratings)}
           </Grid>
@@ -53,6 +56,9 @@ const RatingDisplay = ({
               ratings={metaData.ratings}
               handleClick={handleFilterRatingsRequest}
               id={productInfo.id}
+              filter={filter}
+              handleClearFilter={clearFilter}
+              setFilter={setFilter}
             />
           </Grid>
           <Grid item xs={12}>
