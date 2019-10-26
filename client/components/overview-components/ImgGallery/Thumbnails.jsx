@@ -4,7 +4,7 @@ import '@babel/polyfill';
 
 import queryString from 'querystring';
 
-let productId = queryString.parse(location.search)['?product'] || 1;
+let productId = queryString.parse(location.search)['?productId'] || 1;
 
 function Thumbnails({ styles, handleGetThumbnailsRequest }) {
   useEffect(() => {
