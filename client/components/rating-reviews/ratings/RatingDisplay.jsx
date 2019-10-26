@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
-<<<<<<< HEAD
 import Rating from "@material-ui/lab/Rating";
 import RatingBars from "./RatingBars.jsx";
 import ProductBreakDown from "./ProductBreakdown.jsx";
@@ -33,12 +32,9 @@ const RatingDisplay = ({
   useEffect(() => {
     productInfo ? handleGetRatingsRequest(1) : null;
   }, []);
-=======
->>>>>>> master
 
   return (
     <div>
-<<<<<<< HEAD
       {metaData.ratings ? (
         <Grid container spacing={2}>
           <Grid item xs={6}>
@@ -72,14 +68,6 @@ const RatingDisplay = ({
       ) : (
         "loading..."
       )}
-=======
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
-          3.5
-        </Grid>
-        <Grid item xs={6}></Grid>
-      </Grid>
->>>>>>> master
     </div>
   );
 };
