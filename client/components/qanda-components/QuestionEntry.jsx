@@ -2,7 +2,7 @@ import AnswersListContainer from "../../../src/redux/containers/QAContainers/Ans
 import React from "react";
 
 const QuestionEntry = question => {
-  console.log("question in entry", question.question);
+  // console.log("question in entry", question.question);
   return (
     <div>
       {" "}

@@ -7,7 +7,7 @@ const QuestionsList = ({ questions, getAllQuestionsRequest }) => {
     getAllQuestionsRequest(1);
   }, []);
 
-  console.log("questions props", questions);
+  // console.log("questions props", questions);
 
   return (
     <div>
@@ -18,7 +18,6 @@ const QuestionsList = ({ questions, getAllQuestionsRequest }) => {
           </div>
         );
       })}
-
     </div>
   );
 };

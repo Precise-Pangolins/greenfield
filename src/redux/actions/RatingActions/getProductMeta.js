@@ -1,1 +1,1 @@
-module.exports = data => ({ type: "PRODUCT_META_DATA", data });
+module.exports = metaData => ({ type: "PRODUCT_META_DATA", metaData });

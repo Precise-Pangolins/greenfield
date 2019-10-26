@@ -6,7 +6,7 @@ const getReviews = id => {
     return axios
       .get(`http://18.223.1.30/reviews/${id}/meta`)
       .then(({ data }) => {
-        dispatch(ratings(data.results));
+        dispatch(ratings(data));
       })
       .catch(error => console.error(error));
   };
