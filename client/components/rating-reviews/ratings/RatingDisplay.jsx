@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Rating from "@material-ui/lab/Rating";
+import RatingBars from "./RatingBars.jsx";
 
 const RatingDisplay = ({ productInfo, handleGetRatingsRequest, metaData }) => {
   console.log("info", productInfo.id);
   console.log("data", metaData);
-  const getAverage = ratings => {
-    const size = Object.keys(ratings).length;
+  const getTotal = ratings => {
     let total = 0;
     for (let rating in ratings) {
       total += ratings[rating];
     }
+    return total;
+  };
+  const getAverage = ratings => {
+    const size = Object.keys(ratings).length;
+    let total = getTotal(ratings);
     return total / size;
   };
 
@@ -31,6 +36,15 @@ const RatingDisplay = ({ productInfo, handleGetRatingsRequest, metaData }) => {
               value={getAverage(metaData.ratings)}
               precision={0.25}
               readOnly
+            />
+          </Grid>
+          <Grid item xs={12}>
+            100% of reviews found this helpful
+          </Grid>
+          <Grid item xs={12}>
+            <RatingBars
+              total={getTotal(metaData.ratings)}
+              ratings={metaData.ratings}
             />
           </Grid>
         </Grid>
