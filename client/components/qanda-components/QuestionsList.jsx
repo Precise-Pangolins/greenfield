@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-import QuestionEntry from "./QuestionEntry.jsx";
+import React, { useState, useEffect } from 'react';
+import QuestionEntry from './QuestionEntry.jsx';
 
 const QuestionsList = ({ questions, getAllQuestionsRequest }) => {
   const [page, setPage] = useState(2);
   useEffect(() => {
     getAllQuestionsRequest(1);
   }, []);
-
-  console.log("questions props", questions);
 
   return (
     <div>
@@ -18,7 +16,6 @@ const QuestionsList = ({ questions, getAllQuestionsRequest }) => {
           </div>
         );
       })}
-
     </div>
   );
 };

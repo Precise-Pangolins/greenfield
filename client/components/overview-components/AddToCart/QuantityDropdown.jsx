@@ -60,7 +60,7 @@ export default function SizeSelector() {
   };
 
   return (
-    <form className={classes.root} autoComplete='off'>
+    <div className={classes.root} autoComplete='off'>
       <FormControl className={classes.margin}>
         <InputLabel htmlFor='age-customized-select'>Quantity</InputLabel>
         <Select
@@ -87,6 +87,6 @@ export default function SizeSelector() {
           <MenuItem value={50}>15</MenuItem>
         </Select>
       </FormControl>
-    </form>
+    </div>
   );
 }

@@ -5,21 +5,17 @@ import queryString from 'querystring';
 
 let productId = queryString.parse(location.search)['?product'] || 1;
 
-function Features({ info, handleGetInfoRequest }) {
+function ProductDescription({ info, handleGetInfoRequest }) {
   useEffect(() => {
     handleGetInfoRequest(productId);
   }, []);
   return (
     <div>
-      {info.features ? (
-        <div>
-          {info.features.map(feature => {
-            return <div>{feature.feature}</div>;
-          })}
-        </div>
-      ) : null}
+      <div style={{ fontWeight: 'bold', fontSize: '50px' }}>{info.name}</div>
+      <div style={{ fontWeight: 'bold', fontSize: '30px' }}>{info.slogan}</div>
+      <div>{info.description}</div>
     </div>
   );
 }
 
-export default Features;
+export default ProductDescription;

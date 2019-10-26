@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
-import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
+import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getDescription.js';
 import InfoContainer from '../../../src/redux/containers/OverviewContainers/getInfo.js';
 import ThumbnailsContainer from '../../../src/redux/containers/OverviewContainers/getThumbnails.js';
 import AddToCartModal from '../overview-components/AddToCart';
