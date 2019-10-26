@@ -3,7 +3,12 @@ import Grid from "@material-ui/core/Grid";
 import Rating from "@material-ui/lab/Rating";
 import RatingBars from "./RatingBars.jsx";
 
-const RatingDisplay = ({ productInfo, handleGetRatingsRequest, metaData }) => {
+const RatingDisplay = ({
+  productInfo,
+  handleGetRatingsRequest,
+  metaData,
+  handleFilterRatingsRequest
+}) => {
   console.log("info", productInfo.id);
   console.log("data", metaData);
   const getTotal = ratings => {
@@ -45,6 +50,8 @@ const RatingDisplay = ({ productInfo, handleGetRatingsRequest, metaData }) => {
             <RatingBars
               total={getTotal(metaData.ratings)}
               ratings={metaData.ratings}
+              handleClick={handleFilterRatingsRequest}
+              id={productInfo.id}
             />
           </Grid>
         </Grid>

@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 
-const RatingBars = ({ total, ratings }) => {
+const RatingBars = ({ total, ratings, handleClick }) => {
   const getPercentage = (numerator, denominator) => {
     let rating = Math.floor(100 * (numerator / denominator));
 
@@ -21,7 +21,7 @@ const RatingBars = ({ total, ratings }) => {
                     style={{ textDecoration: "underline" }}
                     onClick={event => {
                       event.preventDefault();
-                      console.log("clicked");
+                      handleClick(1, rating);
                     }}
                   >{`${rating} stars `}</a>
                 </label>

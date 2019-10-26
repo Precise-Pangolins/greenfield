@@ -6,8 +6,12 @@ const filterStars = (id, rating) => {
     return axios
       .get(`http://18.223.1.30/reviews/${id}/list?count=100000`)
       .then(({ data }) => {
-        const reviews = data.results.map(review => {
-          if (review.rating === rating) return review;
+        rating = Number(rating);
+        const reviews = [];
+        data.results.map(review => {
+          if (review.rating === rating) {
+            reviews.push(review);
+          }
         });
         dispatch(action(reviews));
       })
