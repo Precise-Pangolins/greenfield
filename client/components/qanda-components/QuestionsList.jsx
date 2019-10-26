@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QuestionEntry from "./QuestionEntry.jsx";
 
-const QuestionsList = ({ questions, getAllQuestionsRequest }) => {
+const QuestionsList = ({ questions, getAllQuestionsRequest, resultsQuestions, setResultQuestions }) => {
   const [page, setPage] = useState(2);
   useEffect(() => {
     getAllQuestionsRequest(1);

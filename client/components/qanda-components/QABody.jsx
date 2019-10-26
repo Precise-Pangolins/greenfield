@@ -5,17 +5,37 @@ import SearchContainer from "../../../src/redux/containers/QAContainers/SearchCo
 import QAContainer from "../../../src/redux/containers/QAContainers/QAContainer";
 
 const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
+  const [resultQuestions, setResultQuestions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const searchInQuestions = searchTerm => {
+    console.log("searchterm", searchTerm);
+    let results = [];
+    for (let i = 0; i < questions.length; i++) {
+      let currentQuestion = questions[i];
+      if (currentQuestion.question_body.includes(searchTerm)) {
+        results.push(currentQuestion);
+      }
+    }
+    console.log("results heres", results);
+    setResultQuestions(results);
+  };
+
+  console.log("resultQuestions", resultQuestions);
+
   useEffect(() => {
     getAllQuestionsInitialRequest(1);
   }, []);
 
-  console.log("questions in QAbody", questions);
-  
   return (
     <div>
-      Questions and Answers
-      <SearchContainer />
-      <QuestionsListContainer />
+      Questions and Answers:
+      <SearchContainer
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        searchInQuestions={searchInQuestions}
+      />
+      <QuestionsListContainer resultsQuestions={resultQuestions} />
     </div>
   );
 };

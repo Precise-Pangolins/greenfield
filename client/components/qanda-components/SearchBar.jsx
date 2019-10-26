@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SearchBar = ({ questions }) => {
-  console.log("questions in search", questions);
-  return <input name="search"></input>;
+const SearchBar = ({ searchTerm, setSearchTerm, searchInQuestions }) => {
+  return (
+    <div>
+      <input
+        name="search"
+        placeholder="Have a Question?"
+        value={searchTerm}
+        onChange={event => {
+          setSearchTerm(event.target.value);
+        }}
+      ></input>
+      <button
+        onClick={() => {
+          searchInQuestions(searchTerm);
+        }}
+      >
+        SEARCH
+      </button>
+    </div>
+  );
 };
 
 export default SearchBar;
