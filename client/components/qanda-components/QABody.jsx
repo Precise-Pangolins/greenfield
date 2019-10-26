@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer";
 import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer";
-import QAContainer from "../../../src/redux/containers/QAContainers/QAContainer";
 
-const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
+const QABody = ({
+  questions,
+  getAllQuestionsInitialRequest,
+  answers,
+  getAllAnswersInitialRequest
+}) => {
   const [resultQuestions, setResultQuestions] = useState([]);
+  const [answersForSearchedQ, setAnswersForSearchedQ] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const searchInQuestions = searchTerm => {
@@ -17,14 +21,13 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
         results.push(currentQuestion);
       }
     }
-    console.log("results heres", results);
     setResultQuestions(results);
   };
 
-  console.log("resultQuestions", resultQuestions);
 
   useEffect(() => {
     getAllQuestionsInitialRequest(1);
+    getAllAnswersInitialRequest(1);
   }, []);
 
   return (
@@ -35,7 +38,10 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
         setSearchTerm={setSearchTerm}
         searchInQuestions={searchInQuestions}
       />
-      <QuestionsListContainer resultsQuestions={resultQuestions} />
+      <QuestionsListContainer
+        resultsQuestions={resultQuestions}
+        answers={answers}
+      />
     </div>
   );
 };

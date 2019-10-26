@@ -5,20 +5,22 @@ const QuestionsList = ({
   questions,
   getAllQuestionsRequest,
   resultsQuestions,
-  setResultQuestions
+  setResultQuestions,
+  answers
 }) => {
   const [page, setPage] = useState(2);
   useEffect(() => {
     getAllQuestionsRequest(1);
   }, []);
 
+  console.log("answers in QL", answers);
   if (resultsQuestions.length === 0) {
     return (
       <div>
         {questions.map(question => {
           return (
             <div>
-              <QuestionEntry question={question} />
+              <QuestionEntry question={question} answers={answers} />
             </div>
           );
         })}

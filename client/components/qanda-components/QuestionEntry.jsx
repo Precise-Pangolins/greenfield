@@ -1,16 +1,18 @@
-import AnswersListContainer from "../../../src/redux/containers/QAContainers/AnswersListContainer.js";
 import React from "react";
+import AnswerListClassComp from "./AnswersListClassComp.jsx";
 
-const QuestionEntry = question => {
+const QuestionEntry = ({ question }) => {
+  console.log("q in QE", question);
+
+  // const arrayOfAnsIds = Object.keys(question.question.answers);
   return (
-    <div>
+    <div class="questionEntry">
       {" "}
-      <strong>Q:</strong> {question.question.question_body}
-      <AnswersListContainer />
+      <strong>Q:</strong> {question.question_body}
+      <AnswerListClassComp question={question} />
       <p>
-        by {question.question.asker_name}, {question.question.question_date} |
-        Helpful? <span>Yes</span> ({question.question.question_helpfulness}) |{" "}
-        <span>Report</span>
+        by {question.asker_name}, {question.question_date} | Helpful?{" "}
+        <span>Yes</span> ({question.question_helpfulness}) | <span>Report</span>
       </p>
     </div>
   );
