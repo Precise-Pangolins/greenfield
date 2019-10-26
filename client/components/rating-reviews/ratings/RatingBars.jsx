@@ -9,6 +9,8 @@ const RatingBars = ({
   setFilter,
   handleClearFilter
 }) => {
+  let filters = {};
+
   const getPercentage = (numerator, denominator) => {
     let rating = Math.floor(100 * (numerator / denominator));
 
@@ -19,7 +21,6 @@ const RatingBars = ({
       <Grid container>
         {filter ? (
           <Grid item xs={12}>
-            filterApplied
             <a
               href=""
               style={{ textDecoration: "none" }}
@@ -29,7 +30,7 @@ const RatingBars = ({
                 handleClearFilter();
               }}
             >
-              (clear filter)
+              (clear filters)
             </a>
           </Grid>
         ) : null}
@@ -41,11 +42,22 @@ const RatingBars = ({
                 <label htmlFor={`${rating} Stars`}>
                   <a
                     href=""
-                    style={{ textDecoration: "underline" }}
                     onClick={event => {
                       event.preventDefault();
-                      setFilter(true);
-                      handleClick(1, rating);
+                      if (filters[rating]) {
+                        delete filters[rating];
+                        console.log("rating exists delting");
+                        console.log(filters);
+                      } else {
+                        filters[rating] = true;
+                        console.log("no rating exists", filters);
+                        setFilter(true);
+                      }
+                      if (Object.keys(filters).length <= 0) {
+                        handleClearFilter();
+                      } else {
+                        handleClick(1, filters);
+                      }
                     }}
                   >{`${rating} stars `}</a>
                 </label>
