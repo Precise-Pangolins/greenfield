@@ -7,8 +7,6 @@ import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 
-import QuantityDropdown from './QuantityDropdown.jsx';
-
 const BootstrapInput = withStyles(theme => ({
   root: {
     'label + &': {
@@ -54,11 +52,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SizeSelector() {
+export default function SizeSelector({ sizes, onSizeChange }) {
   const classes = useStyles();
-  const [size, setAge] = React.useState('');
+  const [size, setSize] = React.useState('');
   const handleChange = event => {
-    setAge(event.target.value); //will change to capture size and quantity independently
+    const val = event.target.value;
+    setSize(val); //will change to capture size and quantity independently
+    onSizeChange(val);
   };
 
   return (
@@ -72,14 +72,11 @@ export default function SizeSelector() {
           <MenuItem value=''>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>XS</MenuItem>
-          <MenuItem value={20}>S</MenuItem>
-          <MenuItem value={30}>M</MenuItem>
-          <MenuItem value={40}>L</MenuItem>
-          <MenuItem value={50}>XL</MenuItem>
+          {sizes.map(size => {
+            return <MenuItem value={size}>{size}</MenuItem>;
+          })}
         </Select>
       </FormControl>
-      <QuantityDropdown />
     </form>
   );
 }

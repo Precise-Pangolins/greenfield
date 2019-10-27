@@ -1,6 +1,6 @@
 const redux = require('redux');
 const axios = require('axios');
-const getAction = require('../../actions/ReviewActions/getReviews.js');
+const getAction = require('../../actionCreators/ReviewActions/getReviews.js');
 const getReviews = (id, page) => {
   return dispatch => {
     return axios

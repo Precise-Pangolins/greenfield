@@ -1,6 +1,6 @@
-import { connect } from "react-redux";
-import getAllAnswers from "../../actionCreators/QAActionCreators/getAllAnswers";
-import AnswersList from "../../../../client/components/qanda-components/AnswersList.jsx";
+import { connect } from 'react-redux';
+import getAllAnswers from '../../actions/QAActionCreators/getAllAnswers';
+import AnswersList from '../../../../client/components/qanda-components/AnswersList.jsx';
 
 const mapStateToProps = store => ({ answers: store.answers });
 

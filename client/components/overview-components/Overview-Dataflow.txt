@@ -1,0 +1,41 @@
+
+
+
+
+
+
+1. we get prod id from query parameter
+2.  call api to get styles for that product
+3. update cart to adjust sizes and quanitity
+4. update description
+5. update price and sale price if there is one
+6. default style inside styleCarousel
+7. user selects a product ; repeat 2 to 6
+
+overview
+  productlist
+    -click for new main product
+  productinfo (per style)
+    -update title
+    -price
+  styleCarousel - take all images for a particular style as props
+    -expanded view
+    -clickable with arrow
+  styles
+    -clickable to change main image and add check mark
+  description (per style)
+    -change on style change
+  cart
+    -update based on style
+      -sizes availble
+      -quanitity of each size
+      -on addtoCartClick, store product_id and session_id
+
+
+redux workflow
+  action-types
+  action-creators
+  actual action
+  create reducer function
+  update component
+
