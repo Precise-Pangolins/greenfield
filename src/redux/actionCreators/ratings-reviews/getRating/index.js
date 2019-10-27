@@ -1,6 +1,6 @@
 const redux = require("redux");
 const axios = require("axios");
-const ratings = require("../../actions/RatingActions/getProductMeta.js");
+const ratings = require("../../../actions/RatingActions/getProductMeta.js");
 const getReviews = id => {
   return dispatch => {
     return axios

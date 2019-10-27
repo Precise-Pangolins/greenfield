@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import AddReview from "./AddReview.jsx";
 import Grid from "@material-ui/core/Grid";
-
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -14,14 +13,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Reviews = ({ reviews, handleGetReviewsRequest, metaData }) => {
+const Reviews = ({
+  reviews,
+  handleGetReviewsRequest,
+  metaData,
+  handleSortReviewsRequest,
+  page,
+  sort,
+  setPage,
+  setSort
+}) => {
   console.log("Review metadata", metaData);
   const classes = useStyles();
-  const [page, setPage] = useState(2);
 
-  useEffect(() => {
-    handleGetReviewsRequest(1, 1);
-  }, []);
   const getTotal = ratings => {
     let total = 0;
     for (let rating in ratings) {
@@ -29,12 +33,19 @@ const Reviews = ({ reviews, handleGetReviewsRequest, metaData }) => {
     }
     return total;
   };
+
   return (
     <div>
       <div>
         <h3>
           {getTotal(metaData.ratings) + " reviews, sorted by "}
-          <select>
+          <select
+            onChange={event => {
+              setSort(event.target.value);
+              setPage(1);
+              handleSortReviewsRequest(7, 1, 2, event.target.value);
+            }}
+          >
             <option value="relevant">Relevance</option>
             <option value="helpful">Helpfulness</option>
             <option value="newest">Newest</option>
@@ -53,7 +64,7 @@ const Reviews = ({ reviews, handleGetReviewsRequest, metaData }) => {
           <Button
             onClick={() => {
               setPage(page + 1);
-              handleGetReviewsRequest(1, page);
+              handleGetReviewsRequest(7, page + 1, 2, sort);
             }}
             variant="outlined"
             className={classes.button}

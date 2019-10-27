@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import ReviewsContainer from "../../../src/redux/containers/ReviewsContainers/getReviews";
-import RatingContainer from "../../../src/redux/containers/RatingContainers/RatingsContainer";
+import Reviews from "./reviews/Reviews.js";
+// import Ratings from "./ratings/RatingDisplay";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,7 +16,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const RatingsReviews = () => {
+const RatingsReviews = ({
+  handleGetReviewsRequest,
+  handleSortReviewsRequest,
+  handleGetRatingsRequest,
+  handleFilterReviewsRequest,
+  handleClearFilterRequest,
+  metaData,
+  productInfo,
+  reviews
+}) => {
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState("relevant");
+  useEffect(() => {
+    handleGetReviewsRequest(7, 1, 2);
+    handleGetRatingsRequest(7);
+  }, []);
+
   const getTotal = ratings => {
     let total = 0;
     for (let rating in ratings) {
@@ -33,12 +49,27 @@ const RatingsReviews = () => {
         </Grid>
         <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}>
-            <RatingContainer />
+            {/* <Ratings
+              productInfo={productInfo}
+              handleGetRatingsRequest={handleGetRatingsRequest}
+              metaData={metaData}
+              handleFilterRatingsRequest={handleFilterRatingsRequest}
+              handleReviewsRequest
+            /> */}
           </Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
-            <ReviewsContainer />
+            <Reviews
+              reviews={reviews}
+              handleGetReviewsRequest={handleGetReviewsRequest}
+              handleSortReviewsRequest={handleSortReviewsRequest}
+              metaData={metaData}
+              page={page}
+              setPage={setPage}
+              sort={sort}
+              setSort={setSort}
+            />
           </Paper>
         </Grid>
       </Grid>

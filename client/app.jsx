@@ -1,7 +1,7 @@
 import React from "react";
 
 import Overview from "./components/overview-components/Overview.jsx";
-import RatingsReviews from "./components/rating-reviews/RatingsReviews.jsx";
+import RatingsReviews from "../src/redux/containers/ReviewsContainers/getReviews.js";
 import state from "../src/redux/store/index.js";
 import QABody from "./components/qanda-components/QABody.jsx";
 

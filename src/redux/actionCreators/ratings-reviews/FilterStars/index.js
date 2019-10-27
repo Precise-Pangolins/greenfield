@@ -1,6 +1,6 @@
 const redux = require("redux");
 const axios = require("axios");
-const action = require("../../actions/RatingActions/filterStars.js");
+const action = require("../../../actions/RatingActions/filterStars.js");
 const filterStars = (id, filters) => {
   return dispatch => {
     return axios
