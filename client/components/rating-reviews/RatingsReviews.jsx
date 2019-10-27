@@ -15,7 +15,15 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   }
 }));
+
 const RatingsReviews = () => {
+  const getTotal = ratings => {
+    let total = 0;
+    for (let rating in ratings) {
+      total += ratings[rating];
+    }
+    return total;
+  };
   const classes = useStyles();
   return (
     <div className={classes.root}>

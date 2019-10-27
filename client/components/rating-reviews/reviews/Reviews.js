@@ -14,17 +14,33 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Reviews = ({ reviews, handleGetReviewsRequest }) => {
-  console.log("reviews", reviews);
+const Reviews = ({ reviews, handleGetReviewsRequest, metaData }) => {
+  console.log("Review metadata", metaData);
   const classes = useStyles();
   const [page, setPage] = useState(2);
 
   useEffect(() => {
     handleGetReviewsRequest(1, 1);
   }, []);
-
+  const getTotal = ratings => {
+    let total = 0;
+    for (let rating in ratings) {
+      total += ratings[rating];
+    }
+    return total;
+  };
   return (
     <div>
+      <div>
+        <h3>
+          {getTotal(metaData.ratings) + " reviews, sorted by "}
+          <select>
+            <option value="relevant">Relevance</option>
+            <option value="helpful">Helpfulness</option>
+            <option value="newest">Newest</option>
+          </select>
+        </h3>
+      </div>
       {reviews.map(review => {
         return (
           <div>
