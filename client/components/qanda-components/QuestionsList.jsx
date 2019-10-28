@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import QuestionEntry from './QuestionEntry.jsx';
+import React, { useState, useEffect } from "react";
+import QuestionEntry from "./QuestionEntry.jsx";
 
 const QuestionsList = ({
   questions,
@@ -13,7 +13,6 @@ const QuestionsList = ({
     getAllQuestionsRequest(1);
   }, []);
 
-<<<<<<< HEAD
   if (resultsQuestions.length === 0) {
     return (
       <div>
@@ -44,20 +43,6 @@ const QuestionsList = ({
       </div>
     );
   }
-=======
-
-  return (
-    <div>
-      {questions.map(question => {
-        return (
-          <div>
-            <QuestionEntry question={question} />
-          </div>
-        );
-      })}
-    </div>
-  );
->>>>>>> master
 };
 
 export default QuestionsList;

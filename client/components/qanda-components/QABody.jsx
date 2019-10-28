@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer";
-import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer";
-// import queryString from "querystring";
+import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer.js";
+import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer.js";
+import queryString from "querystring";
 
-// let productId = queryString.parse(location.search)["?productId"] || 1;
+let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const QABody = ({
   questions,
