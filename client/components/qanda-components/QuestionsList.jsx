@@ -25,7 +25,6 @@ const QuestionsList = ({
           return (
             <div>
               <QuestionEntry
-                key={question._id}
                 question={question}
                 answers={defaultAnswers[question.question_id]}
               />
@@ -43,7 +42,6 @@ const QuestionsList = ({
           return (
             <div>
               <QuestionEntry
-                key={question_id}
                 question={resultsQuestion}
                 answers={answersForSearchedQ}
               />

@@ -6,7 +6,7 @@ const AnswersList = ({ answers }) => {
   return (
     <div>
       {answers.map(answer => {
-        return <AnswerEntry key={answer.id} answer={answer} />;
+        return <AnswerEntry answer={answer} />;
       })}
     </div>
   );
