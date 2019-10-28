@@ -8,6 +8,8 @@ const getReviewsReducer = (state = [], action) => {
       return action.reviews;
     case "CLEAR_FILTER":
       return action.reviews;
+    case "SORT":
+      return action.reviews;
     default:
       return state;
   }
