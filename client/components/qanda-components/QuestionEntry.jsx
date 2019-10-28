@@ -2,6 +2,7 @@ import AnswersListContainer from '../../../src/redux/containers/QAContainers/Ans
 import React from 'react';
 
 const QuestionEntry = question => {
+
   return (
     <div>
       {' '}

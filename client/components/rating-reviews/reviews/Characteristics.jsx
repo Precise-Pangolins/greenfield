@@ -5,33 +5,20 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-export default function Characteristics() {
-  const [size, setSize] = useState("1");
-  const [width, setWidth] = useState("1");
-  const [comfort, setComfort] = useState("1");
-  const [quality, setQuality] = useState("1");
-  const [length, setLength] = useState("1");
-  const [fit, setFit] = useState("1");
-
-  const handleSize = event => {
-    setSize(event.target.value);
-  };
-  const handleWidth = event => {
-    setWidth(event.target.value);
-  };
-  const handleComfort = event => {
-    setComfort(event.target.value);
-  };
-  const handleQuality = event => {
-    setQuality(event.target.value);
-  };
-  const handleLength = event => {
-    setLength(event.target.value);
-  };
-  const handleFit = event => {
-    setFit(event.target.value);
-  };
-
+export default function Characteristics({
+  size,
+  width,
+  comfort,
+  quality,
+  length,
+  fit,
+  handleSize,
+  handleWidth,
+  handleComfort,
+  handleQuality,
+  handleLength,
+  handleFit
+}) {
   return (
     <div>
       <h3>Characteristics</h3>
