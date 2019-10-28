@@ -33,7 +33,6 @@ function Overview({
 }) {
   const [currentStyle, setCurrentStyle] = useState({ style_id: 1 });
   useEffect(() => {
-    console.log({ productId });
     handleGetProductRequest(productId);
     handleGetStylesRequest(productId);
   }, []);

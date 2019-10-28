@@ -8,7 +8,7 @@ import {
   fetchProductInfoFail,
   fetchProductStyles,
   fetchProductStylesFail
-} from '../actionCreators/overviewActionCreators.js';
+} from '../actions/overviewActionCreators.js';
 
 const apiUrl = 'http://18.223.1.30';
 
