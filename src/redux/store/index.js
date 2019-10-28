@@ -6,3 +6,7 @@ export default createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+// action
+// init request// make an api call
+// send back the response to the store

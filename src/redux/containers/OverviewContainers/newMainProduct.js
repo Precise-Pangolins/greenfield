@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import getInfo from '../../actionCreators/overview-action-creators/getInfo.js';
-import Features from '../../../../client/components/overview-components/Features';
+import NewMainProduct from '../../../../client/components/overview-components/NewMainProduct';
 
 const mapStateToProps = store => {
   return { info: store.info };
@@ -11,9 +11,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const InfoContainer = connect(
+const NewMainProduct = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Features);
+)(NewMainProduct);
 
-export default InfoContainer;
+export default NewMainProduct;
