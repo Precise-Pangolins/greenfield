@@ -24,6 +24,31 @@ export default function ResponsiveDialog() {
   const [rating, setRating] = useState(3);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [size, setSize] = useState("1");
+  const [width, setWidth] = useState("1");
+  const [comfort, setComfort] = useState("1");
+  const [quality, setQuality] = useState("1");
+  const [length, setLength] = useState("1");
+  const [fit, setFit] = useState("1");
+
+  const handleSize = event => {
+    setSize(event.target.value);
+  };
+  const handleWidth = event => {
+    setWidth(event.target.value);
+  };
+  const handleComfort = event => {
+    setComfort(event.target.value);
+  };
+  const handleQuality = event => {
+    setQuality(event.target.value);
+  };
+  const handleLength = event => {
+    setLength(event.target.value);
+  };
+  const handleFit = event => {
+    setFit(event.target.value);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -59,7 +84,20 @@ export default function ResponsiveDialog() {
             }}
           />
           <Recommend />
-          <Characteristics />
+          <Characteristics
+            size={size}
+            width={width}
+            comfort={comfort}
+            quality={quality}
+            length={length}
+            fit={fit}
+            handleSize={handleSize}
+            handleWidth={handleWidth}
+            handleComfort={handleComfort}
+            handleQuality={handleQuality}
+            handleLength={handleQuality}
+            handleFit={handleFit}
+          />
           <h3>Summary</h3>
           <TextField
             id="standard-full-width"

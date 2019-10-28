@@ -1,25 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class StyleSelector extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      styles: ['fall', 'winter', 'summer', 'spring']
-    };
-  }
-
-  render() {
-    return (
-      <ul>
-        <div>
-          {this.state.styles.map(style => {
-            return <li>{style}</li>;
-          })}
-        </div>
-      </ul>
-    );
-  }
+function StyleSelector({ styles = [], onHandleStyleChange }) {
+  return (
+    <div>
+      {styles.map(style => {
+        return (
+          <img
+            onClick={() => {
+              onHandleStyleChange(style.style_id);
+            }}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              margin: '12px'
+            }}
+            src={style.photos[0].thumbnail_url}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 export default StyleSelector;

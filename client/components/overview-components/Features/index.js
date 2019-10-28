@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import '@babel/polyfill';
+import queryString from 'querystring';
+
+let productId = queryString.parse(location.search)['?productId'] || 1;
 
 function Features({ info, handleGetInfoRequest }) {
   useEffect(() => {
-    handleGetInfoRequest(1);
+    handleGetInfoRequest(productId);
   }, []);
   return (
     <div>

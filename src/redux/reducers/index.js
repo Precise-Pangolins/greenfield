@@ -7,6 +7,7 @@ import answers from "../reducers/QAReducers/aReducer";
 import styles from "../reducers/overview-reducers/stylesReducer.js";
 import list from "../reducers/overview-reducers/listReducer.js";
 import info from "../reducers/overview-reducers/infoReducer.js";
+import metaData from "../reducers/RatingsReducers/index.js";
 
 export default combineReducers({
   counter,
@@ -15,5 +16,6 @@ export default combineReducers({
   answers,
   styles,
   list,
-  info
+  info,
+  metaData
 });

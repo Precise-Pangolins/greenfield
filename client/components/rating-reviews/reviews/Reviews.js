@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Reviews = ({ reviews, handleGetReviewsRequest }) => {
+  console.log("reviews", reviews);
   const classes = useStyles();
   const [page, setPage] = useState(2);
 
@@ -31,7 +32,7 @@ const Reviews = ({ reviews, handleGetReviewsRequest }) => {
           </div>
         );
       })}
-      <Grid container spacing={1}>
+      <Grid container spacing={0}>
         <Grid item md={6}>
           <Button
             onClick={() => {

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import getList from '../../actionCreators/overview-action-creators/getList.js';
+import getList from '../../apiCalls/overview-action-creators/getList.js';
 import ProductList from '../../../../client/components/overview-components/ProductList';
 
 const mapStateToProps = store => {
