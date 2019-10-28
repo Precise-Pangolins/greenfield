@@ -9,12 +9,13 @@ const RatingDisplay = ({
   handleGetRatingsRequest,
   metaData,
   handleFilterRatingsRequest,
-  handleReviewsRequest
+  handleGetReviewsRequest,
+  handleClearFilterRequest,
+  filters,
+  setFilters
 }) => {
-  const [filter, setFilter] = React.useState(false);
   const clearFilter = () => {
-    setFilter(false);
-    handleReviewsRequest(1);
+    handleClearFilterRequest(1);
   };
   const getTotal = ratings => {
     let total = 0;
@@ -56,9 +57,9 @@ const RatingDisplay = ({
               ratings={metaData.ratings}
               handleClick={handleFilterRatingsRequest}
               id={productInfo.id}
-              filter={filter}
               handleClearFilter={clearFilter}
-              setFilter={setFilter}
+              setFilters={setFilters}
+              filters={filters}
             />
           </Grid>
           <Grid item xs={12}>

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Reviews from "./reviews/Reviews.js";
-// import Ratings from "./ratings/RatingDisplay";
+import Ratings from "./ratings/RatingDisplay";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,6 +28,17 @@ const RatingsReviews = ({
 }) => {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("relevant");
+  const [filters, setFilters] = useState({});
+
+  const filterByStar = filters => {
+    console.log("Filters", filters);
+    handleFilterReviewsRequest(7, filters, sort);
+  };
+  useEffect(() => {
+    filterByStar(filters);
+    console.log(filters);
+  }, [filters]);
+
   useEffect(() => {
     handleGetReviewsRequest(7, 1, 2);
     handleGetRatingsRequest(7);
@@ -49,13 +60,15 @@ const RatingsReviews = ({
         </Grid>
         <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}>
-            {/* <Ratings
+            <Ratings
               productInfo={productInfo}
               handleGetRatingsRequest={handleGetRatingsRequest}
               metaData={metaData}
-              handleFilterRatingsRequest={handleFilterRatingsRequest}
-              handleReviewsRequest
-            /> */}
+              filters={filters}
+              setFilters={setFilters}
+              handleFilterRatingsRequest={filterByStar}
+              handleClearFilterRequest={handleClearFilterRequest}
+            />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
@@ -63,7 +76,11 @@ const RatingsReviews = ({
             <Reviews
               reviews={reviews}
               handleGetReviewsRequest={handleGetReviewsRequest}
-              handleSortReviewsRequest={handleSortReviewsRequest}
+              handleSortReviewsRequest={
+                Object.keys(filters).length > 0
+                  ? filterByStar(filters)
+                  : handleSortReviewsRequest
+              }
               metaData={metaData}
               page={page}
               setPage={setPage}

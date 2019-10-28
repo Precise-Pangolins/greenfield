@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 
 const RatingBars = ({
   total,
   ratings,
   handleClick,
-  filter,
-  setFilter,
+  filters,
+  setFilters,
   handleClearFilter
 }) => {
-  let filters = {};
-
+  console.log("filters on page", filters);
   const getPercentage = (numerator, denominator) => {
     let rating = Math.floor(100 * (numerator / denominator));
 
@@ -19,7 +18,7 @@ const RatingBars = ({
   return (
     <div className="ratingBars">
       <Grid container>
-        {filter ? (
+        {Object.keys(filters).length > 0 ? (
           <Grid item xs={12}>
             <a
               href=""
@@ -42,22 +41,20 @@ const RatingBars = ({
                 <label htmlFor={`${rating} Stars`}>
                   <a
                     href=""
+                    value={rating}
+                    key={rating}
                     onClick={event => {
                       event.preventDefault();
-                      if (filters[rating]) {
+                      if (filters[rating] === undefined) {
+                        setFilters({ ...filters, [rating]: true });
+                      } else {
                         delete filters[rating];
-                        console.log("rating exists delting");
-                        console.log(filters);
-                      } else {
-                        filters[rating] = true;
-                        console.log("no rating exists", filters);
-                        setFilter(true);
+                        setFilters({ ...filters });
                       }
-                      if (Object.keys(filters).length <= 0) {
-                        handleClearFilter();
-                      } else {
-                        handleClick(1, filters);
-                      }
+                      // if (Object.keys(filters).length <= 0) {
+                      //   handleClearFilter();
+                      // } else {
+                      // }
                     }}
                   >{`${rating} stars `}</a>
                 </label>
