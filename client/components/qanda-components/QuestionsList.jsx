@@ -7,6 +7,7 @@ const QuestionsList = ({ questions, getAllQuestionsRequest }) => {
     getAllQuestionsRequest(1);
   }, []);
 
+
   return (
     <div>
       {questions.map(question => {

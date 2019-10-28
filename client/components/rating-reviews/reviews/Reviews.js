@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Reviews = ({ reviews, handleGetReviewsRequest }) => {
+  console.log("reviews", reviews);
   const classes = useStyles();
   const [page, setPage] = useState(2);
 
