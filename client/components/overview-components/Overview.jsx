@@ -48,6 +48,7 @@ function Overview({
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             Image Gallery
+            {styles.loading ? <div>loading...</div> : null}
             <ImgGallery
               styleId={currentStyle.style_id}
               onStyleChange={onStyleChange}
