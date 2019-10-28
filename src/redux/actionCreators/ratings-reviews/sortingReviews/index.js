@@ -2,7 +2,6 @@ const redux = require("redux");
 const axios = require("axios");
 const getAction = require("../../../actions/ReviewActions/sort");
 const getReviews = (id, page = 1, count = 2, sort = "relevance") => {
-  console.log("sort called");
   return dispatch => {
     return axios
       .get(

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
+import uuid from "uuidv4";
 
 const RatingBars = ({
   total,
@@ -41,7 +42,7 @@ const RatingBars = ({
                   <a
                     href=""
                     value={rating}
-                    key={rating}
+                    key={uuid()}
                     onClick={event => {
                       event.preventDefault();
                       if (filters[rating] === undefined) {
@@ -58,7 +59,7 @@ const RatingBars = ({
                   id={`${rating} Stars`}
                   max="100"
                   value={getPercentage(ratings[rating], total)}
-                  key={`${rating} Stars`}
+                  key={uuid()}
                 ></progress>
               </Grid>
             );

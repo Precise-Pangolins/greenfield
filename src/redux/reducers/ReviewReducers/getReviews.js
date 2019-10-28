@@ -9,7 +9,6 @@ const getReviewsReducer = (state = [], action) => {
     case "CLEAR_FILTER":
       return action.reviews;
     case "SORT":
-      console.log("Sort Called");
       return action.reviews;
     default:
       return state;

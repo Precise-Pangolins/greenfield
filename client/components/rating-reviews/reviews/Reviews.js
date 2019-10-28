@@ -4,6 +4,8 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import AddReview from "./AddReview.jsx";
 import Grid from "@material-ui/core/Grid";
+import uuid from "uuidv4";
+
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -22,7 +24,6 @@ const Reviews = ({
   setPage,
   setSort
 }) => {
-  console.log("Review metadata", metaData);
   const classes = useStyles();
 
   const getTotal = ratings => {
@@ -53,7 +54,7 @@ const Reviews = ({
       {reviews.map(review => {
         return (
           <div>
-            <Review review={review} key={review.review_id} />
+            <Review review={review} key={uuid()} />
           </div>
         );
       })}
