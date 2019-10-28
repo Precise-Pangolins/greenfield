@@ -21,7 +21,6 @@ const BootstrapInput = withStyles(theme => ({
     fontSize: 16,
     padding: '10px 26px 10px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
@@ -52,41 +51,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SizeSelector() {
+export default function QuantitySelector({ size, skus }) {
   const classes = useStyles();
-  const [size, setAge] = React.useState('');
+  const [quantity, setQuantity] = React.useState('');
   const handleChange = event => {
-    setAge(event.target.value); //will change to capture size and quantity independently
+    setQuantity(event.target.value);
   };
 
+  const limit = skus ? (skus[size] > 15 ? 15 : skus[size]) : 0; // skus.XL give us 4
+  const ar = Array.from({ length: limit }, (val, index) => index + 1);
+
   return (
-    <form className={classes.root} autoComplete='off'>
+    <div className={classes.root} autoComplete='off'>
       <FormControl className={classes.margin}>
         <InputLabel htmlFor='age-customized-select'>Quantity</InputLabel>
         <Select
-          value={size}
+          value={quantity}
           onChange={handleChange}
           input={<BootstrapInput name='age' id='age-customized-select' />}>
           <MenuItem value=''>
-            <em>None</em>
+            <em>Out Of Stock</em>
           </MenuItem>
-          <MenuItem value={10}>1</MenuItem>
-          <MenuItem value={20}>2</MenuItem>
-          <MenuItem value={30}>3</MenuItem>
-          <MenuItem value={40}>4</MenuItem>
-          <MenuItem value={50}>5</MenuItem>
-          <MenuItem value={50}>6</MenuItem>
-          <MenuItem value={50}>7</MenuItem>
-          <MenuItem value={50}>8</MenuItem>
-          <MenuItem value={50}>9</MenuItem>
-          <MenuItem value={50}>10</MenuItem>
-          <MenuItem value={50}>11</MenuItem>
-          <MenuItem value={50}>12</MenuItem>
-          <MenuItem value={50}>13</MenuItem>
-          <MenuItem value={50}>14</MenuItem>
-          <MenuItem value={50}>15</MenuItem>
+          {ar.map(q => {
+            return <MenuItem value={q}>{q}</MenuItem>;
+          })}
         </Select>
       </FormControl>
-    </form>
+    </div>
   );
 }

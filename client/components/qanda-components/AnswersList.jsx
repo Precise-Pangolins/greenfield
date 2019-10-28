@@ -9,8 +9,6 @@ const AnswersList = ({ answers, getAllAnswersRequest }) => {
     getAllAnswersRequest(1);
   }, []);
 
-  // console.log("answers props", answers);
-
   return (
     <div>
       {answers.map(answer => {

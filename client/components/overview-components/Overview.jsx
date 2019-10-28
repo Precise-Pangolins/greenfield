@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import queryString from 'querystring';
 
-import ImagesContainer from '../../../src/redux/containers/OverviewContainers/getStyles.js';
-import DescriptionContainer from '../../../src/redux/containers/OverviewContainers/getList.js';
-import InfoContainer from '../../../src/redux/containers/OverviewContainers/getInfo.js';
-import ThumbnailsContainer from '../../../src/redux/containers/OverviewContainers/getThumbnails.js';
+import Description from './ProductDescription';
+import Features from './Features';
+
 import AddToCartModal from '../overview-components/AddToCart';
 
 import StyleSelector from './StyleSelector';
+import ImgGallery from './ImgGallery/index.jsx';
+
+let productId = queryString.parse(location.search)['?productId'] || 1;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,7 +25,22 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Overview() {
+function Overview({
+  styles = { styles: [] },
+  handleGetProductRequest,
+  handleGetStylesRequest,
+  info = {}
+}) {
+  const [currentStyle, setCurrentStyle] = useState({ style_id: 1 });
+  useEffect(() => {
+    handleGetProductRequest(productId);
+    handleGetStylesRequest(productId);
+  }, []);
+
+  const onStyleChange = newStyle => {
+    setCurrentStyle(newStyle);
+  };
+  // here we need selectedProd, selectedStyle, selectedImage
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -30,23 +48,26 @@ function Overview() {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             Image Gallery
-            <ImagesContainer />
+            <ImgGallery
+              styleId={currentStyle.style_id}
+              onStyleChange={onStyleChange}
+              styles={styles.styles}
+            />
             Styles
-            <ThumbnailsContainer />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             Product Description
-            <DescriptionContainer />
+            <Description info={info.info} />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             Style Selector <StyleSelector />
             Features
-            <InfoContainer />
-            <AddToCartModal />
+            {/* <Features /> */}
+            <AddToCartModal currentStyle={currentStyle} />
           </Paper>
         </Grid>
         {/* <Grid item xs={6} sm={3}>
