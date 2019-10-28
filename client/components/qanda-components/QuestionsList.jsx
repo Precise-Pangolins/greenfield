@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import QuestionEntry from "./QuestionEntry.jsx";
 import queryString from "querystring";
 
-const uuidv4 = require("uuid/v4");
-
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const QuestionsList = ({
@@ -27,7 +25,7 @@ const QuestionsList = ({
           return (
             <div>
               <QuestionEntry
-                key={uuidv4()}
+                key={question._id}
                 question={question}
                 answers={defaultAnswers[question.question_id]}
               />
@@ -45,7 +43,7 @@ const QuestionsList = ({
           return (
             <div>
               <QuestionEntry
-                key={uuidv4()}
+                key={question_id}
                 question={resultsQuestion}
                 answers={answersForSearchedQ}
               />
