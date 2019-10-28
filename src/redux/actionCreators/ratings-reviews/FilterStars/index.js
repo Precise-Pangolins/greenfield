@@ -1,10 +1,10 @@
 const redux = require("redux");
 const axios = require("axios");
-const action = require("../../actions/RatingActions/filterStars.js");
-const filterStars = (id, filters) => {
+const action = require("../../../actions/RatingActions/filterStars.js");
+const filterStars = (id, filters, sort = "relevant") => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${id}/list?count=100000`)
+      .get(`http://18.223.1.30/reviews/${id}/list?count=100000&sort=${sort}`)
       .then(({ data }) => {
         const reviews = [];
         data.results.map(review => {
@@ -12,6 +12,7 @@ const filterStars = (id, filters) => {
             reviews.push(review);
           }
         });
+
         dispatch(action(reviews));
       })
       .catch(error => console.error(error));
