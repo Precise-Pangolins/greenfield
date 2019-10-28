@@ -18,7 +18,6 @@ export default function AddToCartModal({
 }) {
   const [open, setOpen] = React.useState(false);
   const [size, setSize] = React.useState(1);
-  console.log({ currentStyle: currentStyle });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,19 +27,11 @@ export default function AddToCartModal({
     setOpen(false);
   };
 
-  // {a: 1, b: 2, c: 3}
-  // [[a,1], [b,2], [c,3]]
-
-  // {sizes: [], quantities: []} acc
-  // [a,1] curr
-
   const sizes = currentStyle.skus
     ? Object.entries(currentStyle.skus).map(curr => {
         return curr[0];
       })
     : [];
-
-  console.log({ sizes });
 
   const onSizeChange = size => {
     setSize(size);

@@ -7,7 +7,6 @@ const getStylesReducer = (state = emptyProduct.styles, action) => {
     case OverviewActionTypes.FETCH_PRODUCT_STYLES:
       return { ...state, loading: true };
     case OverviewActionTypes.FETCH_PRODUCT_STYLES_SUCCESS:
-      console.log('reducer style', action.payload);
       return { ...state, loading: false, styles: action.payload.results };
     case OverviewActionTypes.FETCH_PRODUCT_STYLES_FAIL:
       return { ...state, loading: false };

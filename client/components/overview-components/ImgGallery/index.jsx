@@ -11,7 +11,6 @@ function ImgGallery({ styles = [], onStyleChange, styleId }) {
   let [currentStyleId, setCurrentStyleId] = useState(styleId);
   let [thmbIndex, setThmbIndex] = useState(0);
 
-  console.log(currentStyleId, styles);
   const currentStyle = styles.find(
     style => style.style_id === currentStyleId
   ) || { photos: [] };
@@ -39,8 +38,10 @@ function ImgGallery({ styles = [], onStyleChange, styleId }) {
             src={currentStyle.photos[thmbIndex].url}
           />
         ) : null}
-      </div>
+      </div>{' '}
+      <h1>Select Your Style Choice:</h1>
       <StyleSelector onHandleStyleChange={handleStyleChange} styles={styles} />
+      <h2>View More Style Images</h2>
       <Thumbnails
         images={currentStyle.photos}
         onThumbnailChange={handleThumbnailChange}

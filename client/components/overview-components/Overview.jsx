@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import queryString from 'query-string';
+import queryString from 'querystring';
 
 import Description from './ProductDescription';
 import Features from './Features';
@@ -13,6 +13,7 @@ import StyleSelector from './StyleSelector';
 import ImgGallery from './ImgGallery/index.jsx';
 
 let productId = queryString.parse(location.search)['?productId'] || 1;
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -32,6 +33,7 @@ function Overview({
 }) {
   const [currentStyle, setCurrentStyle] = useState({ style_id: 1 });
   useEffect(() => {
+    console.log({ productId });
     handleGetProductRequest(productId);
     handleGetStylesRequest(productId);
   }, []);
@@ -40,7 +42,6 @@ function Overview({
     setCurrentStyle(newStyle);
   };
   // here we need selectedProd, selectedStyle, selectedImage
-  console.log(info, 'here');
   const classes = useStyles();
   return (
     <div className={classes.root}>

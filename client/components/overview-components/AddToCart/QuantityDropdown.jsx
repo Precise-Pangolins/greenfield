@@ -21,7 +21,6 @@ const BootstrapInput = withStyles(theme => ({
     fontSize: 16,
     padding: '10px 26px 10px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
     fontFamily: [
       '-apple-system',
       'BlinkMacSystemFont',
@@ -56,13 +55,12 @@ export default function QuantitySelector({ size, skus }) {
   const classes = useStyles();
   const [quantity, setQuantity] = React.useState('');
   const handleChange = event => {
-    setQuantity(event.target.value); //will change to capture size and quantity independently
+    setQuantity(event.target.value);
   };
-  console.log({ size, skus });
 
   const limit = skus ? (skus[size] > 15 ? 15 : skus[size]) : 0; // skus.XL give us 4
   const ar = Array.from({ length: limit }, (val, index) => index + 1);
-  console.log({ ar });
+
   return (
     <div className={classes.root} autoComplete='off'>
       <FormControl className={classes.margin}>
@@ -72,7 +70,7 @@ export default function QuantitySelector({ size, skus }) {
           onChange={handleChange}
           input={<BootstrapInput name='age' id='age-customized-select' />}>
           <MenuItem value=''>
-            <em>None</em>
+            <em>Out Of Stock</em>
           </MenuItem>
           {ar.map(q => {
             return <MenuItem value={q}>{q}</MenuItem>;
