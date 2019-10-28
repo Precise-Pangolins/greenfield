@@ -8,22 +8,35 @@ const QABody = ({
   answers,
   getAllAnswersInitialRequest
 }) => {
-  const [resultQuestions, setResultQuestions] = useState([]);
+  const [resultsQuestions, setResultsQuestions] = useState([]);
   const [answersForSearchedQ, setAnswersForSearchedQ] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchedQId, setSearchedQId] = useState("");
 
   const searchInQuestions = searchTerm => {
     console.log("searchterm", searchTerm);
-    let results = [];
+    let results = []; //questions that meet search criteria
+    let answerResults = []; //answers that match searched qs
     for (let i = 0; i < questions.length; i++) {
       let currentQuestion = questions[i];
+
       if (currentQuestion.question_body.includes(searchTerm)) {
         results.push(currentQuestion);
       }
+      for (let i = 0; i < results.length; i++) {
+        for (let key in results[i].answers) {
+          let singleAns = results[i].answers[key];
+          console.log("single", singleAns);
+          answerResults.push(singleAns);
+        }
+      }
     }
-    setResultQuestions(results);
+    setResultsQuestions(results);
+    setAnswersForSearchedQ(answerResults);
   };
 
+  console.log("results", resultsQuestions);
+  console.log("answerres", answersForSearchedQ);
 
   useEffect(() => {
     getAllQuestionsInitialRequest(1);
@@ -39,8 +52,9 @@ const QABody = ({
         searchInQuestions={searchInQuestions}
       />
       <QuestionsListContainer
-        resultsQuestions={resultQuestions}
+        resultsQuestions={resultsQuestions}
         answers={answers}
+        answersForSearchedQ={answersForSearchedQ}
       />
     </div>
   );

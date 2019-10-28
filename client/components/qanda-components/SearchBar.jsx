@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const SearchBar = ({ searchTerm, setSearchTerm, searchInQuestions }) => {
+const SearchBar = ({
+  searchTerm,
+  setSearchTerm,
+  searchInQuestions,
+  getFilteredAns
+}) => {
   return (
     <div>
       <input

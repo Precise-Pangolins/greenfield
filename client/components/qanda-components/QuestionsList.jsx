@@ -5,7 +5,7 @@ const QuestionsList = ({
   questions,
   getAllQuestionsRequest,
   resultsQuestions,
-  setResultQuestions,
+  answersForSearchedQ,
   answers
 }) => {
   const [page, setPage] = useState(2);
@@ -13,7 +13,6 @@ const QuestionsList = ({
     getAllQuestionsRequest(1);
   }, []);
 
-  console.log("answers in QL", answers);
   if (resultsQuestions.length === 0) {
     return (
       <div>
@@ -31,28 +30,19 @@ const QuestionsList = ({
       <div>
         {resultsQuestions.map(resultsQuestion => {
           {
-            console.log("resultsQuestion in MAP", resultsQuestion);
           }
           return (
             <div>
-              <QuestionEntry question={resultsQuestion} />
+              <QuestionEntry
+                question={resultsQuestion}
+                answers={answersForSearchedQ}
+              />
             </div>
           );
         })}
       </div>
     );
   }
-  // return (
-  //   <div>
-  //       {questions.map(question => {
-  //         return (
-  //           <div>
-  //             <QuestionEntry question={question} />
-  //           </div>
-  //         )
-  //       })}
-  //   </div>
-  // );
 };
 
 export default QuestionsList;
