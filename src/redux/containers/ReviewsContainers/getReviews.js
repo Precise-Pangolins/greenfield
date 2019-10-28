@@ -6,6 +6,7 @@ import ratings from "../../actionCreators/ratings-reviews/getRating/index.js";
 import filter from "../../actionCreators/ratings-reviews/FilterStars/index.js";
 import clear from "../../actionCreators/ratings-reviews/FilterStars/clearFilter.js";
 
+console.log(ratings);
 const mapStateToProps = store => ({
   reviews: store.reviews,
   metaData: store.metaData,

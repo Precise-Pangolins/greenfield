@@ -31,16 +31,17 @@ const RatingsReviews = ({
   const [filters, setFilters] = useState({});
 
   const filterByStar = filters => {
-    console.log("Filters", filters);
     handleFilterReviewsRequest(7, filters, sort);
   };
   useEffect(() => {
-    filterByStar(filters);
-    console.log(filters);
-  }, [filters]);
+    if (Object.keys(filters).length > 0) {
+      filterByStar(filters);
+    } else {
+      handleSortReviewsRequest(7, 1, 2, sort);
+    }
+  }, [filters, sort]);
 
   useEffect(() => {
-    handleGetReviewsRequest(7, 1, 2);
     handleGetRatingsRequest(7);
   }, []);
 
@@ -76,16 +77,14 @@ const RatingsReviews = ({
             <Reviews
               reviews={reviews}
               handleGetReviewsRequest={handleGetReviewsRequest}
-              handleSortReviewsRequest={
-                Object.keys(filters).length > 0
-                  ? filterByStar(filters)
-                  : handleSortReviewsRequest
-              }
+              handleSortReviewsRequest={handleSortReviewsRequest}
+              handleSortAndFilter={filterByStar}
               metaData={metaData}
               page={page}
               setPage={setPage}
               sort={sort}
               setSort={setSort}
+              filters={filters}
             />
           </Paper>
         </Grid>

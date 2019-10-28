@@ -17,7 +17,6 @@ const Reviews = ({
   reviews,
   handleGetReviewsRequest,
   metaData,
-  handleSortReviewsRequest,
   page,
   sort,
   setPage,
@@ -43,7 +42,6 @@ const Reviews = ({
             onChange={event => {
               setSort(event.target.value);
               setPage(1);
-              handleSortReviewsRequest(7, 1, 2, event.target.value);
             }}
           >
             <option value="relevant">Relevance</option>

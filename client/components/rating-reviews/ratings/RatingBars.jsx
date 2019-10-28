@@ -9,7 +9,6 @@ const RatingBars = ({
   setFilters,
   handleClearFilter
 }) => {
-  console.log("filters on page", filters);
   const getPercentage = (numerator, denominator) => {
     let rating = Math.floor(100 * (numerator / denominator));
 
@@ -51,10 +50,6 @@ const RatingBars = ({
                         delete filters[rating];
                         setFilters({ ...filters });
                       }
-                      // if (Object.keys(filters).length <= 0) {
-                      //   handleClearFilter();
-                      // } else {
-                      // }
                     }}
                   >{`${rating} stars `}</a>
                 </label>

@@ -30,10 +30,6 @@ const RatingDisplay = ({
     return total / size;
   };
 
-  useEffect(() => {
-    productInfo ? handleGetRatingsRequest(1) : null;
-  }, []);
-
   return (
     <div>
       {metaData.ratings ? (
