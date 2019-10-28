@@ -39,22 +39,19 @@ const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
   let defaultAnswers = {};
   for (let i = 0; i < questions.length; i++) {
     let singleQ = questions[i];
-    console.log("singleQ", singleQ.answers);
 
     for (let key in singleQ.answers) {
       let answer = singleQ.answers[key];
       // console.log("answers in obj foor loop", answers);
       // defaultAnswers.push(answers);
-      if(defaultAnswers[singleQ.question_id]) {
-        defaultAnswers[singleQ.question_id].push(answer)
+      if (defaultAnswers[singleQ.question_id]) {
+        defaultAnswers[singleQ.question_id].push(answer);
       } else {
         defaultAnswers[singleQ.question_id] = [];
-        defaultAnswers[singleQ.question_id].push(answer)
+        defaultAnswers[singleQ.question_id].push(answer);
       }
     }
   }
-
-  console.log("defaultanswers", defaultAnswers);
 
   return (
     <div>
