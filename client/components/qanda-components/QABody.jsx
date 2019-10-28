@@ -5,16 +5,11 @@ import queryString from "querystring";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
-const QABody = ({
-  questions,
-  getAllQuestionsInitialRequest,
-  answers,
-  getAllAnswersInitialRequest
-}) => {
+const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [answersForSearchedQ, setAnswersForSearchedQ] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchedQId, setSearchedQId] = useState("");
+  const [defaultAnswersOnLoad, setDefaultAnswersOnLoad] = useState([]);
 
   const searchInQuestions = searchTerm => {
     console.log("searchterm", searchTerm);
@@ -29,7 +24,6 @@ const QABody = ({
       for (let i = 0; i < results.length; i++) {
         for (let key in results[i].answers) {
           let singleAns = results[i].answers[key];
-          console.log("single", singleAns);
           answerResults.push(singleAns);
         }
       }
@@ -38,13 +32,29 @@ const QABody = ({
     setAnswersForSearchedQ(answerResults);
   };
 
-  console.log("results", resultsQuestions);
-  console.log("answerres", answersForSearchedQ);
-
   useEffect(() => {
     getAllQuestionsInitialRequest(productId);
-    getAllAnswersInitialRequest(productId);
   }, []);
+
+  let defaultAnswers = {};
+  for (let i = 0; i < questions.length; i++) {
+    let singleQ = questions[i];
+    console.log("singleQ", singleQ.answers);
+
+    for (let key in singleQ.answers) {
+      let answer = singleQ.answers[key];
+      // console.log("answers in obj foor loop", answers);
+      // defaultAnswers.push(answers);
+      if(defaultAnswers[singleQ.question_id]) {
+        defaultAnswers[singleQ.question_id].push(answer)
+      } else {
+        defaultAnswers[singleQ.question_id] = [];
+        defaultAnswers[singleQ.question_id].push(answer)
+      }
+    }
+  }
+
+  console.log("defaultanswers", defaultAnswers);
 
   return (
     <div>
@@ -52,12 +62,14 @@ const QABody = ({
       <SearchContainer
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        s
         searchInQuestions={searchInQuestions}
       />
       <QuestionsListContainer
         resultsQuestions={resultsQuestions}
-        answers={answers}
+        defaultAnswers={defaultAnswers}
         answersForSearchedQ={answersForSearchedQ}
+        questions={questions}
       />
     </div>
   );

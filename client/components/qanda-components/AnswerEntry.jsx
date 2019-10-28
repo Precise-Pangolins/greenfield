@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 
 const AnswerEntry = answer => {
-  console.log("answer in AE", answer.answer);
   return (
     <div>
       A: {answer.answer.body}

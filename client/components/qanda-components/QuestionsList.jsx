@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import QuestionEntry from "./QuestionEntry.jsx";
+import queryString from "querystring";
+
+let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const QuestionsList = ({
   questions,
   getAllQuestionsRequest,
+  getAllAnswersRequest,
   resultsQuestions,
   answersForSearchedQ,
-  answers
+  defaultAnswers
 }) => {
   const [page, setPage] = useState(2);
+
   useEffect(() => {
-    getAllQuestionsRequest(1);
+    getAllQuestionsRequest(productId);
   }, []);
 
   if (resultsQuestions.length === 0) {
@@ -19,7 +24,7 @@ const QuestionsList = ({
         {questions.map(question => {
           return (
             <div>
-              <QuestionEntry question={question} answers={answers} />
+              <QuestionEntry question={question} answers={defaultAnswers[question.question_id]} />
             </div>
           );
         })}

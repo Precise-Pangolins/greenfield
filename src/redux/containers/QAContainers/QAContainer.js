@@ -4,8 +4,8 @@ import QABody from "../../../../client/components/qanda-components/QABody.jsx";
 import getAllAnswers from "../../actionCreators/QAActionCreators/getAllQuestions";
 
 const mapStateToProps = store => ({
-  questions: store.questions,
-  answers: store.answers
+  questions: store.questions
+  // answers: store.answers
 });
 
 const mapDispatchToProps = dispatch => {
