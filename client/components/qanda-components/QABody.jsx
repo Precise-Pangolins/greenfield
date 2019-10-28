@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer";
 import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer";
+// import queryString from "querystring";
+
+// let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const QABody = ({
   questions,
@@ -39,8 +42,8 @@ const QABody = ({
   console.log("answerres", answersForSearchedQ);
 
   useEffect(() => {
-    getAllQuestionsInitialRequest(1);
-    getAllAnswersInitialRequest(1);
+    getAllQuestionsInitialRequest(productId);
+    getAllAnswersInitialRequest(productId);
   }, []);
 
   return (

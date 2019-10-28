@@ -7,13 +7,7 @@ import QAContainer from "../src/redux/containers/QAContainers/QAContainer";
 
 import postToCart from "../src/redux/actionCreators/overview-action-creators/postToCart.js";
 
-const resultCart = postToCart(34567, 2);
-
 const App = () => {
-  resultCart(items => {
-    console.log({ cart: items });
-  });
-
   return (
     <div>
       <Overview />
