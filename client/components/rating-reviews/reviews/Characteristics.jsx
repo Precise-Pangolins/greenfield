@@ -24,6 +24,12 @@ export default function Characteristics({
               aria-label="position"
               name="position"
               value={characteristics[charID] + ""}
+              error={characteristic[charID] === undefined}
+              helperText={
+                characteristic[charID] === undefined
+                  ? "Please leave a characteristic"
+                  : " "
+              }
               onChange={event =>
                 setChars({
                   ...characteristics,

@@ -13,6 +13,7 @@ import Recommend from "./Recommend.jsx";
 import Characteristics from "./Characteristics.jsx";
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { number } from "prop-types";
 const useStyles = makeStyles(theme => ({
   button: {
@@ -105,7 +106,14 @@ export default function AddReview({ metaData, handleSubmit }) {
             InputLabelProps={{
               shrink: true
             }}
-            onChange={event => setSummary(event.target.value)}
+            maxLength={60}
+            error={summary === "" ? true : false}
+            helperText={
+              summary.length > 60 ? "the maximum character count is 60" : null
+            }
+            onChange={event =>
+              summary.length >= 60 ? null : setSummary(event.target.value)
+            }
           />
           <h3>Body</h3>
           <TextField
@@ -156,8 +164,16 @@ export default function AddReview({ metaData, handleSubmit }) {
           </Button>
           <Button
             onClick={() => {
-              handleSubmit(metaData.product_id, review);
-              handleClose();
+              // handleSubmit(metaData.product_id, review);
+              console.log(Object.keys(metaData.characteristics));
+              console.log(Object.keys(characteristics));
+
+              if (
+                Object.keys(metaData.characteristics).length ===
+                Object.keys(characteristics).length
+              ) {
+                handleClose();
+              }
             }}
             color="primary"
             autoFocus
