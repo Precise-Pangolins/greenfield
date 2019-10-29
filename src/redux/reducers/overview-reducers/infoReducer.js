@@ -1,5 +1,5 @@
 import Redux from 'redux';
-import emptyProduct from './initialState.js';
+import { emptyProduct } from './initialState.js';
 import * as OverviewActionTypes from '../../actions-types/overviewActionsTypes.js';
 
 const getInfoReducer = (state = emptyProduct, action) => {
