@@ -1,10 +1,12 @@
 const redux = require("redux");
 const axios = require("axios");
-const getAction = require("../../actions/ReviewActions/getReviews.js");
-const getReviews = (id, page = 1) => {
+const getAction = require("../../../actions/ReviewActions/getReviews.js");
+const getReviews = (id, page = 1, count = 2, sort = "relevance") => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${id}/list?page=${page}&count=2`)
+      .get(
+        `http://18.223.1.30/reviews/${id}/list?page=${page}&count=${count}&sort=${sort}`
+      )
       .then(({ data }) => {
         dispatch(getAction(data.results));
       })

@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 
 import RatingDisplay from "../../../../client/components/rating-reviews/ratings/RatingDisplay.jsx";
-const ratings = require("../../actionCreators/getRating/index.js");
-const filter = require("../../actionCreators/FilterStars/index.js");
-const reviews = require("../../actionCreators/FilterStars/clearFilter");
+const ratings = require("../../actionCreators/ratings-reviews/getRating/index.js");
+const filter = require("../../actionCreators/ratings-reviews/FilterStars/index.js");
+const clear = require("../../actionCreators/ratings-reviews/FilterStars/clearFilter");
 
 const mapStateToProps = store => ({
   productInfo: store.info,
@@ -12,8 +12,8 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => {
   return {
     handleGetRatingsRequest: id => dispatch(ratings(id)),
-    handleFilterRatingsRequest: (id, rating) => dispatch(filter(id, rating)),
-    handleReviewsRequest: id => dispatch(reviews(id))
+    handleFilterReviewsRequest: (id, rating) => dispatch(filter(id, rating)),
+    handleClearFilterRequest: id => dispatch(clear(id))
   };
 };
 const RatingsContainer = connect(
