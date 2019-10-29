@@ -1,3 +1,5 @@
+@import '~react-image-gallery/styles/css/image-gallery.css';
+
 body {
   color: black;
   background-color: white;
@@ -5,4 +7,24 @@ body {
 
 .thumbnail {
   border-radius: 50%;
+}
+
+.image-gallery-content .image-gallery-thumbnail-inner img {
+  height: 80px;
+  width: auto;
+}
+
+.image-gallery-content .image-gallery-thumbnail {
+  width: auto;
+}
+
+.image-gallery-content:not(.fullscreen) .image-gallery-slide img {
+  width: auto;
+  height: 500px;
+}
+
+.image-gallery-slide img {
+  height: 100vh;
+  width: auto;
+  cursor: cell;
 }

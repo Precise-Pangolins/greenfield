@@ -31,8 +31,9 @@ export const fetchProductStylesSuccess = data => ({
   payload: data
 });
 
-export const postProductToCartSuccess = () => ({
-  type: OverviewActionsTypes.POST_PRODUCT_TO_CART_SUCCESS
+export const postProductToCartSuccess = (user_session, product_id) => ({
+  type: OverviewActionsTypes.POST_PRODUCT_TO_CART_SUCCESS,
+  payload: { user_session, product_id }
 });
 
 export const fetchProductInfoFail = () => ({

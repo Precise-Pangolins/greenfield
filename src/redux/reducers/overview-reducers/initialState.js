@@ -1,4 +1,4 @@
-const emptyProduct = {
+export const emptyProduct = {
   loading: false,
   id: 0,
   name: '',
@@ -11,24 +11,12 @@ const emptyProduct = {
       feature: '',
       value: ''
     }
-  ],
-  styles: [
-    {
-      style_id: 0,
-      name: '',
-      original_price: '',
-      'default?': 0,
-      photos: [
-        {
-          thumbnail_url: '',
-          url: ''
-        }
-      ],
-      skus: {
-        XS: 0
-      }
-    }
   ]
 };
 
-export default emptyProduct;
+export const cart = {
+  user_session: 0,
+  product_id: 0
+};
+
+// export default emptyProduct;

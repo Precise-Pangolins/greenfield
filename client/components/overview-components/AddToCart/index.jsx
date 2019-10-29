@@ -13,8 +13,12 @@ import QuantityDropdown from './QuantityDropdown.jsx';
 
 export default function AddToCartModal({
   currentStyle = {
-    skus: {}
-  }
+    skus: {},
+    name: ''
+  },
+  handlePostToCartRequest,
+  productId,
+  info
 }) {
   const [open, setOpen] = React.useState(false);
   const [size, setSize] = React.useState(1);
@@ -35,6 +39,26 @@ export default function AddToCartModal({
 
   const onSizeChange = size => {
     setSize(size);
+  };
+
+  const getRandomIntInclusive = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  const userSession = getRandomIntInclusive(1, 100000);
+
+  const handleSaveToCart = () => {
+    if (document.cookie.split('cart_id=')[1] !== undefined) {
+      handlePostToCartRequest(document.cookie.split('cart_id=')[1], productId);
+    } else {
+      document.cookie = `cart_id=${userSession}`;
+      handlePostToCartRequest(document.cookie.split('cart_id=')[1], productId);
+    }
+    alert(
+      `your product, ${info.name} and chosen style, ${currentStyle.name}, has been saved to your shopping cart!`
+    );
   };
 
   return (
@@ -60,8 +84,11 @@ export default function AddToCartModal({
           <Button onClick={handleClose} color='primary'>
             Cancel
           </Button>
+          <Button onClick={handleSaveToCart} color='primary'>
+            Save to Cart
+          </Button>
           <Button onClick={handleClose} color='primary'>
-            Save in Cart
+            Close
           </Button>
         </DialogActions>
       </Dialog>

@@ -1,52 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import queryString from 'querystring';
+import Carousel from 'react-image-gallery';
 
 import Thumbnails from './Thumbnails.jsx';
 import StyleSelector from '../StyleSelector/index.jsx';
 
 let productId = queryString.parse(location.search)['?productId'] || 1;
 
-function ImgGallery({ styles = [], onStyleChange, styleId }) {
-  let [currentStyleId, setCurrentStyleId] = useState(styleId);
-  let [thmbIndex, setThmbIndex] = useState(0);
+function ImgGallery({ currentStyle = {}, info }) {
+  let [isFullScreen, setIsFullScreen] = useState(false);
+  let image = useRef(null); // updating  won't initiate a  re-render
+  let modifiedImgs = (currentStyle.photos || []).map(photo => {
+    return { original: photo.url, thumbnail: photo.thumbnail_url };
+  });
 
-  const currentStyle = styles.find(
-    style => style.style_id === currentStyleId
-  ) || { photos: [] };
+  function handleClick(event) {
+    if (isFullScreen) {
+      const img = event.target;
+      image.current = img;
+      if (img.style.transform === 'scale(2.5)') {
+        img.style.transform = 'scale(1)';
+        return;
+      }
+      img.style.transform = 'scale(2.5)';
+    }
+  }
 
-  const handleStyleChange = id => {
-    setCurrentStyleId(id);
-    //have style id, update current style id
-    const currentStyle = styles.find(style => style.style_id === id);
-    //pass entire style object to this parent
-    onStyleChange(currentStyle);
-    // call some method on the parent component to inform of a style change
-  };
-
-  const handleThumbnailChange = index => {
-    setThmbIndex(index);
-  };
-
+  function onScreenChange(fullScreenElem) {
+    if (fullScreenElem) {
+      setIsFullScreen(true);
+      image.current.style.cursor = 'cell';
+    } else {
+      setIsFullScreen(false);
+      image.current.style.transform = 'scale(1)';
+      image.current.style.cursor = 'auto';
+    }
+  }
   return (
-    <>
-      <div>
-        {currentStyle.photos.length ? (
-          <img
-            style={{ width: '50%' }}
-            className='newStyle'
-            src={currentStyle.photos[thmbIndex].url}
-          />
-        ) : null}
-      </div>{' '}
-      <h1>Select Your Style Choice:</h1>
-      <StyleSelector onHandleStyleChange={handleStyleChange} styles={styles} />
-      <h2>View More Style Images</h2>
-      <Thumbnails
-        images={currentStyle.photos}
-        onThumbnailChange={handleThumbnailChange}
-      />
-    </>
+    <Carousel
+      onScreenChange={onScreenChange}
+      showBullets={true}
+      onClick={handleClick}
+      items={modifiedImgs}
+    />
   );
 }
 

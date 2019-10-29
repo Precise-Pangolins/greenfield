@@ -26,21 +26,30 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Overview({
-  styles = { styles: [] },
+  styles = { data: [] }, // {}
   handleGetProductRequest,
   handleGetStylesRequest,
-  info = {}
+  handlePostToCartRequest,
+  info = {},
+  cart = {}
 }) {
-  const [currentStyle, setCurrentStyle] = useState({ style_id: 1 });
+  let [currentStyleId, setCurrentStyleId] = useState(1);
+
   useEffect(() => {
     handleGetProductRequest(productId);
     handleGetStylesRequest(productId);
-  }, []);
+  }, [currentStyleId]);
 
-  const onStyleChange = newStyle => {
-    setCurrentStyle(newStyle);
+  const currentStyle = (styles &&
+    styles.data &&
+    styles.data.find(style => style.style_id === currentStyleId)) || {
+      photos: []
+    } || { photos: [] };
+
+  const handleStyleChange = id => {
+    setCurrentStyleId(id);
   };
-  // here we need selectedProd, selectedStyle, selectedImage
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -49,11 +58,7 @@ function Overview({
           <Paper className={classes.paper}>
             Image Gallery
             {styles.loading ? <div>loading...</div> : null}
-            <ImgGallery
-              styleId={currentStyle.style_id}
-              onStyleChange={onStyleChange}
-              styles={styles.styles}
-            />
+            <ImgGallery currentStyle={currentStyle} info={info.info} />
             Styles
           </Paper>
         </Grid>
@@ -65,17 +70,21 @@ function Overview({
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
-            Style Selector <StyleSelector />
+            Style Selector
+            <StyleSelector
+              onHandleStyleChange={handleStyleChange}
+              styles={styles}
+              currentStyleId={currentStyleId}
+            />
             Features
-            {/* <Features /> */}
-            <AddToCartModal currentStyle={currentStyle} />
+            <AddToCartModal
+              currentStyle={currentStyle}
+              handlePostToCartRequest={handlePostToCartRequest}
+              productId={productId}
+              info={info.info}
+            />
           </Paper>
         </Grid>
-        {/* <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-            <AddToCartModal />
-          </Paper>
-        </Grid> */}
       </Grid>
     </div>
   );
