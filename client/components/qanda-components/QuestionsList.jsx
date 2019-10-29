@@ -7,10 +7,11 @@ let productId = queryString.parse(location.search)["?productId"] || 1;
 const QuestionsList = ({
   questions,
   getAllQuestionsRequest,
-  getAllAnswersRequest,
   resultsQuestions,
   answersForSearchedQ,
-  defaultAnswers
+  defaultAnswers,
+  markQuestionHelpful,
+  markAnswerHelpful
 }) => {
   const [page, setPage] = useState(2);
 
@@ -27,6 +28,9 @@ const QuestionsList = ({
               <QuestionEntry
                 question={question}
                 answers={defaultAnswers[question.question_id]}
+                markQuestionHelpful={markQuestionHelpful}
+                markAnswerHelpful={markAnswerHelpful}
+                getAllQuestionsRequest={getAllQuestionsRequest}
               />
             </div>
           );
