@@ -10,6 +10,8 @@ const getReviewsReducer = (state = [], action) => {
       return action.reviews;
     case "SORT":
       return action.reviews;
+    case "ADD_REVIEW":
+      return state.unshift(action.review);
     default:
       return state;
   }
