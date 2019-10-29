@@ -1,17 +1,15 @@
-import AnswersListContainer from '../../../src/redux/containers/QAContainers/AnswersListContainer.js';
-import React from 'react';
+import React from "react";
+import AnswerList from "./AnswersList.jsx";
 
-const QuestionEntry = question => {
-
+const QuestionEntry = ({ question, answers }) => {
   return (
-    <div>
-      {' '}
-      <strong>Q:</strong> {question.question.question_body}
-      <AnswersListContainer />
+    <div class="questionEntry">
+      {" "}
+      <strong>Q:</strong> {question.question_body}
+      <AnswerList answers={answers} />
       <p>
-        by {question.question.asker_name}, {question.question.question_date} |
-        Helpful? <span>Yes</span> ({question.question.question_helpfulness}) |{' '}
-        <span>Report</span>
+        by {question.asker_name}, {question.question_date} | Helpful?{" "}
+        <span>Yes</span> ({question.question_helpfulness}) | <span>Report</span>
       </p>
     </div>
   );

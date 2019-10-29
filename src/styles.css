@@ -28,3 +28,7 @@ body {
   width: auto;
   cursor: cell;
 }
+
+.questionEntry {
+  border: solid 5px pink;
+}
