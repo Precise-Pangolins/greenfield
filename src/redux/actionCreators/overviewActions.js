@@ -31,19 +31,19 @@ export const getProdInfo = id => {
   };
 };
 
-// export const getProdList = () => {
-//   return dispatch => {
-//     return axios
-//       .get(`${apiUrl}/products/list`)
-//       .then(({ data }) => {
-//         dispatch(fetchProductListSuccess(data));
-//       })
-//       .catch(err => {
-//         console.log('error getting product list', err);
-//         throw err;
-//       });
-//   };
-// };
+export const getProdList = () => {
+  return dispatch => {
+    return axios
+      .get(`${apiUrl}/products/list`)
+      .then(({ data }) => {
+        dispatch(fetchProductListSuccess(data));
+      })
+      .catch(err => {
+        console.log('error getting product list', err);
+        throw err;
+      });
+  };
+};
 
 export const getProdStyles = id => {
   return dispatch => {
