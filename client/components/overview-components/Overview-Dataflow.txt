@@ -30,6 +30,8 @@ overview
       -sizes availble
       -quanitity of each size
       -on addtoCartClick, store product_id and session_id
+        -product_id comes from querystring
+        -session is created/stored on pageload
 
 
 redux workflow
