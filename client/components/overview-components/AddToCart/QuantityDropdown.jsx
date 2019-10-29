@@ -70,7 +70,7 @@ export default function QuantitySelector({ size, skus }) {
           onChange={handleChange}
           input={<BootstrapInput name='age' id='age-customized-select' />}>
           <MenuItem value=''>
-            <em>Out Of Stock</em>
+            <em>None</em>
           </MenuItem>
           {ar.map(q => {
             return <MenuItem value={q}>{q}</MenuItem>;
