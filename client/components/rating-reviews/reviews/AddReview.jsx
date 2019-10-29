@@ -13,43 +13,42 @@ import Recommend from "./Recommend.jsx";
 import Characteristics from "./Characteristics.jsx";
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { number } from "prop-types";
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
   }
 }));
-export default function ResponsiveDialog() {
+export default function AddReview({ metaData, handleSubmit }) {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState(3);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [size, setSize] = useState("1");
-  const [width, setWidth] = useState("1");
-  const [comfort, setComfort] = useState("1");
-  const [quality, setQuality] = useState("1");
-  const [length, setLength] = useState("1");
-  const [fit, setFit] = useState("1");
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(3);
 
-  useEffect(() => {}, []);
-  const handleSize = event => {
-    setSize(event.target.value);
-  };
-  const handleWidth = event => {
-    setWidth(event.target.value);
-  };
-  const handleComfort = event => {
-    setComfort(event.target.value);
-  };
-  const handleQuality = event => {
-    setQuality(event.target.value);
-  };
-  const handleLength = event => {
-    setLength(event.target.value);
-  };
-  const handleFit = event => {
-    setFit(event.target.value);
-  };
+  const [review, setReview] = useState({});
+  const [recommend, setRecommend] = useState(0);
+  const [summary, setSummary] = useState("");
+  const [body, setBody] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [characteristics, setChars] = useState({});
+
+  useEffect(() => {
+    setReview({
+      ...review,
+      rating: Number(rating),
+      characteristics,
+      recommend: Number(recommend),
+      summary,
+      body,
+      name,
+      email
+    });
+  }, [characteristics, recommend, summary, body, name, email]);
+  useEffect(() => {
+    console.log(review);
+  }, [review]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,102 +60,111 @@ export default function ResponsiveDialog() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add Review
-      </Button>
-      <Dialog
-        fullScreen={fullScreen}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+          console.log(review);
+          handleClose();
+        }}
       >
-        <DialogTitle id="responsive-dialog-title">
-          {"Write your Review"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>About the Product jabjbujg</DialogContentText>
-          <h3>Rating</h3>
-          <Rating
-            name="simple-controlled"
-            precision={0.25}
-            value={rating}
-            onChange={(event, newValue) => {
-              setRating(newValue);
-            }}
-          />
-          <Recommend />
-          <Characteristics
-            size={size}
-            width={width}
-            comfort={comfort}
-            quality={quality}
-            length={length}
-            fit={fit}
-            handleSize={handleSize}
-            handleWidth={handleWidth}
-            handleComfort={handleComfort}
-            handleQuality={handleQuality}
-            handleLength={handleQuality}
-            handleFit={handleFit}
-          />
-          <h3>Summary</h3>
-          <TextField
-            id="standard-full-width"
-            label=""
-            style={{ margin: 8 }}
-            placeholder="Ex: Best purchase ever!!"
-            fullWidth
-            margin="normal"
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-          <h3>Body</h3>
-          <TextField
-            id="standard-full-width"
-            label=""
-            style={{ margin: 8 }}
-            placeholder="Why did you like the product"
-            fullWidth
-            multiline
-            margin="normal"
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-          <h4>Add Photos</h4>
-          <Button
-            variant="contained"
-            color="default"
-            className={classes.button}
-            startIcon={<CloudUploadIcon />}
-          >
-            Upload
-          </Button>
-          <h3>Nick Name</h3>
-          <TextField
-            id="standard-name"
-            label="Name"
-            className={classes.textField}
-            margin="normal"
-          />
-          <h3>Email</h3>
-          <TextField
-            id="standard-name"
-            label="Name"
-            className={classes.textField}
-            margin="normal"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Exit
-          </Button>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+          Add Review
+        </Button>
+        <Dialog
+          fullScreen={fullScreen}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">
+            {"Write your Review"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText>About the Product {}</DialogContentText>
+            <h3>Rating</h3>
+            <Rating
+              required
+              name="simple-controlled"
+              precision={1}
+              value={rating}
+              label="rating"
+              onChange={(event, newValue) => {
+                setRating(newValue);
+              }}
+            />
+            <Recommend setRecommend={setRecommend} recommend={recommend} />
+            <Characteristics
+              characteristics={characteristics}
+              setChars={setChars}
+              metaData={metaData.characteristics}
+            />
+            <h3>Summary</h3>
+            <TextField
+              required
+              id="standard-full-width"
+              label="Summary"
+              style={{ margin: 8 }}
+              placeholder="Ex: Best purchase ever!!"
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true
+              }}
+              onChange={event => setSummary(event.target.value)}
+            />
+            <h3>Body</h3>
+            <TextField
+              required
+              id="standard-full-width"
+              label="Body"
+              style={{ margin: 8 }}
+              placeholder="Why did you like the product"
+              fullWidth
+              multiline
+              margin="normal"
+              InputLabelProps={{
+                shrink: true
+              }}
+              onChange={event => setBody(event.target.value)}
+            />
+            <h4>Add Photos</h4>
+            <Button
+              variant="contained"
+              color="default"
+              className={classes.button}
+              startIcon={<CloudUploadIcon />}
+            >
+              Upload
+            </Button>
+            <h3>Nick Name</h3>
+            <TextField
+              required
+              id="standard-name"
+              label="Name"
+              className={classes.textField}
+              margin="normal"
+              onChange={event => setName(event.target.value)}
+            />
+            <h3>Email</h3>
+            <TextField
+              type="email"
+              id="standard-name"
+              label="Name"
+              className={classes.textField}
+              margin="normal"
+              onChange={event => setEmail(event.target.value)}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Exit
+            </Button>
+            <Button type="submit" color="primary" autoFocus>
+              Submit
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </form>
     </div>
   );
 }
