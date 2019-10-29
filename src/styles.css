@@ -6,3 +6,7 @@ body {
 .thumbnail {
   border-radius: 50%;
 }
+
+.questionEntry {
+  border: solid 5px pink;
+}
