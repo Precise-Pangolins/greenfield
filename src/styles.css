@@ -9,12 +9,7 @@ body {
   border-radius: 50%;
 }
 
-<<<<<<<
-  head
-  =======>>>>>>>820421d5f1b656360e389b750606bcbab14d69
-  .image-gallery-content
-  .image-gallery-thumbnail-inner
-  img {
+.image-gallery-content .image-gallery-thumbnail-inner img {
   height: 80px;
   width: auto;
 }

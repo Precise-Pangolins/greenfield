@@ -50,33 +50,40 @@ function Overview({
     setCurrentStyleId(id);
   };
 
+  const salePriceHandler = currentStyle => {
+    if (currentStyle) {
+      if (currentStyle.sale_price > 0) {
+        return `
+        $${currentStyle.original_price} now on sale for:
+        $${currentStyle.sale_price}!`;
+      } else {
+        return `$${currentStyle.original_price}`;
+      }
+    }
+  };
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={7}>
           <Paper className={classes.paper}>
             Image Gallery
             {styles.loading ? <div>loading...</div> : null}
             <ImgGallery currentStyle={currentStyle} info={info.info} />
-            Styles
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={5}>
           <Paper className={classes.paper}>
-            Product Description
-            <Description info={info.info} />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            Style Selector
+            <h1>{info.info ? info.info.name : null}</h1>
+            <h2>{currentStyle ? salePriceHandler(currentStyle) : null}</h2>
             <StyleSelector
+              currentStyle={currentStyle}
+              info={info}
               onHandleStyleChange={handleStyleChange}
               styles={styles}
               currentStyleId={currentStyleId}
             />
-            Features
             <AddToCartModal
               currentStyle={currentStyle}
               handlePostToCartRequest={handlePostToCartRequest}
@@ -85,6 +92,13 @@ function Overview({
             />
           </Paper>
         </Grid>
+        <Grid item xs={false}>
+          <Paper className={classes.paper}>
+            Product Description
+            <Description info={info.info} />
+          </Paper>
+        </Grid>
+        {/* <Grid item xs='auto'></Grid> */}
       </Grid>
     </div>
   );

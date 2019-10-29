@@ -1,9 +1,15 @@
 import React from 'react';
 import uuid from 'uuidv4';
 
-function StyleSelector({ currentStyleId, styles, onHandleStyleChange }) {
+function StyleSelector({
+  currentStyle,
+  currentStyleId,
+  styles,
+  onHandleStyleChange,
+  info = {}
+}) {
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', position: 'relative' }}>
       {styles.data
         ? styles.data.map(style => {
             return (
@@ -25,15 +31,21 @@ function StyleSelector({ currentStyleId, styles, onHandleStyleChange }) {
                   }}
                 />
                 {style.style_id === currentStyleId ? (
-                  <span
-                    style={{
-                      position: 'absolute',
-                      top: -6,
-                      right: -2,
-                      color: 'green'
-                    }}>
-                    ✔
-                  </span>
+                  <div>
+                    <span
+                      style={{
+                        position: 'absolute',
+                        top: '-1px',
+                        right: '-2px',
+                        color: 'black',
+                        backgroundColor: 'white',
+                        borderRadius: '50px',
+                        boxShadow: '#1a1a1a 0px 0px 3px'
+                      }}>
+                      ✔
+                    </span>
+                    {/* <div>{currentStyle ? currentStyle.name : null}</div> */}
+                  </div>
                 ) : null}
               </div>
             );
