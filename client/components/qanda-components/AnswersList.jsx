@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
-import AnswerEntry from "./AnswerEntry";
-import getAllAnswers from "../../../src/redux/actionCreators/QAActionCreators/getAllAnswers";
+import React from "react";
+import { throwStatement } from "@babel/types";
+import AnswerEntry from "./AnswerEntry.jsx";
 
-const AnswersList = ({ answers, getAllAnswersRequest }) => {
-  const [page, setPage] = useState(2);
-
-  useEffect(() => {
-    getAllAnswersRequest(1);
-  }, []);
-
+const AnswersList = ({ answers }) => {
   return (
     <div>
       {answers.map(answer => {
-        return (
-          <div>
-            <AnswerEntry answer={answer} />
-          </div>
-        );
+        return <AnswerEntry answer={answer} />;
       })}
     </div>
   );

@@ -9,6 +9,7 @@ body {
   border-radius: 50%;
 }
 
+
 .image-gallery-content .image-gallery-thumbnail-inner img {
   height: 80px;
   width: auto;
@@ -27,4 +28,9 @@ body {
   height: 100vh;
   width: auto;
   cursor: cell;
+}
+
+.questionEntry {
+  border: solid 5px pink;
+
 }
