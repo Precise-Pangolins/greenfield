@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -31,6 +31,7 @@ export default function ResponsiveDialog() {
   const [length, setLength] = useState("1");
   const [fit, setFit] = useState("1");
 
+  useEffect(() => {}, []);
   const handleSize = event => {
     setSize(event.target.value);
   };
