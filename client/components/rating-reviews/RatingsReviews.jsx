@@ -4,6 +4,8 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Reviews from "./reviews/Reviews.js";
 import Ratings from "./ratings/RatingDisplay";
+import queryString from "querystring";
+let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,18 +33,18 @@ const RatingsReviews = ({
   const [filters, setFilters] = useState({});
 
   const filterByStar = filters => {
-    handleFilterReviewsRequest(7, filters, sort);
+    handleFilterReviewsRequest(productId, filters, sort);
   };
   useEffect(() => {
     if (Object.keys(filters).length > 0) {
       filterByStar(filters);
     } else {
-      handleSortReviewsRequest(7, 1, 2, sort);
+      handleSortReviewsRequest(productId, 1, 2, sort);
     }
   }, [filters, sort]);
 
   useEffect(() => {
-    handleGetRatingsRequest(7);
+    handleGetRatingsRequest(productId);
   }, []);
 
   const getTotal = ratings => {
