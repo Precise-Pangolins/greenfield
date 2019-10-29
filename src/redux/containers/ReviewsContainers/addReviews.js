@@ -8,7 +8,7 @@ const mapStateToProps = store => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit: review => dispatch(addReviewAction(review))
+    handleSubmit: (id, review) => dispatch(addReviewAction(id, review))
   };
 };
 

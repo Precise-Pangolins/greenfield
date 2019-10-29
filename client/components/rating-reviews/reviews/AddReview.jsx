@@ -33,6 +33,7 @@ export default function AddReview({ metaData, handleSubmit }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [characteristics, setChars] = useState({});
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     setReview({
@@ -43,7 +44,8 @@ export default function AddReview({ metaData, handleSubmit }) {
       summary,
       body,
       name,
-      email
+      email,
+      photos
     });
   }, [characteristics, recommend, summary, body, name, email]);
   useEffect(() => {
@@ -60,111 +62,110 @@ export default function AddReview({ metaData, handleSubmit }) {
 
   return (
     <div>
-      <form
-        onSubmit={event => {
-          event.preventDefault();
-          console.log(review);
-          handleClose();
-        }}
+      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add Review
+      </Button>
+      <Dialog
+        fullScreen={fullScreen}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
       >
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-          Add Review
-        </Button>
-        <Dialog
-          fullScreen={fullScreen}
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="responsive-dialog-title"
-        >
-          <DialogTitle id="responsive-dialog-title">
-            {"Write your Review"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText>About the Product {}</DialogContentText>
-            <h3>Rating</h3>
-            <Rating
-              required
-              name="simple-controlled"
-              precision={1}
-              value={rating}
-              label="rating"
-              onChange={(event, newValue) => {
-                setRating(newValue);
-              }}
-            />
-            <Recommend setRecommend={setRecommend} recommend={recommend} />
-            <Characteristics
-              characteristics={characteristics}
-              setChars={setChars}
-              metaData={metaData.characteristics}
-            />
-            <h3>Summary</h3>
-            <TextField
-              required
-              id="standard-full-width"
-              label="Summary"
-              style={{ margin: 8 }}
-              placeholder="Ex: Best purchase ever!!"
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true
-              }}
-              onChange={event => setSummary(event.target.value)}
-            />
-            <h3>Body</h3>
-            <TextField
-              required
-              id="standard-full-width"
-              label="Body"
-              style={{ margin: 8 }}
-              placeholder="Why did you like the product"
-              fullWidth
-              multiline
-              margin="normal"
-              InputLabelProps={{
-                shrink: true
-              }}
-              onChange={event => setBody(event.target.value)}
-            />
-            <h4>Add Photos</h4>
-            <Button
-              variant="contained"
-              color="default"
-              className={classes.button}
-              startIcon={<CloudUploadIcon />}
-            >
-              Upload
-            </Button>
-            <h3>Nick Name</h3>
-            <TextField
-              required
-              id="standard-name"
-              label="Name"
-              className={classes.textField}
-              margin="normal"
-              onChange={event => setName(event.target.value)}
-            />
-            <h3>Email</h3>
-            <TextField
-              type="email"
-              id="standard-name"
-              label="Name"
-              className={classes.textField}
-              margin="normal"
-              onChange={event => setEmail(event.target.value)}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Exit
-            </Button>
-            <Button type="submit" color="primary" autoFocus>
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </form>
+        <DialogTitle id="responsive-dialog-title">
+          {"Write your Review"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>About the Product {}</DialogContentText>
+          <h3>Rating</h3>
+          <Rating
+            required
+            name="simple-controlled"
+            precision={1}
+            value={rating}
+            label="rating"
+            onChange={(event, newValue) => {
+              setRating(newValue);
+            }}
+          />
+          <Recommend setRecommend={setRecommend} recommend={recommend} />
+          <Characteristics
+            characteristics={characteristics}
+            setChars={setChars}
+            metaData={metaData.characteristics}
+          />
+          <h3>Summary</h3>
+          <TextField
+            required
+            id="standard-full-width"
+            label="Summary"
+            style={{ margin: 8 }}
+            placeholder="Ex: Best purchase ever!!"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={event => setSummary(event.target.value)}
+          />
+          <h3>Body</h3>
+          <TextField
+            required
+            id="standard-full-width"
+            label="Body"
+            style={{ margin: 8 }}
+            placeholder="Why did you like the product"
+            fullWidth
+            multiline
+            margin="normal"
+            InputLabelProps={{
+              shrink: true
+            }}
+            onChange={event => setBody(event.target.value)}
+          />
+          <h4>Add Photos</h4>
+          <Button
+            variant="contained"
+            color="default"
+            className={classes.button}
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload
+          </Button>
+          <h3>Nick Name</h3>
+          <TextField
+            required
+            id="standard-name"
+            label="Name"
+            className={classes.textField}
+            margin="normal"
+            onChange={event => setName(event.target.value)}
+          />
+          <h3>Email</h3>
+          <TextField
+            type="email"
+            id="standard-name"
+            label="Name"
+            className={classes.textField}
+            margin="normal"
+            onChange={event => setEmail(event.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Exit
+          </Button>
+          <Button
+            onClick={() => {
+              handleSubmit(metaData.product_id, review);
+              handleClose();
+            }}
+            color="primary"
+            autoFocus
+          >
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
