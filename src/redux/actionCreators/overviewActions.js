@@ -7,7 +7,10 @@ import {
   fetchProductInfo,
   fetchProductInfoFail,
   fetchProductStyles,
-  fetchProductStylesFail
+  fetchProductStylesFail,
+  postProductToCart,
+  postProductToCartSuccess,
+  postProductToCartFail
 } from '../actions/overviewActionCreators.js';
 
 const apiUrl = 'http://18.223.1.30';
@@ -28,19 +31,19 @@ export const getProdInfo = id => {
   };
 };
 
-// export const getProdList = () => {
-//   return dispatch => {
-//     return axios
-//       .get(`${apiUrl}/products/list`)
-//       .then(({ data }) => {
-//         dispatch(fetchProductListSuccess(data));
-//       })
-//       .catch(err => {
-//         console.log('error getting product list', err);
-//         throw err;
-//       });
-//   };
-// };
+export const getProdList = () => {
+  return dispatch => {
+    return axios
+      .get(`${apiUrl}/products/list`)
+      .then(({ data }) => {
+        dispatch(fetchProductListSuccess(data));
+      })
+      .catch(err => {
+        console.log('error getting product list', err);
+        throw err;
+      });
+  };
+};
 
 export const getProdStyles = id => {
   return dispatch => {
@@ -58,21 +61,13 @@ export const getProdStyles = id => {
   };
 };
 
-//where should I write this logic for creating a new session?
-const getRandomIntInclusive = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const session = getRandomIntInclusive(1, 100000);
-
-const postToCart = (sessionId, productId) => {
+export const postToCart = (userSession, productId) => {
   return dispatch => {
     // dispatch i have init the request ; this would update the state with loading: true
+    dispatch(postProductToCart());
     return axios
       .post(`${apiUrl}/cart`, {
-        user_session: sessionId,
+        user_session: userSession,
         product_id: productId
       })
       .then(res => {
@@ -86,5 +81,3 @@ const postToCart = (sessionId, productId) => {
       });
   };
 };
-
-//

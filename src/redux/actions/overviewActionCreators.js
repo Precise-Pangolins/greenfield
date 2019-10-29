@@ -12,6 +12,10 @@ export const fetchProductList = () => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_LIST
 });
 
+export const postProductToCart = () => ({
+  type: OverviewActionsTypes.POST_PRODUCT_TO_CART
+});
+
 export const fetchProductInfoSuccess = data => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_INFO_SUCCESS,
   payload: data
@@ -27,6 +31,11 @@ export const fetchProductStylesSuccess = data => ({
   payload: data
 });
 
+export const postProductToCartSuccess = (user_session, product_id) => ({
+  type: OverviewActionsTypes.POST_PRODUCT_TO_CART_SUCCESS,
+  payload: { user_session, product_id }
+});
+
 export const fetchProductInfoFail = () => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_INFO_FAIL,
   payload: data
@@ -40,6 +49,10 @@ export const fetchProductListFail = () => ({
 export const fetchProductStylesFail = () => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_STYLES_FAIL,
   payload: data
+});
+
+export const postProductToCartFail = () => ({
+  type: OverviewActionsTypes.POST_PRODUCT_TO_CART_FAIL
 });
 
 // component calls an action using actionCreator
