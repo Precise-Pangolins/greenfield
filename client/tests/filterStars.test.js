@@ -1,4 +1,4 @@
-import filterStars from "../../src/redux/actionCreators/FilterStars/index.js";
+import filterStars from "../../src/redux/actionCreators/ratings-reviews/FilterStars/index.js";
 
 describe("filter reviews by star rating", function() {
   it("should have return an array of reviews of the same rating", async () => {
