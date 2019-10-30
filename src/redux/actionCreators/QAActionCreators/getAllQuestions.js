@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const getAllQuestions = product_id => {
+const getAllQuestions = (product_id, page, count) => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/qa/${product_id}`)
+      .get(`http://18.223.1.30/qa/${product_id}&page=${page}&count=${count}`)
       .then(({ data }) => {
         dispatch({ type: "LOAD_ALL_QUESTIONS", questions: data.results });
       })

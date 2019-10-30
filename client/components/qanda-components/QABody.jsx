@@ -10,6 +10,7 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
+  const [count, setCount] = useState(4);
 
   const searchInQuestions = searchTerm => {
     console.log("searchterm", searchTerm);
@@ -26,7 +27,7 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   };
 
   useEffect(() => {
-    getAllQuestionsInitialRequest(productId);
+    getAllQuestionsInitialRequest(productId, page, count);
   }, []);
 
   return (
@@ -42,7 +43,9 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
         resultsQuestions={resultsQuestions}
         questions={questions}
         page={page}
-        set={setPage}
+        setPage={setPage}
+        count={count}
+        setCount={setCount}
       />
     </div>
   );
