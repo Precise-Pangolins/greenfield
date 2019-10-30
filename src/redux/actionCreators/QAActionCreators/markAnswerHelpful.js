@@ -12,3 +12,5 @@ const markAHelpful = answer_id => {
       });
   };
 };
+
+export default markAHelpful;

@@ -5,12 +5,11 @@ import queryString from "querystring";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
-const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
+const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   console.log(questions);
   const [resultsQuestions, setResultsQuestions] = useState([]);
-  const [answersForSearchedQ, setAnswersForSearchedQ] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [defaultAnswersOnLoad, setDefaultAnswersOnLoad] = useState([]);
+  const [page, setPage] = useState(1);
 
   const searchInQuestions = searchTerm => {
     console.log("searchterm", searchTerm);
@@ -30,8 +29,6 @@ const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
     getAllQuestionsInitialRequest(productId);
   }, []);
 
-  let defaultAnswers = {};
-
   return (
     <div>
       Questions and Answers:
@@ -43,9 +40,9 @@ const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
       />
       <QuestionsListContainer
         resultsQuestions={resultsQuestions}
-        // defaultAnswers={defaultAnswers}
-        // answersForSearchedQ={answersForSearchedQ}
         questions={questions}
+        page={page}
+        set={setPage}
       />
     </div>
   );

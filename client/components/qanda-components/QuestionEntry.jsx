@@ -3,10 +3,9 @@ import AnswersList from "./AnswersList.jsx";
 import QHelpful from "./QHelpful.jsx";
 
 const QuestionEntry = ({ question, answers }) => {
-  // console.log("answers in QE", answers);
   return (
     <div class="questionEntry">
-      <strong>Q:</strong> {question.question_body}
+      <strong>Q:</strong> {question.question_body}{" "}
       <QHelpful question={question} />
       <AnswersList answers={answers} />
       <p>

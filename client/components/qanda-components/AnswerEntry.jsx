@@ -7,10 +7,10 @@ const AnswerEntry = ({ answer }) => {
   return (
     <div>
       A: {answer.body}
-      <p>
+      <div>
         {answer.answerer_name} {answer.date}
         <AHelpful answer={answer} /> <Reported answer={answer} />
-      </p>
+      </div>
     </div>
   );
 };

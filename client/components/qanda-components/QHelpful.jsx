@@ -53,7 +53,7 @@ class QHelpful extends React.Component {
         >
           Yes
         </button>{" "}
-        <p>( {this.state.helpfulnessNumber})</p>
+        ( {this.state.helpfulnessNumber})
       </div>
     );
   }

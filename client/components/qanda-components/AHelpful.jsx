@@ -52,7 +52,7 @@ class AHelpful extends React.Component {
         >
           Yes
         </button>
-        <p>({this.state.helpfulnessNumber})</p>
+        <div>({this.state.helpfulnessNumber})</div>
       </div>
     );
   }
