@@ -17,6 +17,6 @@ module.exports = stringDate => {
   let day = date.getDate() + 1;
   let month = date.getMonth();
   let year = date.getFullYear();
-  console.log(day);
+
   return monthNames[month] + " " + day + ", " + year;
 };
