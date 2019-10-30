@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Rating from "@material-ui/lab/Rating";
 import RatingBars from "./RatingBars.jsx";
 import ProductBreakDown from "./ProductBreakdown.jsx";
-
+import StarRatingsContainer from "../../../../src/redux/containers/RatingContainers/StarRatingsContainer";
 const RatingDisplay = ({
   productInfo,
   handleGetRatingsRequest,
@@ -38,11 +38,7 @@ const RatingDisplay = ({
             {getAverage(metaData.ratings)}
           </Grid>
           <Grid item xs={6}>
-            <Rating
-              value={getAverage(metaData.ratings)}
-              precision={0.25}
-              readOnly
-            />
+            <StarRatingsContainer />
           </Grid>
           <Grid item xs={12}>
             100% of reviews found this helpful

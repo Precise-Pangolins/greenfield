@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Review from "./Review.js";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import AddReview from "./AddReview.jsx";
+import AddReview from "../../../../src/redux/containers/ReviewsContainers/addReviews.js";
 import Grid from "@material-ui/core/Grid";
+
 import uuid from "uuidv4";
 
 const useStyles = makeStyles(theme => ({

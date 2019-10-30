@@ -12,6 +12,7 @@ const QuestionsList = ({
   defaultAnswers,
   
 }) => {
+  console.log(defaultAnswers);
   const [page, setPage] = useState(2);
 
   useEffect(() => {
@@ -24,10 +25,7 @@ const QuestionsList = ({
         {questions.map(question => {
           return (
             <div>
-              <QuestionEntry
-                question={question}
-                answers={defaultAnswers[question.question_id]}
-              />
+              <QuestionEntry question={question} answers={question.answers} />
             </div>
           );
         })}
@@ -43,7 +41,7 @@ const QuestionsList = ({
             <div>
               <QuestionEntry
                 question={resultsQuestion}
-                answers={answersForSearchedQ}
+                answers={resultsQuestion.answers}
               />
             </div>
           );

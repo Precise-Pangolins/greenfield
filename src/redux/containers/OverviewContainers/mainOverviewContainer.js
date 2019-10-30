@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import {
   getProdStyles,
   getProdInfo,
   postToCart
-} from '../../actionCreators/overviewActions.js';
-import Overview from '../../../../client/components/overview-components/overview.jsx';
+} from "../../actionCreators/overviewActions.js";
+import Overview from "../../../../client/components/overview-components/Overview.jsx";
 
 const mapStateToProps = store => {
   return { styles: store.styles, info: store.info, cart: store.cart };
