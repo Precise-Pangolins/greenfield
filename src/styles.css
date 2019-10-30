@@ -32,3 +32,25 @@ body {
 .questionEntry {
   border: solid 5px pink;
 }
+
+.scroll-spy {
+  font-size: 14px;
+  position: absolute;
+  bottom: 30px;
+  left: 23px;
+}
+
+.sale {
+  color: red;
+  text-decoration: line-through;
+}
+
+.check-mark {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  color: black;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: #1a1a1a 0px 0px 3px;
+}

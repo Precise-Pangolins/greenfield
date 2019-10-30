@@ -1,15 +1,29 @@
 import React from 'react';
 import uuid from 'uuidv4';
+import StarRatings from '../../../../src/redux/containers/RatingContainers/StarRatingsContainer.js';
+import Scrollspy from 'react-scrollspy';
 
 function StyleSelector({
   currentStyle,
   currentStyleId,
   styles,
   onHandleStyleChange,
-  info = {}
+  info = {},
+  metaData = {}
 }) {
   return (
     <div style={{ display: 'flex', position: 'relative' }}>
+      {Object.keys(metaData).length > 0 ? (
+        <StarRatings metaData={metaData} />
+      ) : null}
+      <Scrollspy
+        style={{ transitionTimingFunction: 'ease-in-out' }}
+        items={['ratings-reviews']}
+        currentClassName='is-current'>
+        <a className='scroll-spy' href='#ratings-reviews'>
+          Read Reviews
+        </a>
+      </Scrollspy>
       {styles.data
         ? styles.data.map(style => {
             return (
@@ -32,19 +46,7 @@ function StyleSelector({
                 />
                 {style.style_id === currentStyleId ? (
                   <div>
-                    <span
-                      style={{
-                        position: 'absolute',
-                        top: '-1px',
-                        right: '-2px',
-                        color: 'black',
-                        backgroundColor: 'white',
-                        borderRadius: '50px',
-                        boxShadow: '#1a1a1a 0px 0px 3px'
-                      }}>
-                      ✔
-                    </span>
-                    {/* <div>{currentStyle ? currentStyle.name : null}</div> */}
+                    <span className='check-mark'>✔</span>
                   </div>
                 ) : null}
               </div>
