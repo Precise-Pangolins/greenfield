@@ -15,6 +15,7 @@ import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { number } from "prop-types";
+import ImageUpload from "../../shared/ImageUpload.jsx";
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -131,14 +132,7 @@ export default function AddReview({ metaData, handleSubmit }) {
             onChange={event => setBody(event.target.value)}
           />
           <h4>Add Photos</h4>
-          <Button
-            variant="contained"
-            color="default"
-            className={classes.button}
-            startIcon={<CloudUploadIcon />}
-          >
-            Upload
-          </Button>
+          <ImageUpload />
           <h3>Nick Name</h3>
           <TextField
             required
