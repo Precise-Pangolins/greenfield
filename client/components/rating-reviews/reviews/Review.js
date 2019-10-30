@@ -40,17 +40,23 @@ const useStyles = makeStyles(theme => ({
 
 const Review = ({ review }) => {
   const [helpClick, sethelpClick] = useState(false);
+  const [showBody, setShowBody] = useState(false);
   useEffect(() => {
     review.helpfulness = review.helpfulness + 1;
   }, [helpClick]);
 
+  useEffect(() => {}, [showBody]);
+
   const classes = useStyles();
+  let body1 = "";
+  let body2 = "";
+  if (review.body.length > 250) {
+    body1 = review.body.substring(0, 250);
+    body2 = review.body.substring(250);
+  }
   return (
     <List spacing={0} className={classes.root2}>
       <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar></Avatar>
-        </ListItemAvatar>
         <ListItemText
           primary={
             <Typography
@@ -109,7 +115,34 @@ const Review = ({ review }) => {
           className={classes.inline}
           color="textPrimary"
         >
-          {review.body}
+          {body1.length === 0 ? (
+            review.body
+          ) : showBody ? (
+            <div>
+              {body1 + body2}
+              <br></br>
+              <button
+                onClick={() => {
+                  setShowBody(!showBody);
+                }}
+              >
+                show less
+              </button>
+            </div>
+          ) : (
+            <div>
+              {body1}
+              <br></br>
+
+              <button
+                onClick={() => {
+                  setShowBody(!showBody);
+                }}
+              >
+                show more
+              </button>
+            </div>
+          )}
         </Typography>
       </ListItem>
       {review.photos.length > 0 ? (
