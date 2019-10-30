@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import AddReview from "../../../../src/redux/containers/ReviewsContainers/addReviews.js";
 import Grid from "@material-ui/core/Grid";
+import AddReview from "../../../../src/redux/containers/ReviewsContainers/addReviews.js"
 
 import uuid from "uuidv4";
 
@@ -38,6 +39,7 @@ const Reviews = ({
   return (
     <div>
       <div>
+        {reviews.length===0?<AddReview />}
         <h3>
           {getTotal(metaData.ratings) + " reviews, sorted by "}
           <select
@@ -52,13 +54,15 @@ const Reviews = ({
           </select>
         </h3>
       </div>
-      {reviews.map(review => {
-        return (
-          <div key={review.review_id}>
-            <Review review={review} />
-          </div>
-        );
-      })}
+      <div id="reviews-list" style={{ height: "100vh", overflow: "auto" }}>
+        {reviews.map(review => {
+          return (
+            <div key={review.review_id}>
+              <Review review={review} />
+            </div>
+          );
+        })}
+      </div>
       <Grid container spacing={0}>
         <Grid item md={6}>
           <Button
