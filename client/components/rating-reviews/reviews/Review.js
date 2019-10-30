@@ -133,7 +133,6 @@ const Review = ({ review }) => {
             <div>
               {body1}
               <br></br>
-
               <button
                 onClick={() => {
                   setShowBody(!showBody);
