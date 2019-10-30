@@ -5,12 +5,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-const Recommend = () => {
-  const [recommend, setRecommend] = useState("yes");
-  const handleChangeRecommend = event => {
-    setRecommend(event.target.value);
-  };
-
+const Recommend = ({ setRecommend, recommend }) => {
   return (
     <div>
       <h3>Would you Recommend this product?</h3>
@@ -19,17 +14,17 @@ const Recommend = () => {
           aria-label="position"
           name="position"
           value={recommend}
-          onChange={handleChangeRecommend}
+          onChange={event => setRecommend(event.target.value)}
           row
         >
           <FormControlLabel
-            value="yes"
+            value="1"
             control={<Radio color="primary" />}
             label="Yes"
             labelPlacement="start"
           />
           <FormControlLabel
-            value="no"
+            value="0"
             control={<Radio color="primary" />}
             label="No"
             labelPlacement="start"

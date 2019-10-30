@@ -6,7 +6,7 @@ let productId = queryString.parse(location.search)["?productId"] || 1;
 const StarRatings = ({ metaData, getRatingsRequest }) => {
   useEffect(() => {
     getRatingsRequest(productId);
-  });
+  }, []);
   const getTotal = ratings => {
     let total = 0;
     for (let rating in ratings) {
