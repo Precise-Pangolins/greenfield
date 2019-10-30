@@ -18,13 +18,13 @@ const Recommend = ({ setRecommend, recommend }) => {
           row
         >
           <FormControlLabel
-            value="1"
+            value="0"
             control={<Radio color="primary" />}
             label="Yes"
             labelPlacement="start"
           />
           <FormControlLabel
-            value="0"
+            value="1"
             control={<Radio color="primary" />}
             label="No"
             labelPlacement="start"

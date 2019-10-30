@@ -12,6 +12,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Recommend from "./Recommend.jsx";
 import Characteristics from "./Characteristics.jsx";
 import TextField from "@material-ui/core/TextField";
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
+import ImageUpload from "../../shared/ImageUpload.jsx";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -24,7 +28,6 @@ export default function AddReview({ metaData, handleSubmit, info }) {
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
-
   const [review, setReview] = useState({});
   const [recommend, setRecommend] = useState(-1);
   const [summary, setSummary] = useState("");
@@ -39,14 +42,15 @@ export default function AddReview({ metaData, handleSubmit, info }) {
       ...review,
       rating: Number(rating),
       characteristics,
-      recommend: Number(recommend),
+      recommend: Boolean(Number(recommend)),
       summary,
       body,
       name,
       email,
       photos
     });
-  }, [characteristics, recommend, summary, body, name, email]);
+    console.log(review);
+  }, [characteristics, recommend, summary, body, name, email, photos, rating]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -161,7 +165,7 @@ export default function AddReview({ metaData, handleSubmit, info }) {
             onChange={event => setBody(event.target.value)}
           />
           <h4>Add Photos</h4>
-          <ImageUpload />
+          {/* <ImageUpload photos={photos} setPhotos={setPhotos} /> */}
           <h3>Nick Name</h3>
           <TextField
             required

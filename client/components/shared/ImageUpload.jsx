@@ -3,13 +3,15 @@ import axios from "axios";
 import APIKey from "./imageLoad.config.js";
 /***HOW TO USE****/
 
-/***move imgs and setImgs state to parent form, send both back down as props using the same naming.
+/***move photos and setPhotos state to parent form, send both back down as props using the same naming.
  * everything should still work the same.
- * Set config files with API key and import
+ * Set config files with API key and export
  */
-const ImageUpload = () => {
+const ImageUpload = ({ photos, setPhotos }) => {
   const [files, setFiles] = useState([]);
-  const [imgs, setImgs] = useState([]);
+
+  // const [photos, setPhotos] = useState([]);
+
   useEffect(() => {
     getURLS(files);
   }, [files]);
@@ -22,11 +24,13 @@ const ImageUpload = () => {
       return axios.post(`https://api.imgbb.com/1/upload?key=${APIKey}`, data);
     });
 
-    Promise.all(imgURLS).then(urls => {
-      for (let i = 0; i < urls.length; i++) {
-        setImgs([...imgs, urls[i].data.data.url]);
-      }
-    });
+    Promise.all(imgURLS)
+      .then(urls => {
+        for (let i = 0; i < urls.length; i++) {
+          setPhotos([...photos, urls[i].data.data.url]);
+        }
+      })
+      .catch(err => console.err);
   };
   return (
     <input
