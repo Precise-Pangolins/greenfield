@@ -9,7 +9,7 @@ const AnswersList = ({ answers }) => {
     <div>
       {Object.keys(answers).map(key => {
         return (
-          <div key={uuidv4}>
+          <div key={uuidv4()}>
             <AnswerEntry answer={answers[key]} />
           </div>
         );

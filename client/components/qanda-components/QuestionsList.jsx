@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QuestionEntry from "./QuestionEntry.jsx";
+import QuestionForm from "./QuestionForm.jsx";
 import queryString from "querystring";
-import uuid from "uuidv4";
 import uuidv4 from "uuidv4";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
@@ -28,6 +28,7 @@ const QuestionsList = ({
           })}
         </div>
         <button>More Answered Questions</button> <button>Add A Question</button>
+        <QuestionForm productId={productId} />
       </div>
     );
   } else {
@@ -48,7 +49,9 @@ const QuestionsList = ({
           })}
         </div>
         <button>More Answered Questions</button>
+
         <button>Add A Question</button>
+        <QuestionForm />
       </div>
     );
   }
