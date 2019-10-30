@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import ImageList from "./ImageList.js";
@@ -10,7 +10,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
-import Fab from "@material-ui/core/Fab";
+import Axios from "axios";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -34,6 +34,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Review = ({ review }) => {
+  const [helpClick, sethelpClick] = useState(false);
+  useEffect(() => {
+    review.helpfulness = review.helpfulness + 1;
+  }, [helpClick]);
+
   const classes = useStyles();
   return (
     <List spacing={0} className={classes.root2}>
@@ -140,13 +145,26 @@ const Review = ({ review }) => {
           className={classes.inline}
           color="textPrimary"
         >
-          {review.helpfulness + " people found this helpful"}
+          {"Was this review helpful? "}
         </Typography>
-      </ListItem>
-      <ListItem>
-        <Fab variant="extended" aria-label="delete" className={classes.fab}>
-          Helpful
-        </Fab>
+        {helpClick ? (
+          `Yes(${review.helpfulness}) ?`
+        ) : (
+          <a
+            style={{ textDecoration: "none" }}
+            href=""
+            onClick={event => {
+              event.preventDefault();
+              Axios.put(
+                `http://18.223.1.30/reviews/helpful/${review.review_id}`
+              ).then(() => {
+                sethelpClick(true);
+              });
+            }}
+          >
+            Yes({review.helpfulness})?
+          </a>
+        )}
       </ListItem>
 
       <Divider light />
