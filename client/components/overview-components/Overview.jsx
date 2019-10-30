@@ -34,7 +34,6 @@ function Overview({
   metaData = {}
 }) {
   let [currentStyleId, setCurrentStyleId] = useState(1);
-  let price = useRef(null);
 
   useEffect(() => {
     handleGetProductRequest(productId);
@@ -73,7 +72,11 @@ function Overview({
         <Grid item xs={7}>
           <Paper className={classes.paper}>
             {styles.loading ? <div>loading...</div> : null}
-            <ImgGallery currentStyle={currentStyle} info={info.info} />
+            <ImgGallery
+              currentStyle={currentStyle}
+              info={info.info}
+              images={styles.data}
+            />
           </Paper>
         </Grid>
         <Grid item xs={5}>

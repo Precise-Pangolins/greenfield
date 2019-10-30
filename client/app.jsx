@@ -9,6 +9,7 @@ const App = () => {
   return (
     <div>
       <header>
+        <hr className='top-head-border' />
         <h1 className='company-name'>. We Are Noods .</h1>
         <hr />
         <h1 className='head-style'>. Just Plain You .</h1>

@@ -65,7 +65,7 @@ function StyleSelector({
                 />
                 {style.style_id === currentStyleId ? (
                   <div>
-                    <span className='check-mark'>✔</span>
+                    <span className='check-mark'>☑</span>
                   </div>
                 ) : null}
               </div>
