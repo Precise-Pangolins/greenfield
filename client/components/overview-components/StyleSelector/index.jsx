@@ -24,6 +24,25 @@ function StyleSelector({
           Read Reviews
         </a>
       </Scrollspy>
+      <div className='social-media-fb'>
+        <a className='social-media-fb-color' href='https://www.facebook.com'>
+          <i class='fab fa-facebook'></i>
+        </a>
+      </div>
+      <div className='social-media-twitter'>
+        <a
+          className='social-media-twitter-color'
+          href='https://www.twitter.com'>
+          <i class='fab fa-twitter'></i>
+        </a>
+      </div>
+      <div className='social-media-pinterest'>
+        <a
+          className='social-media-pinterest-color'
+          href='https://www.pinterest.com'>
+          <i class='fab fa-pinterest'></i>
+        </a>
+      </div>
       {styles.data
         ? styles.data.map(style => {
             return (

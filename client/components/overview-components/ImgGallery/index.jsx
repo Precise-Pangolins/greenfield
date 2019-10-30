@@ -16,21 +16,25 @@ function ImgGallery({ currentStyle = {}, info }) {
   });
 
   function handleClick(event) {
+    console.log({ event });
     if (isFullScreen) {
       const img = event.target;
       image.current = img;
       if (img.style.transform === 'scale(2.5)') {
         img.style.transform = 'scale(1)';
+        img.style.cursor = 'zoom-in';
         return;
       }
       img.style.transform = 'scale(2.5)';
+      img.style.cursor = 'zoom-out';
+      // img.style.transformOrigin = `${event.screenX}% ${event.screenY}% 0`;
     }
   }
 
   function onScreenChange(fullScreenElem) {
     if (fullScreenElem) {
       setIsFullScreen(true);
-      image.current.style.cursor = 'cell';
+      image.current.style.cursor = 'zoom-in';
     } else {
       setIsFullScreen(false);
       image.current.style.transform = 'scale(1)';
