@@ -20,15 +20,15 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1)
   }
 }));
-export default function AddReview({ metaData, handleSubmit }) {
+export default function AddReview({ metaData, handleSubmit, info }) {
   const classes = useStyles();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState(3);
+  const [rating, setRating] = useState(0);
 
   const [review, setReview] = useState({});
-  const [recommend, setRecommend] = useState(0);
+  const [recommend, setRecommend] = useState(-1);
   const [summary, setSummary] = useState("");
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
@@ -49,9 +49,6 @@ export default function AddReview({ metaData, handleSubmit }) {
       photos
     });
   }, [characteristics, recommend, summary, body, name, email]);
-  useEffect(() => {
-    console.log(review);
-  }, [review]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -59,6 +56,36 @@ export default function AddReview({ metaData, handleSubmit }) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const formValidation = () => {
+    let message = "Please complete the following \n";
+
+    if (
+      Object.keys(metaData.characteristics).length !==
+      Object.keys(characteristics).length
+    ) {
+      message += "-Characteristics \n";
+    }
+    if (rating === 0) {
+      message += "-Rating \n";
+    }
+    if (recommend === -1) {
+      message += "-Recommend \n";
+    }
+    if (summary.length === 0) {
+      message += "-Summary \n";
+    }
+    if (body.length < 50) {
+      message += "-Body \n";
+    }
+    if (name.length === 0) {
+      message += "-Name \n";
+    }
+    if (email.length === 0) {
+      message += "-Email \n";
+    }
+    return message;
   };
 
   return (
@@ -73,7 +100,7 @@ export default function AddReview({ metaData, handleSubmit }) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Write your Review"}
+          {info.info ? `Write your Review for ${info.info.name}` : null}
         </DialogTitle>
         <DialogContent>
           <DialogContentText>About the Product {}</DialogContentText>
@@ -118,6 +145,11 @@ export default function AddReview({ metaData, handleSubmit }) {
           <h3>Body</h3>
           <TextField
             required
+            maxLength={1000}
+            error={body.length < 50 ? true : false}
+            helperText={
+              body.length < 50 ? "the minimum charater count is 50" : null
+            }
             id="standard-full-width"
             label="Body"
             style={{ margin: 8 }}
@@ -142,6 +174,14 @@ export default function AddReview({ metaData, handleSubmit }) {
           <h3>Nick Name</h3>
           <TextField
             required
+            placeholder="Example: jackson11"
+            maxLength={60}
+            error={name.length === 0 ? true : false}
+            helperText={
+              body.length === 0
+                ? "Please enter a name"
+                : "For privacy reasons, do not use your full name or email address"
+            }
             id="standard-name"
             label="Name"
             className={classes.textField}
@@ -151,8 +191,17 @@ export default function AddReview({ metaData, handleSubmit }) {
           <h3>Email</h3>
           <TextField
             type="email"
+            placeholder="Example: jackson11@email.com"
             id="standard-name"
-            label="Name"
+            label="Email"
+            error={
+              !email.includes("@") || !email.includes(".com") ? true : false
+            }
+            helperText={
+              email.length === 0
+                ? "Please enter a valid email"
+                : "For authentication reasons, you will not be emailed"
+            }
             className={classes.textField}
             margin="normal"
             onChange={event => setEmail(event.target.value)}
@@ -164,15 +213,11 @@ export default function AddReview({ metaData, handleSubmit }) {
           </Button>
           <Button
             onClick={() => {
-              // handleSubmit(metaData.product_id, review);
-              console.log(Object.keys(metaData.characteristics));
-              console.log(Object.keys(characteristics));
-
-              if (
-                Object.keys(metaData.characteristics).length ===
-                Object.keys(characteristics).length
-              ) {
-                handleClose();
+              let message = formValidation();
+              if (message.length === 31) {
+                handleSubmit(metaData.product_id, review);
+              } else {
+                alert(message);
               }
             }}
             color="primary"
