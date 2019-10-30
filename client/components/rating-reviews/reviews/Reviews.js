@@ -53,6 +53,7 @@ const Reviews = ({
         </h3>
       </div>
       {reviews.map(review => {
+        console.log(review);
         return (
           <div key={review.review_id}>
             <Review review={review} />
