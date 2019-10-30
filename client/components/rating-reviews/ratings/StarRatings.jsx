@@ -3,10 +3,8 @@ import Rating from '@material-ui/lab/Rating';
 import queryString from 'querystring';
 let productId = queryString.parse(location.search)['?productId'] || 1;
 
-const StarRatings = ({ metaData = {}, getRatingsRequest }) => {
-  useEffect(() => {
-    getRatingsRequest(productId);
-  }, []);
+const StarRatings = ({ metaData }) => {
+
   const getTotal = ratings => {
     let total = 0;
     for (let rating in ratings) {

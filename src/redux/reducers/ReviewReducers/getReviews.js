@@ -11,7 +11,8 @@ const getReviewsReducer = (state = [], action) => {
     case "SORT":
       return action.reviews;
     case "ADD_REVIEW":
-      return state.unshift(action.review);
+      let newState = [action.review, ...state];
+      return newState;
     default:
       return state;
   }
