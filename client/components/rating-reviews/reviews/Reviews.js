@@ -38,6 +38,7 @@ const Reviews = ({
 
   return (
     <div>
+<<<<<<< HEAD
       {reviews.length === 0 ? (
         <AddReview />
       ) : (
@@ -65,6 +66,28 @@ const Reviews = ({
                 </div>
               );
             })}
+=======
+      <div>
+        <h3>
+          {getTotal(metaData.ratings) + " reviews, sorted by "}
+          <select
+            onChange={event => {
+              setSort(event.target.value);
+              setPage(1);
+            }}
+          >
+            <option value="relevant">Relevance</option>
+            <option value="helpful">Helpfulness</option>
+            <option value="newest">Newest</option>
+          </select>
+        </h3>
+      </div>
+      {reviews.map(review => {
+        console.log(review);
+        return (
+          <div key={review.review_id}>
+            <Review review={review} />
+>>>>>>> master
           </div>
           <Grid container spacing={0}>
             <Grid item md={6}>
