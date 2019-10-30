@@ -5,8 +5,8 @@ import AnswerEntry from "./AnswerEntry.jsx";
 const AnswersList = ({ answers }) => {
   return (
     <div>
-      {answers.map(answer => {
-        return <AnswerEntry answer={answer} />;
+      {Object.keys(answers).map(key => {
+        return <AnswerEntry answer={answers[key]} />;
       })}
     </div>
   );
