@@ -11,6 +11,11 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
 import Axios from "axios";
+import formatDate from "../../../../src/utils/formatDate.js";
+
+const parseDate = stringDate => {
+  let date = new Date(stringDate);
+};
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -82,7 +87,7 @@ const Review = ({ review }) => {
           className={classes.inline}
           color="textPrimary"
         >
-          {review.date}
+          {formatDate(review.date)}
         </Typography>
       </ListItem>
       {review.recommend ? (
