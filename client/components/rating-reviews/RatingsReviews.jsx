@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Reviews from "./reviews/Reviews.js";
 import Ratings from "./ratings/RatingDisplay";
 import queryString from "querystring";
+
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const useStyles = makeStyles(theme => ({

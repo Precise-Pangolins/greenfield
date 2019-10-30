@@ -4,7 +4,8 @@ import AddReview from "../../../../client/components/rating-reviews/reviews/AddR
 import addReviewAction from "../../actionCreators/ratings-reviews/addReview/index.js";
 
 const mapStateToProps = store => ({
-  metaData: store.metaData
+  metaData: store.metaData,
+  info: store.info
 });
 const mapDispatchToProps = dispatch => {
   return {
