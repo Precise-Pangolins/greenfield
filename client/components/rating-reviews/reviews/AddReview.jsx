@@ -210,6 +210,7 @@ export default function AddReview({ metaData, handleSubmit, info }) {
               let message = formValidation();
               if (message.length === 31) {
                 handleSubmit(metaData.product_id, review);
+                handleClose();
               } else {
                 alert(message);
               }
