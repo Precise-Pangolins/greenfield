@@ -43,35 +43,37 @@ function StyleSelector({
           <i class='fab fa-pinterest'></i>
         </a>
       </div>
-      {styles.data
-        ? styles.data.map(style => {
-            return (
-              <div
-                style={{
-                  position: 'relative',
-                  margin: '12px'
-                }}>
-                <img
-                  key={uuid()}
-                  onClick={() => {
-                    onHandleStyleChange(style.style_id);
-                  }}
-                  src={style.photos[0].thumbnail_url}
+      <div style={{ display: 'flex', flex: 'wrap' }}>
+        {styles.data
+          ? styles.data.map(style => {
+              return (
+                <div
                   style={{
-                    width: '50px',
-                    height: '50px',
-                    borderRadius: '50%'
-                  }}
-                />
-                {style.style_id === currentStyleId ? (
-                  <div>
-                    <span className='check-mark'>☑</span>
-                  </div>
-                ) : null}
-              </div>
-            );
-          })
-        : null}
+                    position: 'relative',
+                    margin: '12px'
+                  }}>
+                  <img
+                    key={uuid()}
+                    onClick={() => {
+                      onHandleStyleChange(style.style_id);
+                    }}
+                    src={style.photos[0].thumbnail_url}
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      borderRadius: '50%'
+                    }}
+                  />
+                  {style.style_id === currentStyleId ? (
+                    <div>
+                      <span className='check-mark'>☑</span>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 }
