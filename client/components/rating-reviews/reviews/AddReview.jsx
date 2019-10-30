@@ -49,7 +49,6 @@ export default function AddReview({ metaData, handleSubmit, info }) {
       email,
       photos
     });
-    console.log(review);
   }, [characteristics, recommend, summary, body, name, email, photos, rating]);
 
   const handleClickOpen = () => {
@@ -165,7 +164,7 @@ export default function AddReview({ metaData, handleSubmit, info }) {
             onChange={event => setBody(event.target.value)}
           />
           <h4>Add Photos</h4>
-          {/* <ImageUpload photos={photos} setPhotos={setPhotos} /> */}
+          <ImageUpload photos={photos} setPhotos={setPhotos} />
           <h3>Nick Name</h3>
           <TextField
             required

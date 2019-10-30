@@ -14,7 +14,7 @@ module.exports = stringDate => {
     "December"
   ];
   let date = new Date(stringDate);
-  let day = date.getDate();
+  let day = date.getDate() + 1;
   let month = date.getMonth();
   let year = date.getFullYear();
   console.log(day);
