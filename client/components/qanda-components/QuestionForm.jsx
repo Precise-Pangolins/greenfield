@@ -1,18 +1,13 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import axios from "axios";
 
-// import Button from "@material-ui/core/Button";
-// import Dialog from "@material-ui/core/Dialog";
-// import DialogActions from "@material-ui/core/DialogActions";
-// import DialogContent from "@material-ui/core/DialogContent";
-// import DialogContentText from "@material-ui/core/DialogContentText";
-// import DialogTitle from "@material-ui/core/DialogTitle";
-// import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import { useTheme } from "@material-ui/core/styles";
-// import Rating from "@material-ui/lab/Rating";
-// import { makeStyles } from "@material-ui/core/styles";
-// import TextField from "@material-ui/core/TextField";
-// import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
 //Receives current product_id from QuestionList as props
 
@@ -21,20 +16,32 @@ class QuestionForm extends React.Component {
     super(props);
     this.state = {
       currentProdName: "",
-      question: "",
-      nickname: "",
-      email: ""
+      body: "",
+      name: "",
+      email: "",
+      open: false
+      // fullScreen: useMediaQuery(theme.breakpoints.down("sm"))
     };
 
-    //bind methods here:
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClickOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    this.setState({ open: false });
   }
 
   handleChange(event) {
+    console.log("event value in handleChange", event.target.value);
     let placeholder = {};
     placeholder[event.target.name] = event.target.value;
-    this.setState({ placeholder });
+    this.setState(placeholder);
   }
 
   //on submit click, will post to axios with obj with all entered data.
@@ -44,16 +51,16 @@ class QuestionForm extends React.Component {
   handleSubmitClick(event) {
     event.preventDefault();
     let newObj = {};
-    (newObj.question = this.state.question),
-      (newObj.nickname = this.state.nickname),
-      (newObj.email = this.state.email);
+    newObj.body = this.state.body;
+    newObj.name = this.state.name;
+    newObj.email = this.state.email;
 
     axios
       .post(`http://18.223.1.30/qa/${this.props.productId}`, newObj)
       .then(() => {
         let temp = {
-          question: "",
-          nickname: "",
+          body: "",
+          name: "",
           email: ""
         };
         this.setState(temp);
@@ -78,45 +85,77 @@ class QuestionForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Ask Your Question</h1>
-          <h2>About the {this.state.currentProdName} Here</h2>
-          <form>
-            <label>
-              Your Question:
-              <input
-                type="text"
-                name="question"
-                placeholder="Enter Question Here"
-                defaultValue={this.state.question}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Nickname:
-              <input
-                type="text"
-                name="nickname"
-                placeholder="Example: jackson11!"
-                defaultValue={this.state.nickname}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              Email:
-              <input
-                type="text"
-                name="nickname"
-                placeholder="Why did you like the product or not?"
-                defaultValue={this.state.email}
-                onChange={this.handleChange}
-              />
-            </label>
-          </form>
-          <p>For authentication reasons, you will not be emailed</p>
-        </div>
-        <button onClick={this.handleSubmitClick}>Submit Question</button>
+      <div className="form">
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={this.handleClickOpen}
+        >
+          Add A Question
+        </Button>
+        <Dialog
+          open={this.state.open}
+          handleClickOpen={this.handleClickOpen}
+          handleClose={this.handleClose}
+        >
+          <Container maxWidth="md">
+            <h1 className="formHeader">Ask Your Question</h1>
+            {/* <h1>Ask Your Question</h1> */}
+            {/* <h2>About the {this.state.currentProdName} Here</h2> */}
+            <h2 className="formSubheader">
+              About the {this.state.currentProdName}
+            </h2>
+            <div>
+              <div>
+                <TextField
+                  name="body"
+                  label="Your Question"
+                  margin="normal"
+                  fullWidth
+                  value={this.state.body}
+                  onChange={this.handleChange}
+                ></TextField>
+              </div>
+              <div>
+                <TextField
+                  name="name"
+                  label="Name"
+                  margin="normal"
+                  fullWidth
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                ></TextField>
+              </div>
+              <div>
+                <TextField
+                  name="email"
+                  label="Email"
+                  margin="normal"
+                  fullWidth
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                ></TextField>
+              </div>
+              <p id="formDisclaimer">
+                For authentication reasons, you will not be emailed
+              </p>
+            </div>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={this.handleSubmitClick}
+            >
+              Submit Question
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={this.handleClose}
+            >
+              Close
+            </Button>
+          </Container>
+        </Dialog>
       </div>
     );
   }

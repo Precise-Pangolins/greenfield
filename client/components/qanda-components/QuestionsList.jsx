@@ -27,7 +27,7 @@ const QuestionsList = ({
             );
           })}
         </div>
-        <button>More Answered Questions</button> <button>Add A Question</button>
+        <button>More Answered Questions</button>
         <QuestionForm productId={productId} />
       </div>
     );
