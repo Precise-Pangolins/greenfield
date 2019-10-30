@@ -6,14 +6,12 @@ import queryString from "querystring";
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
-  console.log(questions);
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [answersForSearchedQ, setAnswersForSearchedQ] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [defaultAnswersOnLoad, setDefaultAnswersOnLoad] = useState([]);
 
   const searchInQuestions = searchTerm => {
-    console.log("searchterm", searchTerm);
     let results = []; //questions that meet search criteria
 
     for (let i = 0; i < questions.length; i++) {

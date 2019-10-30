@@ -12,7 +12,6 @@ const QuestionsList = ({
   answersForSearchedQ,
   defaultAnswers
 }) => {
-  console.log(defaultAnswers);
   const [page, setPage] = useState(2);
 
   useEffect(() => {
