@@ -1,11 +1,15 @@
 import React from "react";
+import AHelpful from "./AHelpful.jsx";
+import Reported from "./Reported.jsx";
 
-const AnswerEntry = answer => {
+const AnswerEntry = ({ answer }) => {
+  // console.log("answer in AE", answer);
   return (
     <div>
-      A: {answer.answer.body}
+      A: {answer.body}
       <p>
-        {answer.answer.answerer_name} {answer.answer.date}
+        {answer.answerer_name} {answer.date}
+        <AHelpful answer={answer} /> <Reported answer={answer} />
       </p>
     </div>
   );

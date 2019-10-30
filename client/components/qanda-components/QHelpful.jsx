@@ -13,7 +13,6 @@ class QHelpful extends React.Component {
       isButtonDisabled: false
     };
 
-    //bind methods here:
     this.updateHelpfulness = this.updateHelpfulness.bind(this);
   }
 
@@ -44,7 +43,6 @@ class QHelpful extends React.Component {
   render() {
     return (
       <div>
-        {console.log("currentQuestion in state", this.state.currentQuestion)}
         Helpful?{" "}
         <button
           type="submit"

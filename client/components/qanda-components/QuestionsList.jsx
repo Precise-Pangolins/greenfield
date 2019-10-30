@@ -10,8 +10,7 @@ const QuestionsList = ({
   resultsQuestions,
   answersForSearchedQ,
   defaultAnswers,
-  markQuestionHelpful,
-  markAnswerHelpful
+  
 }) => {
   const [page, setPage] = useState(2);
 
@@ -28,9 +27,6 @@ const QuestionsList = ({
               <QuestionEntry
                 question={question}
                 answers={defaultAnswers[question.question_id]}
-                markQuestionHelpful={markQuestionHelpful}
-                markAnswerHelpful={markAnswerHelpful}
-                getAllQuestionsRequest={getAllQuestionsRequest}
               />
             </div>
           );
