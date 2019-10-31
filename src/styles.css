@@ -80,8 +80,17 @@ body {
 .body-response {
   padding-left: 20px;
 }
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .showmoreButton {
-  width: 50px;
+  width: 100px;
+  padding: 10px;
+  background-color: Transparent;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
 }
 .review-sort-selector {
   appearance: none;

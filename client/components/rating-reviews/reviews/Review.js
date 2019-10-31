@@ -89,28 +89,31 @@ const Review = ({ review }) => {
         ) : showBody ? (
           <div className="review-body">
             <p>{body1 + body2}</p>
-
-            <button
-              className="showmoreButton"
-              onClick={() => {
-                setShowBody(!showBody);
-              }}
-            >
-              show less
-            </button>
+            <div className="show-more-container">
+              <button
+                className="showmoreButton"
+                onClick={() => {
+                  setShowBody(!showBody);
+                }}
+              >
+                show less
+              </button>
+            </div>
           </div>
         ) : (
           <div className="review-body">
             <p>{body1}</p>
 
-            <button
-              className="showmoreButton"
-              onClick={() => {
-                setShowBody(!showBody);
-              }}
-            >
-              show more
-            </button>
+            <div className="show-more-container">
+              <button
+                className="showmoreButton"
+                onClick={() => {
+                  setShowBody(!showBody);
+                }}
+              >
+                show more
+              </button>
+            </div>
           </div>
         )}
 
@@ -137,7 +140,7 @@ const Review = ({ review }) => {
           <p>
             Was this review helpful?
             {helpClick ? (
-              ` Yes(${helpful}) ?`
+              `\sYes(${helpful})`
             ) : (
               <a
                 style={{ textDecoration: "none" }}
