@@ -41,7 +41,7 @@ function Overview({
     styles.data &&
     styles.data.find(style => style.style_id === currentStyleId)) || {
       photos: []
-    } || { photos: [], original_price: 'pending...' };
+    } || { photos: [] };
 
   useEffect(() => {
     handleGetProductRequest(productId);
@@ -50,6 +50,7 @@ function Overview({
 
   const handleStyleChange = id => {
     setCurrentStyleId(id);
+    console.log({ id });
     console.log({ currentStyle });
   };
 

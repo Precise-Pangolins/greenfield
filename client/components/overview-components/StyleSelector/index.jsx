@@ -68,7 +68,7 @@ function StyleSelector({
                   <img
                     key={uuid()}
                     onClick={() => {
-                      console.log({ styleId: style.style_id });
+                      console.log({ styleId: style.style_id, currentStyleId });
                       onHandleStyleChange(style.style_id);
                     }}
                     src={style.photos[0].thumbnail_url}
