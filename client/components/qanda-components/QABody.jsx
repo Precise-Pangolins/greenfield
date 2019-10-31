@@ -13,7 +13,6 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   const [initialQsToLoad, setInitialQsToLoad] = useState([]);
 
   const searchInQuestions = searchTerm => {
-    console.log("searchterm", searchTerm);
     let results = []; //questions that meet search criteria
 
     for (let i = 0; i < questions.length; i++) {
@@ -27,18 +26,13 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   };
 
   const questionsToDisplay = questions => {
-    console.log("counter", counter);
-    console.log("questions here", questions);
     let initialQs = questions.slice(0, counter); //q1-q4
-    console.log("initialQs", initialQs);
     setInitialQsToLoad(initialQs);
   };
 
   //puts all qs in store
   useEffect(() => {
-    console.log("prodID", productId);
     getAllQuestionsInitialRequest(productId, 1, 1000);
-    // console.log("questions here", questions);
   }, [productId]);
 
   //[questions, counter] is what the questionsToDisplay function needs

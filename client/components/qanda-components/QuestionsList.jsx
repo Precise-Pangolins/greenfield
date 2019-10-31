@@ -30,8 +30,6 @@ const QuestionsList = ({
   setPage,
   setCounter
 }) => {
-  console.log("asfasfasfasf", questions);
-
   if (resultsQuestions.length === 0) {
     return (
       <div>
@@ -90,9 +88,9 @@ const QuestionsList = ({
               variant="outlined"
               color="primary"
               onClick={() => {
-                setPage(page + 1);
-                console.log("page", page);
-                getTwoMoreQuestions(productId, page, 2);
+                console.log("counter here", counter);
+                setCounter(counter + 2);
+                questionsToDisplay(allQuestions);
               }}
             >
               Show More Questions
