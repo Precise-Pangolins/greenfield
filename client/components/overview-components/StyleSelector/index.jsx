@@ -1,7 +1,16 @@
 import React from 'react';
 import uuid from 'uuidv4';
-import StarRatings from '../../../../src/redux/containers/RatingContainers/StarRatingsContainer.js';
 import Scrollspy from 'react-scrollspy';
+import {
+  PinterestShareButton,
+  TwitterShareButton,
+  FacebookShareButton
+} from 'react-share';
+import queryString from 'querystring';
+
+import StarRatings from '../../../../src/redux/containers/RatingContainers/StarRatingsContainer.js';
+
+let productId = queryString.parse(location.search)['?productId'] || 1;
 
 function StyleSelector({
   currentStyle,
@@ -37,6 +46,10 @@ function StyleSelector({
         </a>
       </div>
       <div className='social-media-pinterest'>
+        {/* <PinterestShareButton
+          url={`localhost:3000/?productId${productId}`}
+          media={styles.data ? styles.data[0].photos[0].url : null}
+        /> */}
         <a
           className='social-media-pinterest-color'
           href='https://www.pinterest.com'>
@@ -55,6 +68,7 @@ function StyleSelector({
                   <img
                     key={uuid()}
                     onClick={() => {
+                      console.log({ styleId: style.style_id });
                       onHandleStyleChange(style.style_id);
                     }}
                     src={style.photos[0].thumbnail_url}
