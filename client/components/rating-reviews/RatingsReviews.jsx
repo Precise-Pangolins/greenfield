@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -8,13 +9,14 @@ import queryString from "querystring";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
   paper: {
     padding: theme.spacing(1),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary
   }
 }));
@@ -30,7 +32,7 @@ const RatingsReviews = ({
   reviews
 }) => {
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState("relevant");
+  const [sort, setSort] = useState('relevant');
   const [filters, setFilters] = useState({});
 
   const filterByStar = filters => {
@@ -57,7 +59,7 @@ const RatingsReviews = ({
   };
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id='ratings-reviews'>
       <Grid container spacing={0}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>Ratings and Reviews</Paper>

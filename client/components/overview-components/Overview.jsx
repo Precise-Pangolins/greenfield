@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useEffect, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -6,11 +6,10 @@ import queryString from 'querystring';
 
 import Description from './ProductDescription';
 import Features from './Features';
-
 import AddToCartModal from '../overview-components/AddToCart';
-
 import StyleSelector from './StyleSelector';
 import ImgGallery from './ImgGallery/index.jsx';
+import StarRatingsContainer from '../../../src/redux/containers/RatingContainers/StarRatingsContainer.js';
 
 let productId = queryString.parse(location.search)['?productId'] || 1;
 
@@ -31,7 +30,8 @@ function Overview({
   handleGetStylesRequest,
   handlePostToCartRequest,
   info = {},
-  cart = {}
+  cart = {},
+  metaData = {}
 }) {
   let [currentStyleId, setCurrentStyleId] = useState(1);
 
@@ -50,33 +50,48 @@ function Overview({
     setCurrentStyleId(id);
   };
 
+  const salePriceHandler = currentStyle => {
+    if (currentStyle) {
+      if (currentStyle.sale_price > 0) {
+        return (
+          <>
+            <div className='sale'>${currentStyle.original_price}</div>
+            <div>Now On Sale For: ${currentStyle.sale_price}!</div>
+          </>
+        );
+      } else {
+        return `$${currentStyle.original_price}`;
+      }
+    }
+  };
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
+      <Grid container spacing={3} direction='row'>
+        <Grid item xs={7}>
           <Paper className={classes.paper}>
-            Image Gallery
             {styles.loading ? <div>loading...</div> : null}
-            <ImgGallery currentStyle={currentStyle} info={info.info} />
-            Styles
+            <ImgGallery
+              currentStyle={currentStyle}
+              info={info.info}
+              images={styles.data}
+            />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={5}>
           <Paper className={classes.paper}>
-            Product Description
-            <Description info={info.info} />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            Style Selector
+            <h1>{info.info ? info.info.name : null}</h1>
+            <h2>{currentStyle ? salePriceHandler(currentStyle) : null}</h2>
+            <h3>{currentStyle ? `style: ${currentStyle.name}` : null}</h3>
             <StyleSelector
+              metaData={metaData}
+              currentStyle={currentStyle}
+              info={info}
               onHandleStyleChange={handleStyleChange}
               styles={styles}
               currentStyleId={currentStyleId}
             />
-            Features
             <AddToCartModal
               currentStyle={currentStyle}
               handlePostToCartRequest={handlePostToCartRequest}
@@ -84,6 +99,12 @@ function Overview({
               info={info.info}
             />
           </Paper>
+          <Grid item xs={false}>
+            <Paper className={classes.paper}>
+              Product Description
+              <Description info={info.info} />
+            </Paper>
+          </Grid>
         </Grid>
       </Grid>
     </div>
