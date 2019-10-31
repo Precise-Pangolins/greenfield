@@ -35,7 +35,14 @@ export default function TransitionsModal({ url }) {
       <img
         src={url}
         onClick={handleOpen}
-        style={{ height: "100px", width: "150px" }}
+        style={{
+          height: "100px",
+          width: "175px",
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "40%"
+        }}
       ></img>
       <Modal
         aria-labelledby="transition-modal-title"
