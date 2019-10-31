@@ -39,6 +39,14 @@ const useStyles = makeStyles(theme => ({
     margin: `5px 0 0 ${theme.spacing(9)}px`
   }
 }));
+const StyledRating = withStyles({
+  iconFilled: {
+    color: "#000000"
+  },
+  iconHover: {
+    color: "#000000"
+  }
+})(Rating);
 
 const Review = ({ review }) => {
   const [helpClick, sethelpClick] = useState(false);
@@ -54,169 +62,289 @@ const Review = ({ review }) => {
   const classes = useStyles();
   let body1 = "";
   let body2 = "";
+  const rec = " I recommend this product";
   if (review.body.length > 250) {
     body1 = review.body.substring(0, 250);
     body2 = review.body.substring(250);
   }
   return (
-    <List spacing={0} className={classes.root2}>
-      <div className="main-review-container">
-        <div className="review-star-username-date"></div>
-        <div className="review-summary"></div>
-        <div className="review-body"></div>
-        <div className=""></div>
-      </div>
-      <ListItem alignItems="flex-start">
-        <ListItemText
-          primary={
+    <div className="main-review-container">
+      <div className="reviews-stars-col">
+        <div className="review-star-username-date">
+          <div className="star-rating">
+            <StyledRating
+              name="half-rating"
+              value={review.rating}
+              precision={0.25}
+              disabled
+            />
+          </div>
+          <div></div>
+          <div className="username-date">
+            <p>{review.reviewer_name + " " + formatDate(review.date)}</p>
+          </div>
+        </div>
+        <div className="review-summary-body">
+          <div>
+            <h3>{review.summary}</h3>
+          </div>
+        </div>
+
+        {body1.length === 0 ? (
+          <div className="review-summary-body">
+            <p>{review.body}</p>
+          </div>
+        ) : showBody ? (
+          <div className="review-body">
+            <p>{body1 + body2}</p>
+
+            <button
+              className="showmoreButton"
+              onClick={() => {
+                setShowBody(!showBody);
+              }}
+            >
+              show less
+            </button>
+          </div>
+        ) : (
+          <div className="review-body">
+            <p>{body1}</p>
+
+            <button
+              className="showmoreButton"
+              onClick={() => {
+                setShowBody(!showBody);
+              }}
+            >
+              show more
+            </button>
+          </div>
+        )}
+
+        <div className="review-summary-body">
+          {review.photos.length > 0 ? (
+            <ImageList tileData={review.photos} />
+          ) : null}
+        </div>
+        {review.response ? (
+          <div className="review-summary-body body-response">
+            <List>
+              <ListItem>
+                <Typography
+                  component="span"
+                  variant="subtitle1"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  {"Response from Seller"}
+                </Typography>
+              </ListItem>
+              <ListItem>
+                <Typography
+                  component="span"
+                  variant="subtitle1"
+                  className={classes.inline}
+                  color="textPrimary"
+                >
+                  {review.response}
+                </Typography>
+              </ListItem>
+            </List>
+          </div>
+        ) : null}
+        <div className="review-recommend review-summary-body">
+          {review.recommend ? (
             <Typography
               component="span"
               variant="subtitle2"
               className={classes.inline}
               color="textPrimary"
             >
-              {review.reviewer_name}
+              <CheckIcon /> I recommend this product
             </Typography>
-          }
-        />
-      </ListItem>
-      <ListItem>
-        <Rating
-          name="half-rating"
-          value={review.rating}
-          precision={0.25}
-          disabled
-        />
-        <Typography
-          component="span"
-          variant="subtitle1"
-          className={classes.inline}
-          color="textPrimary"
-        >
-          {review.summary}
-        </Typography>
-      </ListItem>
-      <ListItem>
-        <Typography
-          component="span"
-          variant="caption"
-          className={classes.inline}
-          color="textPrimary"
-        >
-          {formatDate(review.date)}
-        </Typography>
-      </ListItem>
-      {review.recommend ? (
-        <ListItem>
-          <Typography
-            component="span"
-            variant="subtitle2"
-            className={classes.inline}
-            color="textPrimary"
-          >
-            I recommend this product <CheckIcon />
-          </Typography>
-        </ListItem>
-      ) : null}
-      <ListItem>
-        <Typography
-          component="span"
-          variant="body1"
-          className={classes.inline}
-          color="textPrimary"
-        >
-          {body1.length === 0 ? (
-            review.body
-          ) : showBody ? (
-            <div>
-              {body1 + body2}
-              <br></br>
-              <button
-                onClick={() => {
-                  setShowBody(!showBody);
+          ) : null}
+        </div>
+        <div className="review-summary-body">
+          <p>
+            Was this review helpful?
+            {helpClick ? (
+              `Yes(${helpful}) ?`
+            ) : (
+              <a
+                style={{ textDecoration: "none" }}
+                href=""
+                onClick={event => {
+                  event.preventDefault();
+                  setHelpful(helpful + 1);
+                  Axios.put(
+                    `http://18.223.1.30/reviews/helpful/${review.review_id}`
+                  ).then(() => {
+                    sethelpClick(true);
+                  });
                 }}
               >
-                show less
-              </button>
-            </div>
-          ) : (
-            <div>
-              {body1}
-              <br></br>
-              <button
-                onClick={() => {
-                  setShowBody(!showBody);
-                }}
-              >
-                show more
-              </button>
-            </div>
-          )}
-        </Typography>
-      </ListItem>
-      {review.photos.length > 0 ? (
-        <ListItem>
-          <ImageList tileData={review.photos} />
-        </ListItem>
-      ) : null}
-      {review.response ? (
-        <ListItem>
-          <List>
-            <ListItem>
-              <Typography
-                component="span"
-                variant="subtitle1"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                {"Response from Seller"}
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography
-                component="span"
-                variant="subtitle1"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                {review.response}
-              </Typography>
-            </ListItem>
-          </List>
-        </ListItem>
-      ) : null}
-      <ListItem>
-        <Typography
-          component="span"
-          variant="overline"
-          className={classes.inline}
-          color="textPrimary"
-        >
-          {"Was this review helpful? "}
-        </Typography>
-        {helpClick ? (
-          `Yes(${helpful}) ?`
-        ) : (
-          <a
-            style={{ textDecoration: "none" }}
-            href=""
-            onClick={event => {
-              event.preventDefault();
-              setHelpful(helpful + 1);
-              Axios.put(
-                `http://18.223.1.30/reviews/helpful/${review.review_id}`
-              ).then(() => {
-                sethelpClick(true);
-              });
-            }}
-          >
-            Yes({review.helpfulness})?
-          </a>
-        )}
-      </ListItem>
+                Yes({review.helpfulness})?
+              </a>
+            )}
+          </p>
+        </div>
+        <Divider light />
+      </div>
+    </div>
+    // <List spacing={0} className={classes.root2}>
 
-      <Divider light />
-    </List>
+    //   <ListItem alignItems="flex-start">
+    //     <ListItemText
+    //       primary={
+    //         <Typography
+    //           component="span"
+    //           variant="subtitle2"
+    //           className={classes.inline}
+    //           color="textPrimary"
+    //         >
+    //           {review.reviewer_name}
+    //         </Typography>
+    //       }
+    //     />
+    //   </ListItem>
+    //   <ListItem>
+    //     <Rating
+    //       name="half-rating"
+    //       value={review.rating}
+    //       precision={0.25}
+    //       disabled
+    //     />
+    //     <Typography
+    //       component="span"
+    //       variant="subtitle1"
+    //       className={classes.inline}
+    //       color="textPrimary"
+    //     >
+    //       {review.summary}
+    //     </Typography>
+    //   </ListItem>
+    //   <ListItem>
+    //     <Typography
+    //       component="span"
+    //       variant="caption"
+    //       className={classes.inline}
+    //       color="textPrimary"
+    //     >
+    //       {formatDate(review.date)}
+    //     </Typography>
+    //   </ListItem>
+    //   {review.recommend ? (
+    //     <ListItem>
+    //       <Typography
+    //         component="span"
+    //         variant="subtitle2"
+    //         className={classes.inline}
+    //         color="textPrimary"
+    //       >
+    //         I recommend this product <CheckIcon />
+    //       </Typography>
+    //     </ListItem>
+    //   ) : null}
+    //   <ListItem>
+    //     <Typography
+    //       component="span"
+    //       variant="body1"
+    //       className={classes.inline}
+    //       color="textPrimary"
+    //     >
+    //       {body1.length === 0 ? (
+    //         review.body
+    //       ) : showBody ? (
+    //         <div>
+    //           {body1 + body2}
+    //           <br></br>
+    //           <button
+    //             onClick={() => {
+    //               setShowBody(!showBody);
+    //             }}
+    //           >
+    //             show less
+    //           </button>
+    //         </div>
+    //       ) : (
+    //         <div>
+    //           {body1}
+    //           <br></br>
+    //           <button
+    //             onClick={() => {
+    //               setShowBody(!showBody);
+    //             }}
+    //           >
+    //             show more
+    //           </button>
+    //         </div>
+    //       )}
+    //     </Typography>
+    //   </ListItem>
+    //   {review.photos.length > 0 ? (
+    //     <ListItem>
+    //       <ImageList tileData={review.photos} />
+    //     </ListItem>
+    //   ) : null}
+    //   {review.response ? (
+    //     <ListItem>
+    //       <List>
+    //         <ListItem>
+    //           <Typography
+    //             component="span"
+    //             variant="subtitle1"
+    //             className={classes.inline}
+    //             color="textPrimary"
+    //           >
+    //             {"Response from Seller"}
+    //           </Typography>
+    //         </ListItem>
+    //         <ListItem>
+    //           <Typography
+    //             component="span"
+    //             variant="subtitle1"
+    //             className={classes.inline}
+    //             color="textPrimary"
+    //           >
+    //             {review.response}
+    //           </Typography>
+    //         </ListItem>
+    //       </List>
+    //     </ListItem>
+    //   ) : null}
+    //   <ListItem>
+    //     <Typography
+    //       component="span"
+    //       variant="overline"
+    //       className={classes.inline}
+    //       color="textPrimary"
+    //     >
+    //       {"Was this review helpful? "}
+    //     </Typography>
+    //     {helpClick ? (
+    //       `Yes(${helpful}) ?`
+    //     ) : (
+    //       <a
+    //         style={{ textDecoration: "none" }}
+    //         href=""
+    //         onClick={event => {
+    //           event.preventDefault();
+    //           setHelpful(helpful + 1);
+    //           Axios.put(
+    //             `http://18.223.1.30/reviews/helpful/${review.review_id}`
+    //           ).then(() => {
+    //             sethelpClick(true);
+    //           });
+    //         }}
+    //       >
+    //         Yes({review.helpfulness})?
+    //       </a>
+    //     )}
+    //   </ListItem>
+
+    //   <Divider light />
+    // </List>
   );
 };
 

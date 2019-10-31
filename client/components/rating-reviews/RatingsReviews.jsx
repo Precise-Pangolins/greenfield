@@ -10,7 +10,10 @@ let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    margin: "0, auto",
+    paddingLeft: "20%",
+    paddingRight: "20%"
   },
   paper: {
     padding: theme.spacing(1),
