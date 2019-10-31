@@ -34,6 +34,6 @@ body {
 }
 
 .reviews-list {
-  height: 100vh;
-  overflow: scrollable;
+  height: 90vh;
+  overflow: auto;
 }

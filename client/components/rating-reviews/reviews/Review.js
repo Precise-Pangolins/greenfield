@@ -13,6 +13,7 @@ import Rating from "@material-ui/lab/Rating";
 import Axios from "axios";
 import formatDate from "../../../../src/utils/formatDate.js";
 import Reviews from "./Reviews.js";
+import CheckIcon from "@material-ui/icons/Check";
 
 const parseDate = stringDate => {
   let date = new Date(stringDate);
@@ -107,7 +108,7 @@ const Review = ({ review }) => {
             className={classes.inline}
             color="textPrimary"
           >
-            I recommend this product
+            I recommend this product <CheckIcon />
           </Typography>
         </ListItem>
       ) : null}

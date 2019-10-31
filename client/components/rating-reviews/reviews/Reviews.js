@@ -32,6 +32,7 @@ const Reviews = ({
     }
     return total;
   };
+  const reviewScroll = { height: "50vh", overflow: "auto" };
 
   return (
     <div>
@@ -54,7 +55,10 @@ const Reviews = ({
               </select>
             </h3>
           </div>
-          <div id="reviews-list" style={{ height: "100vh", overflow: "auto" }}>
+          <div
+            className={reviews.length > 4 ? "reviews-list" : ""}
+            id="reviews-list"
+          >
             {reviews.map(review => {
               return (
                 <div key={review.review_id}>
