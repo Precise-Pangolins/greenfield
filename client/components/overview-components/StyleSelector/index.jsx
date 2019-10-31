@@ -1,11 +1,14 @@
 import React from 'react';
 import uuid from 'uuidv4';
 import Scrollspy from 'react-scrollspy';
-// import {
-//   PinterestShareButton,
-//   TwitterShareButton,
-//   FacebookShareButton
-// } from 'react-share';
+import {
+  PinterestShareButton,
+  TwitterShareButton,
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  PinterestIcon
+} from 'react-share';
 import queryString from 'querystring';
 
 import StarRatings from '../../../../src/redux/containers/RatingContainers/StarRatingsContainer.js';
@@ -34,27 +37,27 @@ function StyleSelector({
         </a>
       </Scrollspy>
       <div className='social-media-fb'>
-        <a className='social-media-fb-color' href='https://www.facebook.com'>
-          <i class='fab fa-facebook'></i>
-        </a>
+        <FacebookShareButton
+          url={`http://127.0.0.1:3000/?productId${productId}`}
+          text='check out this fabulous piece I found on Noods!'
+          media={styles.data ? styles.data[0].photos[0].url : null}
+          children={<FacebookIcon size={32} round={true} />}
+        />
       </div>
       <div className='social-media-twitter'>
-        <a
-          className='social-media-twitter-color'
-          href='https://www.twitter.com'>
-          <i class='fab fa-twitter'></i>
-        </a>
+        <TwitterShareButton
+          url={`http://localhost:3000/?productId${productId}`}
+          text='check out this fabulous piece I found on Noods!'
+          media={styles.data ? styles.data[0].photos[0].url : null}
+          children={<TwitterIcon size={32} round={true} />}
+        />
       </div>
       <div className='social-media-pinterest'>
-        {/* <PinterestShareButton
+        <PinterestShareButton
           url={`localhost:3000/?productId${productId}`}
           media={styles.data ? styles.data[0].photos[0].url : null}
-        /> */}
-        <a
-          className='social-media-pinterest-color'
-          href='https://www.pinterest.com'>
-          <i class='fab fa-pinterest'></i>
-        </a>
+          children={<PinterestIcon size={32} round={true} />}
+        />
       </div>
       <div style={{ display: 'flex', flex: 'wrap' }}>
         {styles.data

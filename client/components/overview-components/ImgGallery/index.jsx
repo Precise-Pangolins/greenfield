@@ -9,11 +9,25 @@ import StyleSelector from '../StyleSelector/index.jsx';
 
 let productId = queryString.parse(location.search)['?productId'] || 1;
 
-function ImgGallery({ currentStyle = {}, info, images = [] }) {
-  currentStyle = images[0] || [];
+function ImgGallery({ currentStyle, info, images = [] }) {
+  // currentStyle = currentStyle || images[0] || [];
   let [isFullScreen, setIsFullScreen] = useState(false);
+
+  // let [initialImg, setInitialImg] = useState(
+  //   (images[0] ? images[0].photos : []).map(photo => {
+  //     console.log({ images });
+  //     return { original: photo.url, thumbnail: photo.thumbnail_url };
+  //   })
+  // );
+
   let image = useRef(null); // updating  won't initiate a  re-render
-  let modifiedImgs = (currentStyle.photos || []).map(photo => {
+
+  // useEffect(() => {
+  //   setInitialImg();
+  //   return <Carousel items={initialImg} />;
+  // }, []);
+
+  let modifiedImgs = (currentStyle.photos || initialImg || []).map(photo => {
     return { original: photo.url, thumbnail: photo.thumbnail_url };
   });
 
@@ -30,9 +44,8 @@ function ImgGallery({ currentStyle = {}, info, images = [] }) {
   }
 
   function handleClick(event) {
-    // event.persist();
+    event.persist();
     if (isFullScreen) {
-      console.log(event.target);
       const img = event.target;
       image.current = img;
       img.className = 'tile';
