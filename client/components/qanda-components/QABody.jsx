@@ -6,11 +6,11 @@ import queryString from "querystring";
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
-  console.log(questions);
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
-  const [count, setCount] = useState(4);
+  const [counter, setCounter] = useState(4);
+  const [initialQsToLoad, setInitialQsToLoad] = useState([]);
 
   const searchInQuestions = searchTerm => {
     console.log("searchterm", searchTerm);
@@ -26,9 +26,26 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
     setResultsQuestions(results);
   };
 
+  const questionsToDisplay = questions => {
+    console.log("counter", counter);
+    console.log("questions here", questions);
+    let initialQs = questions.slice(0, counter); //q1-q4
+    console.log("initialQs", initialQs);
+    setInitialQsToLoad(initialQs);
+  };
+
+  //puts all qs in store
   useEffect(() => {
-    getAllQuestionsInitialRequest(productId, page, count);
-  }, []);
+    console.log("prodID", productId);
+    getAllQuestionsInitialRequest(productId, 1, 1000);
+    // console.log("questions here", questions);
+  }, [productId]);
+
+  //[questions, counter] is what the questionsToDisplay function needs
+  //to look out for changes in in order to fire this function.
+  useEffect(() => {
+    questionsToDisplay(questions);
+  }, [questions, counter]);
 
   return (
     <div>
@@ -41,11 +58,13 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
       />
       <QuestionsListContainer
         resultsQuestions={resultsQuestions}
-        questions={questions}
+        allQuestions={questions}
+        questions2={initialQsToLoad}
         page={page}
         setPage={setPage}
-        count={count}
-        setCount={setCount}
+        setCounter={setCounter}
+        counter={counter}
+        questionsToDisplay={questionsToDisplay}
       />
     </div>
   );

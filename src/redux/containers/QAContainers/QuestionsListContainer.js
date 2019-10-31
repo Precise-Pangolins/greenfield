@@ -9,8 +9,10 @@ const mapStateToProps = store => ({ questions: store.questions });
 
 const mapDispatchToProps = dispatch => {
   return {
-    getAllQuestionsRequest: product_id => dispatch(getAllQuestions(product_id)),
-    getAllAnswersRequest: product_id => dispatch(getAllAnswers(product_id)),
+    getAllQuestionsRequest: (product_id, page, count) =>
+      dispatch(getAllQuestions(product_id, page, count)),
+    getAllAnswersRequest: (product_id, page, count) =>
+      dispatch(getAllAnswers(product_id, page, count)),
     markQuestionHelpful: question_id => dispatch(markQHelpful(question_id)),
     markAnswerHelpful: answer_id => dispatch(markAHelpful(answer_id))
   };

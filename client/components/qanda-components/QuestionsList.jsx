@@ -20,20 +20,23 @@ const useStyles = makeStyles(theme => ({
 
 const QuestionsList = ({
   questions,
-  getAllQuestionsRequest,
-  resultsQuestions
+  questions2,
+  allQuestions,
+  getTwoMoreQuestions,
+  resultsQuestions,
+  questionsToDisplay,
+  page,
+  counter,
+  setPage,
+  setCounter
 }) => {
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    getAllQuestionsRequest(productId);
-  }, []);
+  console.log("asfasfasfasf", questions);
 
   if (resultsQuestions.length === 0) {
     return (
       <div>
         <div>
-          {questions.map(question => {
+          {questions2.map(question => {
             return (
               <div key={uuidv4()}>
                 <QuestionEntry question={question} answers={question.answers} />
@@ -42,18 +45,20 @@ const QuestionsList = ({
           })}
         </div>
 
-        <QuestionForm />
+        <QuestionForm productId={productId} />
         <Grid container spaceing={0}>
           <Grid item md={6}>
             <Button
               variant="outlined"
               color="primary"
               onClick={() => {
-                setPage(page + 1);
-                getAllQuestionsRequest(productId, page + 1, 2);
+                console.log("counter here", counter);
+                setCounter(counter + 2);
+                questionsToDisplay(allQuestions);
               }}
             >
-              Show More Questions
+              {/* {console.log("questions after getTwoMoreQs", questions)}; Show */}
+              More Questions
             </Button>
           </Grid>
         </Grid>
@@ -78,7 +83,7 @@ const QuestionsList = ({
         </div>
 
         <button>Add A Question</button>
-        <QuestionForm />
+        <QuestionForm productId={productId} />
         <Grid container spaceing={0}>
           <Grid item md={6}>
             <Button
@@ -86,7 +91,8 @@ const QuestionsList = ({
               color="primary"
               onClick={() => {
                 setPage(page + 1);
-                getAllQuestionsRequest(productId, page + 1, 2);
+                console.log("page", page);
+                getTwoMoreQuestions(productId, page, 2);
               }}
             >
               Show More Questions
