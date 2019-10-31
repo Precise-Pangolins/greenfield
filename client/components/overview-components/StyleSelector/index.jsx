@@ -39,16 +39,16 @@ function StyleSelector({
       <div className='social-media-fb'>
         <FacebookShareButton
           url={`http://127.0.0.1:3000/?productId=${productId}`}
-          text='check out this fabulous piece I found on Noods!'
-          media={styles.data ? styles.data[0].photos[0].url : null}
+          quote='check out this fabulous piece I found on Noods!'
           children={<FacebookIcon size={32} round={true} />}
+          hashtag='#weAreNoods'
         />
       </div>
       <div className='social-media-twitter'>
         <TwitterShareButton
           url={`http://localhost:3000/?productId=${productId}`}
-          text='check out this fabulous piece I found on Noods!'
-          media={styles.data ? styles.data[0].photos[0].url : null}
+          title='check out this fabulous piece I found on Noods!'
+          hashtags={['weAreNoods', 'noodsClothing', 'noodsStyle']}
           children={<TwitterIcon size={32} round={true} />}
         />
       </div>
