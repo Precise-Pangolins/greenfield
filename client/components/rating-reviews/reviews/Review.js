@@ -41,9 +41,6 @@ const useStyles = makeStyles(theme => ({
 const Review = ({ review }) => {
   const [helpClick, sethelpClick] = useState(false);
   const [showBody, setShowBody] = useState(false);
-  useEffect(() => {
-    review.helpfulness = review.helpfulness + 1;
-  }, [helpClick]);
 
   useEffect(() => {}, [showBody]);
 

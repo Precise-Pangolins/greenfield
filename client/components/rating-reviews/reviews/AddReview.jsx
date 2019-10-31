@@ -104,7 +104,7 @@ export default function AddReview({ metaData, handleSubmit, info }) {
           {info.info ? `Write your Review for ${info.info.name}` : null}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText>About the Product {}</DialogContentText>
+          <DialogContentText>About the Product </DialogContentText>
           <h3>Rating</h3>
           <Rating
             required

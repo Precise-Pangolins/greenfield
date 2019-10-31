@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Review from "./Review.js";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import AddReview from "../../../../src/redux/containers/ReviewsContainers/addReviews.js";
 import Grid from "@material-ui/core/Grid";
-
-import uuid from "uuidv4";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -67,16 +65,19 @@ const Reviews = ({
           </div>
           <Grid container spacing={0}>
             <Grid item md={6}>
-              <Button
-                onClick={() => {
-                  setPage(page + 1);
-                  handleGetReviewsRequest(7, page + 1, 2, sort);
-                }}
-                variant="outlined"
-                className={classes.button}
-              >
-                More
-              </Button>
+              {window.previousLength === reviews.length ? null : (
+                <Button
+                  onClick={() => {
+                    window.previousLength = reviews.length;
+                    setPage(page + 1);
+                    handleGetReviewsRequest(7, page + 1, 2, sort);
+                  }}
+                  variant="outlined"
+                  className={classes.button}
+                >
+                  More
+                </Button>
+              )}
             </Grid>
             <Grid item md={6}>
               <AddReview />
