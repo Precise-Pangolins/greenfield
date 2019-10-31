@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Overview({
-  styles = { data: [] },
+  styles = { data: [] }, // {}
   handleGetProductRequest,
   handleGetStylesRequest,
   handlePostToCartRequest,
@@ -33,7 +33,7 @@ function Overview({
   cart = {},
   metaData = {}
 }) {
-  let [currentStyleId, setCurrentStyleId] = useState(null);
+  let [currentStyleId, setCurrentStyleId] = useState(1);
   let price = useRef(null);
 
   useEffect(() => {
@@ -73,26 +73,14 @@ function Overview({
         <Grid item xs={7}>
           <Paper className={classes.paper}>
             {styles.loading ? <div>loading...</div> : null}
-            <ImgGallery
-              currentStyle={currentStyle}
-              info={info.info}
-              images={styles.data}
-            />
+            <ImgGallery currentStyle={currentStyle} info={info.info} />
           </Paper>
         </Grid>
         <Grid item xs={5}>
           <Paper className={classes.paper}>
             <h1>{info.info ? info.info.name : null}</h1>
-            <h2>
-              {currentStyle.original_price
-                ? salePriceHandler(currentStyle)
-                : null}
-            </h2>
-            <h3>
-              {currentStyle.name
-                ? `style: ${currentStyle.name}`
-                : 'please select a style below for details: '}
-            </h3>
+            <h2>{currentStyle ? salePriceHandler(currentStyle) : null}</h2>
+            <h3>{currentStyle ? `style: ${currentStyle.name}` : null}</h3>
             <StyleSelector
               metaData={metaData}
               currentStyle={currentStyle}
