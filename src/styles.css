@@ -140,6 +140,8 @@ hr {
   justify-content: center;
   width: 100%;
   color: #000000;
+  border-bottom: 5px solid black;
+  margin-bottom: 10px;
 }
 .reviews-stars-col {
   display: flex;
