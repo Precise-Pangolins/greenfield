@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import AddReview from "../../../../src/redux/containers/ReviewsContainers/addReviews.js";
 import Grid from "@material-ui/core/Grid";
-
+import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -35,15 +35,16 @@ const Reviews = ({
   const reviewScroll = { height: "50vh", overflow: "auto" };
 
   return (
-    <div>
+    <div className="reviews">
       {reviews.length === 0 ? (
         <AddReview />
       ) : (
-        <div>
+        <div className="reviews">
           <div>
-            <h3>
+            <h3 className="dark">
               {getTotal(metaData.ratings) + " reviews, sorted by "}
               <select
+                className="review-sort-selector"
                 onChange={event => {
                   setSort(event.target.value);
                   setPage(1);
@@ -53,6 +54,7 @@ const Reviews = ({
                 <option value="helpful">Helpfulness</option>
                 <option value="newest">Newest</option>
               </select>
+              <KeyboardArrowDownIcon />
             </h3>
           </div>
           <div
@@ -67,26 +69,22 @@ const Reviews = ({
               );
             })}
           </div>
-          <Grid container spacing={0}>
-            <Grid item md={6}>
-              {window.previousLength === reviews.length ? null : (
-                <Button
-                  onClick={() => {
-                    window.previousLength = reviews.length;
-                    setPage(page + 1);
-                    handleGetReviewsRequest(7, page + 1, 2, sort);
-                  }}
-                  variant="outlined"
-                  className={classes.button}
-                >
-                  More
-                </Button>
-              )}
-            </Grid>
-            <Grid item md={6}>
-              <AddReview />
-            </Grid>
-          </Grid>
+          <div className="reviews-list-buttons-container">
+            {window.previousLength === reviews.length ? null : (
+              <Button
+                onClick={() => {
+                  window.previousLength = reviews.length;
+                  setPage(page + 1);
+                  handleGetReviewsRequest(7, page + 1, 2, sort);
+                }}
+                variant="outlined"
+                className={classes.button}
+              >
+                More
+              </Button>
+            )}
+            <AddReview />
+          </div>
         </div>
       )}
     </div>

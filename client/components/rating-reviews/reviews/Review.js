@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import ImageList from "./ImageList.js";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
 import Axios from "axios";
 import formatDate from "../../../../src/utils/formatDate.js";
-import Reviews from "./Reviews.js";
 import CheckIcon from "@material-ui/icons/Check";
 
-const parseDate = stringDate => {
-  let date = new Date(stringDate);
-};
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -76,7 +68,7 @@ const Review = ({ review }) => {
               name="half-rating"
               value={review.rating}
               precision={0.25}
-              disabled
+              readOnly
             />
           </div>
           <div></div>
@@ -128,48 +120,24 @@ const Review = ({ review }) => {
           ) : null}
         </div>
         {review.response ? (
-          <div className="review-summary-body body-response">
-            <List>
-              <ListItem>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  className={classes.inline}
-                  color="textPrimary"
-                >
-                  {"Response from Seller"}
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  className={classes.inline}
-                  color="textPrimary"
-                >
-                  {review.response}
-                </Typography>
-              </ListItem>
-            </List>
+          <div className="review-body body-response">
+            <h3>Response from Seller</h3>
+            <p>{review.response}</p>
           </div>
         ) : null}
         <div className="review-recommend review-summary-body">
           {review.recommend ? (
-            <Typography
-              component="span"
-              variant="subtitle2"
-              className={classes.inline}
-              color="textPrimary"
-            >
+            <p>
+              {" "}
               <CheckIcon /> I recommend this product
-            </Typography>
+            </p>
           ) : null}
         </div>
         <div className="review-summary-body">
           <p>
             Was this review helpful?
             {helpClick ? (
-              `Yes(${helpful}) ?`
+              ` Yes(${helpful}) ?`
             ) : (
               <a
                 style={{ textDecoration: "none" }}
@@ -184,7 +152,7 @@ const Review = ({ review }) => {
                   });
                 }}
               >
-                Yes({review.helpfulness})?
+                Yes({review.helpfulness})
               </a>
             )}
           </p>

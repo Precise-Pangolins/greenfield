@@ -63,36 +63,32 @@ const RatingsReviews = ({
     <div className={classes.root}>
       <Grid container spacing={0}>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>Ratings and Reviews</Paper>
+          <h2>Ratings and Reviews</h2>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}>
-            <Ratings
-              productInfo={productInfo}
-              handleGetRatingsRequest={handleGetRatingsRequest}
-              metaData={metaData}
-              filters={filters}
-              setFilters={setFilters}
-              handleFilterRatingsRequest={filterByStar}
-              handleClearFilterRequest={handleClearFilterRequest}
-            />
-          </Paper>
+          <Ratings
+            productInfo={productInfo}
+            handleGetRatingsRequest={handleGetRatingsRequest}
+            metaData={metaData}
+            filters={filters}
+            setFilters={setFilters}
+            handleFilterRatingsRequest={filterByStar}
+            handleClearFilterRequest={handleClearFilterRequest}
+          />
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Paper className={classes.paper}>
-            <Reviews
-              reviews={reviews}
-              handleGetReviewsRequest={handleGetReviewsRequest}
-              handleSortReviewsRequest={handleSortReviewsRequest}
-              handleSortAndFilter={filterByStar}
-              metaData={metaData}
-              page={page}
-              setPage={setPage}
-              sort={sort}
-              setSort={setSort}
-              filters={filters}
-            />
-          </Paper>
+          <Reviews
+            reviews={reviews}
+            handleGetReviewsRequest={handleGetReviewsRequest}
+            handleSortReviewsRequest={handleSortReviewsRequest}
+            handleSortAndFilter={filterByStar}
+            metaData={metaData}
+            page={page}
+            setPage={setPage}
+            sort={sort}
+            setSort={setSort}
+            filters={filters}
+          />
         </Grid>
       </Grid>
     </div>

@@ -14,7 +14,7 @@ import Characteristics from "./Characteristics.jsx";
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-
+import AddIcon from "@material-ui/icons/Add";
 import ImageUpload from "../../shared/ImageUpload.jsx";
 
 const useStyles = makeStyles(theme => ({
@@ -91,8 +91,12 @@ export default function AddReview({ metaData, handleSubmit, info }) {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add Review
+      <Button
+        variant="outlined"
+        className={classes.button}
+        onClick={handleClickOpen}
+      >
+        Add Review <AddIcon />
       </Button>
       <Dialog
         fullScreen={fullScreen}
