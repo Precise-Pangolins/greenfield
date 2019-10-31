@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Rating from "@material-ui/lab/Rating";
 import Axios from "axios";
 import formatDate from "../../../../src/utils/formatDate.js";
+import Reviews from "./Reviews.js";
 
 const parseDate = stringDate => {
   let date = new Date(stringDate);
@@ -41,8 +42,13 @@ const useStyles = makeStyles(theme => ({
 const Review = ({ review }) => {
   const [helpClick, sethelpClick] = useState(false);
   const [showBody, setShowBody] = useState(false);
+  const [helpful, setHelpful] = useState(0);
 
-  useEffect(() => {}, [showBody]);
+  useEffect(() => {
+    if (review.helpfulness) {
+      setHelpful(review.helpfulness);
+    }
+  }, []);
 
   const classes = useStyles();
   let body1 = "";
@@ -182,13 +188,14 @@ const Review = ({ review }) => {
           {"Was this review helpful? "}
         </Typography>
         {helpClick ? (
-          `Yes(${review.helpfulness}) ?`
+          `Yes(${helpful}) ?`
         ) : (
           <a
             style={{ textDecoration: "none" }}
             href=""
             onClick={event => {
               event.preventDefault();
+              setHelpful(helpful + 1);
               Axios.put(
                 `http://18.223.1.30/reviews/helpful/${review.review_id}`
               ).then(() => {
