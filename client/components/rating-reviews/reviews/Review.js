@@ -60,6 +60,12 @@ const Review = ({ review }) => {
   }
   return (
     <List spacing={0} className={classes.root2}>
+      <div className="main-review-container">
+        <div className="review-star-username-date"></div>
+        <div className="review-summary"></div>
+        <div className="review-body"></div>
+        <div className=""></div>
+      </div>
       <ListItem alignItems="flex-start">
         <ListItemText
           primary={
