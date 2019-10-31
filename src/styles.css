@@ -79,6 +79,7 @@ body {
 }
 .body-response {
   padding-left: 20px;
+  background-color: lightgrey;
 }
 .show-more-container {
   display: flex;
