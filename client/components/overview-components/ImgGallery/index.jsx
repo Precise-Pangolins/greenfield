@@ -30,7 +30,7 @@ function ImgGallery({ currentStyle = {}, info, images = [] }) {
   }
 
   function handleClick(event) {
-    event.persist();
+    // event.persist();
     if (isFullScreen) {
       console.log(event.target);
       const img = event.target;
