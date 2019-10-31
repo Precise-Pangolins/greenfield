@@ -1,1 +1,1 @@
-module.exports = "INSERTKEY";
+module.exports = 'INSERTKEY';
