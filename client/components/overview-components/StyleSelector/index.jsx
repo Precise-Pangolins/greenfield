@@ -38,7 +38,7 @@ function StyleSelector({
       </Scrollspy>
       <div className='social-media-fb'>
         <FacebookShareButton
-          url={`http://127.0.0.1:3000/?productId${productId}`}
+          url={`http://127.0.0.1:3000/?productId=${productId}`}
           text='check out this fabulous piece I found on Noods!'
           media={styles.data ? styles.data[0].photos[0].url : null}
           children={<FacebookIcon size={32} round={true} />}
@@ -46,7 +46,7 @@ function StyleSelector({
       </div>
       <div className='social-media-twitter'>
         <TwitterShareButton
-          url={`http://localhost:3000/?productId${productId}`}
+          url={`http://localhost:3000/?productId=${productId}`}
           text='check out this fabulous piece I found on Noods!'
           media={styles.data ? styles.data[0].photos[0].url : null}
           children={<TwitterIcon size={32} round={true} />}
@@ -54,7 +54,7 @@ function StyleSelector({
       </div>
       <div className='social-media-pinterest'>
         <PinterestShareButton
-          url={`localhost:3000/?productId${productId}`}
+          url={`localhost:3000/?productId=${productId}`}
           media={styles.data ? styles.data[0].photos[0].url : null}
           children={<PinterestIcon size={32} round={true} />}
         />
