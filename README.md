@@ -4,9 +4,9 @@ Greenfield Hack Reactor Front End Capstone
 
 ## Description
 Hack Reactor NYC Project Greenfield comprises a complete redesign of a retail portal. The focus of the project was to produce an MVP in approximately a two week time frame. The main focus was the Item Detail page which for us comprised of three sections: 
-  *Product Details/Overview 
-  *Ratings & Reviews 
-  *Questions & Answers - High Priority
+  -Product Details/Overview 
+  -Ratings & Reviews 
+  -Questions & Answers - High Priority
 
 ### The overview section contains the following modules:
 1. Image gallery 
@@ -28,9 +28,9 @@ Hack Reactor NYC Project Greenfield comprises a complete redesign of a retail po
 4. Answering a question
 
 ### Quality Control and SLAs
-  *Time to First Paint: 0.5 seconds
-  *Time to First Meaningful Paint: 2.0 seconds
-  *Time to Interactive: 2.5 seconds
+  -Time to First Paint: 0.5 seconds
+  -Time to First Meaningful Paint: 2.0 seconds
+  -Time to Interactive: 2.5 seconds
 
 ## Getting Started
 
