@@ -77,8 +77,9 @@ hr {
 
 .qa-search-bar {
   height: 30px;
-  width: 700px;
+  width: 400px;
   margin: 15px;
+  align-content: center;
 }
 
 .submitQbutton {
@@ -114,7 +115,7 @@ hr {
 }
 
 .collapse-btn {
-  margin: 
+  margin: ;
 }
 
 .scroll-spy {
@@ -251,6 +252,7 @@ hr {
   flex-direction: row;
   justify-content: center;
 }
+
 .rating-display-container {
   display: flex;
   flex-direction: column;
@@ -348,4 +350,57 @@ progress::-webkit-progress-value {
   height: 10px;
   line-height: 40px;
   margin: 0 0 20px 0;
+}
+
+#qabody {
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  /* text-align: center; */
+}
+
+.search-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.al-flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px;
+  align-content: space-around;
+}
+
+#formDisclaimer,
+.formHeader,
+.formSubheader {
+  font-family: Roboto, helvetica;
+}
+
+.af-btn-flex-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 12px;
+}
+
+.submit-close-btn-flex-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 20px;
+  align-content: space-around;
+}
+
+.ql-btn-flex-container-1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 20px;
+  align-content: space-around;
+  width: 
 }

@@ -145,24 +145,31 @@ class AnswersForm extends React.Component {
               </p>
             </div>
             <div>
-              <Button variant="contained" component="span">
-                Upload
-              </Button>
+              <div class="af-btn-flex-container">
+                <Button variant="contained" component="span">
+                  Upload
+                </Button>
+              </div>
+              <div>
+                <div class="submit-close-btn-flex-container">
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.handleSubmitClick}
+                  >
+                    Submit
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.handleClose}
+                  >
+                    Close
+                  </Button>
+                </div>
+              </div>
             </div>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={this.handleSubmitClick}
-            >
-              Submit Answer
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={this.handleClose}
-            >
-              Close
-            </Button>
           </Container>
         </Dialog>
       </div>

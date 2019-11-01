@@ -6,9 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
-
 const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
-
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
@@ -45,7 +43,7 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   }, [questions, counter]);
 
   return (
-    <div>
+    <div id="qabody">
       <SearchContainer
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
