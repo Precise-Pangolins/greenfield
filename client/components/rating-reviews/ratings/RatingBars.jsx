@@ -17,55 +17,50 @@ const RatingBars = ({
   };
   return (
     <div className="ratingBars">
-      <Grid container>
-        {Object.keys(filters).length > 0 ? (
-          <Grid item xs={12}>
-            <a
-              href=""
-              style={{ textDecoration: "none" }}
-              onClick={event => {
-                event.preventDefault();
-
-                handleClearFilter();
-              }}
-            >
-              (clear filters)
-            </a>
-          </Grid>
-        ) : null}
-        {Object.keys(ratings)
-          .reverse()
-          .map(rating => {
-            return (
-              <Grid item xs={12}>
-                <label htmlFor={`${rating} Stars`}>
-                  <a
-                    href=""
-                    value={rating}
-                    key={uuid()}
-                    onClick={event => {
-                      event.preventDefault();
-                      if (filters[rating] === undefined) {
-                        setFilters({ ...filters, [rating]: true });
-                      } else {
-                        delete filters[rating];
-                        setFilters({ ...filters });
-                      }
-                    }}
-                  >{`${rating} stars `}</a>
-                </label>
-
-                <progress
-                  id={`${rating} Stars`}
-                  max="100"
-                  value={getPercentage(ratings[rating], total)}
+      {Object.keys(filters).length > 0 ? (
+        <a
+          href=""
+          style={{ textDecoration: "none" }}
+          onClick={event => {
+            event.preventDefault();
+            handleClearFilter();
+          }}
+        >
+          (clear filters)
+        </a>
+      ) : null}
+      {Object.keys(ratings)
+        .reverse()
+        .map(rating => {
+          return (
+            <div className="progress-container">
+              <label htmlFor={`${rating} Stars`}>
+                <a
+                  href=""
+                  value={rating}
                   key={uuid()}
-                ></progress>
-              </Grid>
-            );
-          })}
-        <Grid item xs={12}></Grid>
-      </Grid>
+                  onClick={event => {
+                    event.preventDefault();
+                    if (filters[rating] === undefined) {
+                      setFilters({ ...filters, [rating]: true });
+                    } else {
+                      delete filters[rating];
+                      setFilters({ ...filters });
+                    }
+                  }}
+                >{`${rating} stars `}</a>
+              </label>
+              <progress
+                className="star-progressbar"
+                id={`${rating} Stars`}
+                max="100"
+                value={getPercentage(ratings[rating], total)}
+                key={uuid()}
+              ></progress>{" "}
+              <span>({ratings[rating]})</span>
+            </div>
+          );
+        })}
     </div>
   );
 };
