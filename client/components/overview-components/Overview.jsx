@@ -34,18 +34,24 @@ function Overview({
   metaData = {}
 }) {
   let [currentStyleId, setCurrentStyleId] = useState(null);
+
   let price = useRef(null);
+
+  const currentStyle =
+    styles && styles.data
+      ? currentStyleId
+        ? styles.data.find(style => style.style_id === currentStyleId)
+        : styles.data[0]
+      : { photos: [] };
+
+  if (!currentStyleId && currentStyle.style_id) {
+    setCurrentStyleId(currentStyle.style_id);
+  }
 
   useEffect(() => {
     handleGetProductRequest(productId);
     handleGetStylesRequest(productId);
   }, [currentStyleId]);
-
-  const currentStyle = (styles &&
-    styles.data &&
-    styles.data.find(style => style.style_id === currentStyleId)) || {
-      photos: []
-    } || { photos: [] };
 
   const handleStyleChange = id => {
     setCurrentStyleId(id);

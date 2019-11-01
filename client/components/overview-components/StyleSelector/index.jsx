@@ -57,6 +57,7 @@ function StyleSelector({
           url={`localhost:3000/?productId=${productId}`}
           media={styles.data ? styles.data[0].photos[0].url : null}
           children={<PinterestIcon size={32} round={true} />}
+          description='check out this fabulous piece I found on Noods!'
         />
       </div>
       <div style={{ display: 'flex', flex: 'wrap' }}>

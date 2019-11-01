@@ -10,7 +10,7 @@ import StyleSelector from '../StyleSelector/index.jsx';
 let productId = queryString.parse(location.search)['?productId'] || 1;
 
 function ImgGallery({ currentStyle, info, images = [] }) {
-  // currentStyle = currentStyle || images[0] || [];
+  currentStyle = currentStyle || images[0] || [];
   let [isFullScreen, setIsFullScreen] = useState(false);
 
   // let [initialImg, setInitialImg] = useState(
