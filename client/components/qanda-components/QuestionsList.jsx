@@ -30,6 +30,7 @@ const QuestionsList = ({
   setPage,
   setCounter
 }) => {
+
   if (resultsQuestions.length === 0) {
     return (
       <div>

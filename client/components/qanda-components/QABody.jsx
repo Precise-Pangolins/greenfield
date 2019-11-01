@@ -5,7 +5,9 @@ import queryString from "querystring";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
+
 const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
+
   const [resultsQuestions, setResultsQuestions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);

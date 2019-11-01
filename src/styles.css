@@ -1,20 +1,57 @@
-@import '~react-image-gallery/styles/css/image-gallery.css';
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 body {
   color: black;
   background-color: white;
+}
+.company-name {
+  position: relative;
+  bottom: -33px;
+  right: -950px;
+  font-size: 50px;
+}
+
+hr {
+  display: block;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 10px;
+  border-color: black;
+  width: 75%;
+  position: absolute;
+}
+
+.head-style {
+  font-size: 50px;
+  margin-bottom: 5%;
+  position: relative;
+  bottom: -30px;
+  left: 12px;
+}
+
+.top-head-border {
+  border: none;
+  position: relative;
+  top: -77px;
+  right: 182px;
+  width: 78%;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 40px;
+  background: linear-gradient(135deg, #f6f7f3 25%, transparent 25%) -20px 0,
+    linear-gradient(225deg, #f6f7f3 25%, transparent 25%) -20px 0,
+    linear-gradient(315deg, #f6f7f3 25%, transparent 25%),
+    linear-gradient(45deg, #f6f7f3 25%, transparent 25%);
+  background-size: 40px 40px;
+  background-color: black;
 }
 
 .thumbnail {
   border-radius: 50%;
 }
 
-<<<<<<<
-  head
-  =======>>>>>>>820421d5f1b656360e389b750606bcbab14d69
-  .image-gallery-content
-  .image-gallery-thumbnail-inner
-  img {
+.image-gallery-content .image-gallery-thumbnail-inner img {
   height: 80px;
   width: auto;
 }
@@ -31,9 +68,144 @@ body {
 .image-gallery-slide img {
   height: 100vh;
   width: auto;
-  cursor: cell;
+  cursor: zoom-in;
 }
 
 .questionEntry {
   border: solid 5px pink;
+}
+
+.scroll-spy {
+  font-size: 14px;
+  position: absolute;
+  bottom: 30px;
+  left: 23px;
+}
+
+.sale {
+  color: red;
+  text-decoration: line-through;
+}
+
+.check-mark {
+  position: absolute;
+  top: -1px;
+  right: -2px;
+  color: black;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: #1a1a1a 0px 0px 3px;
+}
+
+.social-media-fb {
+  position: absolute;
+  bottom: -48px;
+  right: 0px;
+}
+
+.social-media-fb-color {
+  color: blue;
+}
+
+.social-media-twitter {
+  position: absolute;
+  bottom: -48px;
+  right: 50px;
+}
+.social-media-twitter-color {
+  color: aqua;
+}
+
+.social-media-pinterest {
+  position: absolute;
+  bottom: -48px;
+  right: 25px;
+}
+.social-media-pinterest-color {
+  color: red;
+}
+.reviews-list {
+  height: 90vh;
+  overflow: auto;
+}
+.reviews {
+  color: #000000;
+}
+.dark {
+  color: black;
+}
+
+.main-review-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: #000000;
+  border-bottom: 5px solid black;
+  margin-bottom: 10px;
+}
+.reviews-stars-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.review-star-username-date {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.review-summary-body {
+  display: flex;
+  align-content: flex-start;
+  justify-content: left;
+  flex-wrap: wrap;
+  text-align: left;
+  color: #000000;
+}
+.review-body {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: left;
+  text-align: left;
+}
+.body-response {
+  padding-left: 20px;
+  background-color: lightgrey;
+}
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.showmoreButton {
+  width: 100px;
+  padding: 10px;
+  background-color: Transparent;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+}
+.review-sort-selector {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  /* needed for Firefox: */
+  overflow: hidden;
+  background-color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  color: #000000;
+  text-decoration: underline;
+}
+.reviews-list-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
