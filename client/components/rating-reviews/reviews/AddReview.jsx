@@ -13,7 +13,9 @@ import Recommend from "./Recommend.jsx";
 import Characteristics from "./Characteristics.jsx";
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
+import { number } from "prop-types";
+
 import AddIcon from "@material-ui/icons/Add";
 import ImageUpload from "../../shared/ImageUpload.jsx";
 

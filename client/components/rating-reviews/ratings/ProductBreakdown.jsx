@@ -3,24 +3,42 @@ import Grid from "@material-ui/core/Grid";
 
 const ProductBreakDown = ({ characteristics }) => {
   return (
-    <div>
-      <Grid container>
-        {Object.keys(characteristics).map(key => {
-          return (
-            <Grid item xs={12}>
-              {key}{" "}
-              <input
+    <div className="product-breakdown-container">
+      {Object.keys(characteristics).map(key => {
+        return (
+          <div>
+            {key}{" "}
+            <div>
+              {/* <input
+                className="slider"
                 type="range"
                 name="points"
                 min="0"
                 max="5"
                 key={key}
-                value={characteristics[key]}
+                list="steplist"
+                value={characteristics[key].value}
+              ></input> */}
+              <input
+                type="range"
+                name="points"
+                min="0"
+                max="5"
+                value={characteristics[key].value}
+                className="slider"
               ></input>
-            </Grid>
-          );
-        })}
-      </Grid>
+              <div class="sliderticks">
+                <p>0</p>
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
