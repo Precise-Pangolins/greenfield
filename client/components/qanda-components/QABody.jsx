@@ -2,14 +2,18 @@ import React, { useState, useEffect } from "react";
 import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer.js";
 import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer.js";
 import queryString from "querystring";
+import Typography from "@material-ui/core/Typography";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
-const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
+
+const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
+
   const [resultsQuestions, setResultsQuestions] = useState([]);
-  const [answersForSearchedQ, setAnswersForSearchedQ] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [defaultAnswersOnLoad, setDefaultAnswersOnLoad] = useState([]);
+  const [page, setPage] = useState(1);
+  const [counter, setCounter] = useState(4);
+  const [initialQsToLoad, setInitialQsToLoad] = useState([]);
 
   const searchInQuestions = searchTerm => {
     let results = []; //questions that meet search criteria
@@ -24,15 +28,24 @@ const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
     setResultsQuestions(results);
   };
 
-  useEffect(() => {
-    getAllQuestionsInitialRequest(productId);
-  }, []);
+  const questionsToDisplay = questions => {
+    let initialQs = questions.slice(0, counter); //q1-q4
+    setInitialQsToLoad(initialQs);
+  };
 
-  let defaultAnswers = {};
+  //puts all qs in store
+  useEffect(() => {
+    getAllQuestionsInitialRequest(productId, 1, 1000);
+  }, [productId]);
+
+  //[questions, counter] is what the questionsToDisplay function needs
+  //to look out for changes in in order to fire this function.
+  useEffect(() => {
+    questionsToDisplay(questions);
+  }, [questions, counter]);
 
   return (
     <div>
-      Questions and Answers:
       <SearchContainer
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -41,9 +54,13 @@ const QABody = ({ questions, getAllQuestionsInitialRequest, answers }) => {
       />
       <QuestionsListContainer
         resultsQuestions={resultsQuestions}
-        // defaultAnswers={defaultAnswers}
-        // answersForSearchedQ={answersForSearchedQ}
-        questions={questions}
+        allQuestions={questions}
+        questions2={initialQsToLoad}
+        page={page}
+        setPage={setPage}
+        setCounter={setCounter}
+        counter={counter}
+        questionsToDisplay={questionsToDisplay}
       />
     </div>
   );

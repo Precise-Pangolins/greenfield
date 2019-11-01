@@ -14,3 +14,5 @@ const markQHelpful = question_id => {
       });
   };
 };
+
+export default markQHelpful;
