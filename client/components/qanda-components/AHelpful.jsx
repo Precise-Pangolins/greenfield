@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Typography } from "@material-ui/core";
 
 //AHelpful receives the current answer in the answer entry,
 //from AE component as props.
@@ -42,8 +43,9 @@ class AHelpful extends React.Component {
   render() {
     return (
       <div>
-        Helpful?
+        <Typography component="p">Helpful?</Typography>
         <button
+          className="helpfulA-button"
           type="submit"
           onClick={() => {
             this.updateAnswerHelpfulness(this.state.helpfulnessNumber);

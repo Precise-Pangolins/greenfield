@@ -22,7 +22,6 @@ const QuestionsList = ({
   questions,
   questions2,
   allQuestions,
-  getTwoMoreQuestions,
   resultsQuestions,
   questionsToDisplay,
   page,
@@ -37,7 +36,11 @@ const QuestionsList = ({
           {questions2.map(question => {
             return (
               <div key={uuidv4()}>
-                <QuestionEntry question={question} answers={question.answers} />
+                <QuestionEntry
+                  productId={productId}
+                  question={question}
+                  answers={question.answers}
+                />
               </div>
             );
           })}
@@ -72,6 +75,7 @@ const QuestionsList = ({
             return (
               <div key={uuidv4()}>
                 <QuestionEntry
+                  productId={productId}
                   question={resultsQuestion}
                   answers={resultsQuestion.answers}
                 />

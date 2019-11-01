@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer.js";
 import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer.js";
 import queryString from "querystring";
+import Typography from "@material-ui/core/Typography";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
@@ -43,7 +44,6 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
 
   return (
     <div>
-      Questions and Answers:
       <SearchContainer
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

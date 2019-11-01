@@ -8,10 +8,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import { PassThrough } from "stream";
 
-//Receives current product_id from QuestionList as props
+//get prod id from QL (passed all the way down)
 
-class QuestionForm extends React.Component {
+class AnswersForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,13 +20,14 @@ class QuestionForm extends React.Component {
       body: "",
       name: "",
       email: "",
+      photos: "",
       open: false
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmitClick = this.handleSubmitClick.bind(this);
+    //bind methods here:
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmitClick = this.handleSubmitClick.bind(this);
   }
 
   handleClickOpen() {
@@ -37,16 +39,12 @@ class QuestionForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log("event value in handleChange", event.target.value);
+    console.log("event value in handleChangeAF", event.target.value);
     let placeholder = {};
     placeholder[event.target.name] = event.target.value;
     this.setState(placeholder);
   }
 
-  //on submit click, will post to axios with obj with all entered data.
-  //then reset the state to empty for next question submission.
-
-  //currently not rerendering the page again after post but prob should?
   handleSubmitClick(event) {
     event.preventDefault();
     let newObj = {};
@@ -55,7 +53,10 @@ class QuestionForm extends React.Component {
     newObj.email = this.state.email;
 
     axios
-      .post(`http://18.223.1.30/qa/${this.props.productId}`, newObj)
+      .post(
+        `http://18.223.1.30/qa/${this.props.question.question_id}/answers`,
+        newObj
+      )
       .then(() => {
         let temp = {
           body: "",
@@ -90,7 +91,7 @@ class QuestionForm extends React.Component {
           color="primary"
           onClick={this.handleClickOpen}
         >
-          Add A Question
+          Add Answer
         </Button>
         <Dialog
           open={this.state.open}
@@ -98,16 +99,18 @@ class QuestionForm extends React.Component {
           handleClose={this.handleClose}
         >
           <Container maxWidth="md">
-            <h1 className="formHeader">Ask Your Question</h1>
-
+            <h1 className="formHeader">Submit Your Answer</h1>
             <h2 className="formSubheader">
-              About the {this.state.currentProdName}
+              <h2>
+                {this.state.currentProdName} :{" "}
+                {this.props.question.question_body}
+              </h2>
             </h2>
             <div>
               <div>
                 <TextField
                   name="body"
-                  label="Your Question"
+                  label="Your Answer"
                   margin="normal"
                   fullWidth
                   value={this.state.body}
@@ -119,6 +122,7 @@ class QuestionForm extends React.Component {
                   name="name"
                   label="Name"
                   margin="normal"
+                  placeholder="Example: jack543!"
                   fullWidth
                   value={this.state.name}
                   onChange={this.handleChange}
@@ -129,21 +133,28 @@ class QuestionForm extends React.Component {
                   name="email"
                   label="Email"
                   margin="normal"
+                  placeholder="Example: jack@email.com"
                   fullWidth
                   value={this.state.email}
                   onChange={this.handleChange}
                 ></TextField>
               </div>
+
               <p id="formDisclaimer">
                 For authentication reasons, you will not be emailed
               </p>
+            </div>
+            <div>
+              <Button variant="contained" component="span">
+                Upload
+              </Button>
             </div>
             <Button
               variant="outlined"
               color="primary"
               onClick={this.handleSubmitClick}
             >
-              Submit Question
+              Submit Answer
             </Button>
             <Button
               variant="outlined"
@@ -159,4 +170,4 @@ class QuestionForm extends React.Component {
   }
 }
 
-export default QuestionForm;
+export default AnswersForm;
