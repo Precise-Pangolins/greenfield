@@ -3,6 +3,7 @@ import axios from "axios";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Button from "@material-ui/core/Button";
 
 //QHelpful receives the current question in the question entry,
 //from QE component as props.
@@ -46,8 +47,16 @@ class QHelpful extends React.Component {
   render() {
     return (
       <div>
-        <Typography component="p">Helpful? </Typography>
-        <button
+        <Typography
+          className="helpful-spacing"
+          style={{ display: "inline-block" }}
+          variant="body2"
+        >
+          Helpful?{" "}
+        </Typography>
+        <Button
+          variant="outlined"
+          color="primary"
           className="submitQbutton"
           type="submit"
           onClick={() => {
@@ -55,9 +64,13 @@ class QHelpful extends React.Component {
           }}
           disabled={this.state.isButtonDisabled}
         >
-          Yes
-        </button>{" "}
-        ( {this.state.helpfulnessNumber})
+          <Typography style={{ display: "inline-block" }} variant="body2">
+            Yes
+          </Typography>
+        </Button>{" "}
+        <Typography style={{ display: "inline-block" }} variant="body2">
+          ({this.state.helpfulnessNumber})
+        </Typography>
       </div>
     );
   }

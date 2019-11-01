@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Typography } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 //AHelpful receives the current answer in the answer entry,
 //from AE component as props.
@@ -43,18 +44,26 @@ class AHelpful extends React.Component {
   render() {
     return (
       <div>
-        <Typography component="p">Helpful?</Typography>
-        <button
-          className="helpfulA-button"
+        <Typography
+          className="helpful-spacing"
+          style={{ display: "inline-block" }}
+          variant="body2"
+        >
+          Helpful?
+        </Typography>
+        <Button
+          variant="outlined"
+          color="primary"
+          className="helpful-button"
           type="submit"
           onClick={() => {
             this.updateAnswerHelpfulness(this.state.helpfulnessNumber);
           }}
           disabled={this.state.isButtonDisabled}
         >
-          Yes
-        </button>
-        <div>({this.state.helpfulnessNumber})</div>
+          <Typography variant="body2">Yes</Typography>
+        </Button>
+        <div class="helpfulNum">({this.state.helpfulnessNumber})</div>
       </div>
     );
   }

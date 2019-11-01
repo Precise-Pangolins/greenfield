@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import { Typography } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import queryString from "querystring";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
@@ -40,16 +42,20 @@ class Reported extends React.Component {
   render() {
     return (
       <div>
-        <button
-          type="submit"
-          onClick={() => {
-            this.reportAnswer(this.state.currentAnswer.id);
-            this.setState({ buttonText: "Reported" });
-          }}
-          disabled={this.state.isButtonDisabled}
-        >
-          {this.state.buttonText}
-        </button>
+        <Typography style={{ display: "inline-block" }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            type="submit"
+            onClick={() => {
+              this.reportAnswer(this.state.currentAnswer.id);
+              this.setState({ buttonText: "Reported" });
+            }}
+            disabled={this.state.isButtonDisabled}
+          >
+            {this.state.buttonText}
+          </Button>
+        </Typography>
       </div>
     );
   }

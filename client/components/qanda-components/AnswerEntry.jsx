@@ -7,12 +7,19 @@ const AnswerEntry = ({ answer }) => {
   console.log("answer in AE", answer);
   return (
     <div>
-      <Typography component="p">{answer.body}</Typography>
+      <Typography style={{ display: "inline-block" }} variant="body2">
+        {answer.body}
+      </Typography>
       <div>
-        <Typography component="p">
-          {answer.answerer_name} {answer.date}
+        <Typography variant="caption">
+          {answer.answerer_name} {answer.date} |
         </Typography>
-        <AHelpful answer={answer} /> <Reported answer={answer} />
+        <Typography style={{ display: "inline-block" }}>
+          <AHelpful answer={answer} />
+        </Typography>
+        <Typography style={{ display: "inline-block" }}>
+          <Reported answer={answer} />
+        </Typography>
       </div>
     </div>
   );

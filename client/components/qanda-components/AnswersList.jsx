@@ -3,10 +3,19 @@ import AnswerEntry from "./AnswerEntry.jsx";
 import AnswersForm from "./AnswersForm.jsx";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
 import uuid from "uuidv4";
 import uuidv4 from "uuidv4";
 import { Typography } from "@material-ui/core";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1)
+  }
+}));
 
 const AnswersList = ({ answers, productId, question }) => {
   const [allAnswers, setAllAnswers] = useState([]);
@@ -31,12 +40,13 @@ const AnswersList = ({ answers, productId, question }) => {
   return (
     <div>
       {" "}
-      <Typography component="p">
-        A:
+      <Typography style={{ display: "inline-block" }} component="p">
         {displayedAns.map(answer => {
           return (
             <div key={uuidv4()}>
-              <AnswerEntry answer={answer} />
+              <Typography style={{ display: "inline-block" }}>
+                A: <AnswerEntry answer={answer} />
+              </Typography>
             </div>
           );
         })}
@@ -44,17 +54,22 @@ const AnswersList = ({ answers, productId, question }) => {
       {allAnswers.length <= 2 ? (
         ""
       ) : allAnswers.length > displayedAns.length ? (
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={handleDisplayUpdateClick}
-        >
-          LOAD MORE ANSWERS
-        </Button>
+        <div className="load-more-as-btn">
+          <Button
+            className="load-more-answers-btn"
+            variant="outlined"
+            color="primary"
+            onClick={handleDisplayUpdateClick}
+          >
+            LOAD MORE ANSWERS
+          </Button>
+        </div>
       ) : (
-        <Button variant="outlined" color="primary" onClick={collapseOnClick}>
-          COLLAPSE
-        </Button>
+        <div className="collapse-btn">
+          <Button variant="outlined" color="primary" onClick={collapseOnClick}>
+            COLLAPSE
+          </Button>
+        </div>
       )}
       <AnswersForm productId={productId} question={question} />
     </div>
