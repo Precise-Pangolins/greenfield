@@ -1,60 +1,46 @@
 # Project Title
 
-One Paragraph of project description goes here
+Greenfield Hack Reactor Front End Capstone
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Git clone the following URL to a folder: https://github.com/Precise-Pangolins/greenfield.git
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Requires git to retrieve the packages, a node environment with npm available to run the files. 
 
 ### Installing
+Once the file has been cloned to a local folder, cd into the folder and npm install. 
 
-A step by step series of examples that tell you how to get a development env running
+If you want to be able to make use of the image upload functionality go to https://imgbb.com/ make an account. Then, retrieve the API key and replace the current inactive API key in client/components/shared/imageLoad.config.js. 
+Otherwise, comment out the APIkey import and relevant variables inside of ImageUpload.jsx
 
-Say what the step will be
 
-```
-Give the example
-```
+If you have nodemon in your environment you can run the following npm scripts to launch the program:
+npm run react-dev & server-dev
 
-And repeat
+otherwise:
+**npm run react-dev**
+**node server/index.js**
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Our project makes use of Jest, enzyme and pupeteer. All tests can be run using the command **npm jest**
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+In development...
 
 ### And coding style tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
+In development...
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Currently the project is only set up to run on AWS EC2. 
+
 
 ## Built With
 
@@ -62,26 +48,17 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+**Brittany Yee** 
+**Lauren Albert**
+**Richard Horvath**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Precise-Pangolins/greenfield/graphs/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
-## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
