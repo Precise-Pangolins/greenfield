@@ -1,4 +1,4 @@
-@import "~react-image-gallery/styles/css/image-gallery.css";
+@import '~react-image-gallery/styles/css/image-gallery.css';
 
 body {
   color: black;
@@ -29,7 +29,7 @@ hr {
   left: 12px;
 }
 
-.top-head-border {
+/* .top-head-border {
   border: none;
   position: relative;
   top: -77px;
@@ -45,7 +45,7 @@ hr {
     linear-gradient(45deg, #f6f7f3 25%, transparent 25%);
   background-size: 40px 40px;
   background-color: black;
-}
+} */
 
 .thumbnail {
   border-radius: 50%;
@@ -114,7 +114,7 @@ hr {
 }
 
 .collapse-btn {
-  margin: 
+  margin: ;
 }
 
 .scroll-spy {
@@ -226,7 +226,7 @@ hr {
   padding: 10px;
   background-color: Transparent;
   outline: none;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 .review-sort-selector {
   appearance: none;
@@ -236,7 +236,7 @@ hr {
   /* needed for Firefox: */
   overflow: hidden;
   background-color: white;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 0.9em;
   margin-block-start: 1em;
   margin-block-end: 1em;
