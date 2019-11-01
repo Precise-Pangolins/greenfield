@@ -11,7 +11,9 @@ let productId = queryString.parse(location.search)["?productId"] || 1;
 
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
+    flexGrow: 1,
+    minWidth: 600
   },
   input: {
     display: "none"
@@ -29,7 +31,6 @@ const QuestionsList = ({
   setPage,
   setCounter
 }) => {
-
   if (resultsQuestions.length === 0) {
     return (
       <div>
@@ -47,23 +48,21 @@ const QuestionsList = ({
           })}
         </div>
 
-        <QuestionForm productId={productId} />
-        <Grid container spaceing={0}>
-          <Grid item md={6}>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => {
-                console.log("counter here", counter);
-                setCounter(counter + 2);
-                questionsToDisplay(allQuestions);
-              }}
-            >
-              {/* {console.log("questions after getTwoMoreQs", questions)}; Show */}
-              More Questions
-            </Button>
-          </Grid>
-        </Grid>
+        <div className="ql-btn-flex-container-1">
+          <QuestionForm productId={productId} />
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => {
+              console.log("counter here", counter);
+              setCounter(counter + 2);
+              questionsToDisplay(allQuestions);
+            }}
+          >
+            {/* {console.log("questions after getTwoMoreQs", questions)}; Show */}
+            Show More Questions
+          </Button>
+        </div>
       </div>
     );
   } else {
@@ -84,24 +83,22 @@ const QuestionsList = ({
             );
           })}
         </div>
-
-        <button>Add A Question</button>
-        <QuestionForm productId={productId} />
-        <Grid container spaceing={0}>
-          <Grid item md={6}>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={() => {
-                console.log("counter here", counter);
-                setCounter(counter + 2);
-                questionsToDisplay(allQuestions);
-              }}
-            >
-              Show More Questions
-            </Button>
-          </Grid>
-        </Grid>
+        <div className="ql-btn-flex-container-1">
+          <Button className="add-a-q-btn">Add A Question</Button>
+          <QuestionForm productId={productId} />
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => {
+              console.log("counter here", counter);
+              setCounter(counter + 2);
+              questionsToDisplay(allQuestions);
+            }}
+          >
+            Show More <br />
+            Questions
+          </Button>
+        </div>
       </div>
     );
   }

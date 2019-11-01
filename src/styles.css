@@ -293,3 +293,13 @@ hr {
   padding: 12px;
   margin-bottom: 20px;
 }
+
+.ql-btn-flex-container-1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 20px;
+  align-content: space-around;
+  width: ;
+}
