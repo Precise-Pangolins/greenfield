@@ -45,33 +45,41 @@ const AnswersList = ({ answers, productId, question }) => {
           return (
             <div key={uuidv4()}>
               <Typography style={{ display: "inline-block" }}>
-                A: <AnswerEntry answer={answer} />
+                <Typography style={{ display: "inline-block" }}>
+                  A: <AnswerEntry answer={answer} />
+                </Typography>
               </Typography>
             </div>
           );
         })}
       </Typography>
-      {allAnswers.length <= 2 ? (
-        ""
-      ) : allAnswers.length > displayedAns.length ? (
-        <div className="load-more-as-btn">
-          <Button
-            className="load-more-answers-btn"
-            variant="outlined"
-            color="primary"
-            onClick={handleDisplayUpdateClick}
-          >
-            LOAD MORE ANSWERS
-          </Button>
-        </div>
-      ) : (
-        <div className="collapse-btn">
-          <Button variant="outlined" color="primary" onClick={collapseOnClick}>
-            COLLAPSE
-          </Button>
-        </div>
-      )}
-      <AnswersForm productId={productId} question={question} />
+      <div className="al-flex-container">
+        {allAnswers.length <= 2 ? (
+          ""
+        ) : allAnswers.length > displayedAns.length ? (
+          <div className="load-more-as-btn">
+            <Button
+              className="load-more-answers-btn"
+              variant="outlined"
+              color="primary"
+              onClick={handleDisplayUpdateClick}
+            >
+              LOAD MORE ANSWERS
+            </Button>
+          </div>
+        ) : (
+          <div className="collapse-btn">
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={collapseOnClick}
+            >
+              COLLAPSE
+            </Button>
+          </div>
+        )}
+        <AnswersForm productId={productId} question={question} />
+      </div>
     </div>
   );
 };

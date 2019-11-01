@@ -4,8 +4,8 @@ import Typography from "@material-ui/core/Typography";
 
 const SearchBar = ({ searchTerm, setSearchTerm, searchInQuestions }) => {
   return (
-    <div className="search-bar">
-      <Typography variant="h4" style={{ display: "inline-block" }} s>
+    <div class="search-flex-container">
+      <Typography variant="h5" style={{ display: "inline-block" }} s>
         Questions and Answers:
       </Typography>
       <input

@@ -25,11 +25,10 @@ const QuestionEntry = ({ question, answers, productId }) => {
           productId={productId}
           question={question}
         />
-        <Typography variant="caption">
+        <Typography variant="subtitle1">
           <p>
             by {question.asker_name}, {question.question_date} | Helpful?{" "}
-            <span>Yes</span> ({question.question_helpfulness}) |{" "}
-            <span>Report</span>
+            <span>Yes</span> ({question.question_helpfulness})
           </p>
         </Typography>
       </Paper>
