@@ -2,7 +2,6 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 
 const ProductBreakDown = ({ characteristics }) => {
-  console.log("CHARACTERISTIC", characteristics);
   return (
     <div className="product-breakdown-container">
       {Object.keys(characteristics).map(key => {
