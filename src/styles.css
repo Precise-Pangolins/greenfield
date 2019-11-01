@@ -72,7 +72,49 @@ hr {
 }
 
 .questionEntry {
-  border: solid 5px pink;
+  padding: 30px;
+}
+
+.qa-search-bar {
+  height: 30px;
+  width: 700px;
+  margin: 15px;
+}
+
+.submitQbutton {
+  height: 27px;
+  width: 50px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+/* 
+.helpful-button {
+  height: 27px;
+  width: 50px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin: 6px;
+} */
+
+.helpfulNum {
+  display: inline-block;
+  padding: 3px;
+}
+
+.yes-button-spacing {
+  padding: 3px;
+}
+
+.helpful-spacing {
+  padding: 3px;
+}
+
+.load-more-as-btn {
+  margin: 3px;
+}
+
+.collapse-btn {
+  margin: 
 }
 
 .scroll-spy {
