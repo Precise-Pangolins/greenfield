@@ -23,7 +23,6 @@ const RatingBars = ({
           style={{ textDecoration: "none" }}
           onClick={event => {
             event.preventDefault();
-
             handleClearFilter();
           }}
         >

@@ -42,7 +42,9 @@ const RatingDisplay = ({
       {metaData.ratings ? (
         <div className="rating-display-container">
           <div className="rating-star">
-            <h2 className="rating-star-text">{getAverage(metaData.ratings)}</h2>
+            <h2 className="rating-star-text">
+              {getAverage(metaData.ratings).toFixed(1)}
+            </h2>
             <StarRatingsContainer />
           </div>
           <div>
@@ -64,31 +66,6 @@ const RatingDisplay = ({
           <ProductBreakDown characteristics={metaData.characteristics} />
         </div>
       ) : (
-        // <Grid container spacing={2}>
-        //   <Grid item xs={6}>
-        //     {getAverage(metaData.ratings)}
-        //   </Grid>
-        //   <Grid item xs={6}>
-        //     <StarRatingsContainer />
-        //   </Grid>
-        //   <Grid item xs={12}>
-        //     100% of reviews found this helpful
-        //   </Grid>
-        //   <Grid item xs={12}>
-        //     <RatingBars
-        //       total={getTotal(metaData.ratings)}
-        //       ratings={metaData.ratings}
-        //       handleClick={handleFilterRatingsRequest}
-        //       id={productInfo.id}
-        //       handleClearFilter={clearFilter}
-        //       setFilters={setFilters}
-        //       filters={filters}
-        //     />
-        //   </Grid>
-        //   <Grid item xs={12}>
-        //     <ProductBreakDown characteristics={metaData.characteristics} />
-        //   </Grid>
-        // </Grid>
         "loading..."
       )}
     </div>

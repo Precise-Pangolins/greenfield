@@ -3,13 +3,14 @@ import Grid from "@material-ui/core/Grid";
 
 const ProductBreakDown = ({ characteristics }) => {
   return (
-    <div>
-      <Grid container>
-        {Object.keys(characteristics).map(key => {
-          return (
-            <Grid item xs={12}>
-              {key}{" "}
+    <div className="product-breakdown-container">
+      {Object.keys(characteristics).map(key => {
+        return (
+          <div>
+            {key}{" "}
+            <div className>
               <input
+                className="product-breakdown"
                 type="range"
                 name="points"
                 min="0"
@@ -17,10 +18,10 @@ const ProductBreakDown = ({ characteristics }) => {
                 key={key}
                 value={characteristics[key]}
               ></input>
-            </Grid>
-          );
-        })}
-      </Grid>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
