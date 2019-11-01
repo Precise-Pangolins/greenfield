@@ -44,9 +44,9 @@ Currently the project is only set up to run on AWS EC2.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](https://github.com/Precise-Pangolins/greenfield/graphs/contributors) - Front end framework 
+* [Redux](https://redux.js.org/introduction/getting-started) - State management
+* [MaterialUI] (https://material-ui.com/getting-started/installation/) - CSS front end framework
 
 
 ## Authors
