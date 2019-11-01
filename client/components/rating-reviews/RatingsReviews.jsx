@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -5,15 +6,20 @@ import Grid from "@material-ui/core/Grid";
 import Reviews from "./reviews/Reviews.js";
 import Ratings from "./ratings/RatingDisplay";
 import queryString from "querystring";
+
 let productId = queryString.parse(location.search)["?productId"] || 1;
+
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    margin: "0, auto",
+    paddingLeft: "20%",
+    paddingRight: "20%"
   },
   paper: {
     padding: theme.spacing(1),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary
   }
 }));
@@ -29,7 +35,7 @@ const RatingsReviews = ({
   reviews
 }) => {
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState("relevant");
+  const [sort, setSort] = useState('relevant');
   const [filters, setFilters] = useState({});
 
   const filterByStar = filters => {
@@ -56,39 +62,35 @@ const RatingsReviews = ({
   };
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id='ratings-reviews'>
       <Grid container spacing={0}>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>Ratings and Reviews</Paper>
+          <h2>Ratings and Reviews</h2>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}>
-            <Ratings
-              productInfo={productInfo}
-              handleGetRatingsRequest={handleGetRatingsRequest}
-              metaData={metaData}
-              filters={filters}
-              setFilters={setFilters}
-              handleFilterRatingsRequest={filterByStar}
-              handleClearFilterRequest={handleClearFilterRequest}
-            />
-          </Paper>
+          <Ratings
+            productInfo={productInfo}
+            handleGetRatingsRequest={handleGetRatingsRequest}
+            metaData={metaData}
+            filters={filters}
+            setFilters={setFilters}
+            handleFilterRatingsRequest={filterByStar}
+            handleClearFilterRequest={handleClearFilterRequest}
+          />
         </Grid>
         <Grid item xs={12} sm={8}>
-          <Paper className={classes.paper}>
-            <Reviews
-              reviews={reviews}
-              handleGetReviewsRequest={handleGetReviewsRequest}
-              handleSortReviewsRequest={handleSortReviewsRequest}
-              handleSortAndFilter={filterByStar}
-              metaData={metaData}
-              page={page}
-              setPage={setPage}
-              sort={sort}
-              setSort={setSort}
-              filters={filters}
-            />
-          </Paper>
+          <Reviews
+            reviews={reviews}
+            handleGetReviewsRequest={handleGetReviewsRequest}
+            handleSortReviewsRequest={handleSortReviewsRequest}
+            handleSortAndFilter={filterByStar}
+            metaData={metaData}
+            page={page}
+            setPage={setPage}
+            sort={sort}
+            setSort={setSort}
+            filters={filters}
+          />
         </Grid>
       </Grid>
     </div>

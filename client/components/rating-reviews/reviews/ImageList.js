@@ -2,9 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
+import ImageModal from "../../shared/ImageModal.jsx";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,9 +49,11 @@ export default function SingleLineGridList({ tileData }) {
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
         {tileData.map(tile => (
-          <GridListTile key={tile.id}>
-            <img src={tile.url} alt={tile.url} />
-          </GridListTile>
+          <div key={tile.id}>
+            <GridListTile key={tile.id}>
+              <ImageModal url={tile.url} />
+            </GridListTile>
+          </div>
         ))}
       </GridList>
     </div>
