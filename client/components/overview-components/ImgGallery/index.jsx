@@ -2,27 +2,53 @@ import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import queryString from 'querystring';
 import Carousel from 'react-image-gallery';
+import $ from 'jquery';
 
 import Thumbnails from './Thumbnails.jsx';
 import StyleSelector from '../StyleSelector/index.jsx';
 
 let productId = queryString.parse(location.search)['?productId'] || 1;
 
-function ImgGallery({ currentStyle = {}, info, images = [] }) {
-  currentStyle = images[0] || [];
+function ImgGallery({ currentStyle, info, images = [] }) {
+  currentStyle = currentStyle || images[0] || [];
   let [isFullScreen, setIsFullScreen] = useState(false);
-  // let [newproduct = productId, setNewProduct] = useState(productId);
+
+  // let [initialImg, setInitialImg] = useState(
+  //   (images[0] ? images[0].photos : []).map(photo => {
+  //     console.log({ images });
+  //     return { original: photo.url, thumbnail: photo.thumbnail_url };
+  //   })
+  // );
+
   let image = useRef(null); // updating  won't initiate a  re-render
-  let modifiedImgs = (currentStyle.photos || []).map(photo => {
+
+  // useEffect(() => {
+  //   setInitialImg();
+  //   return <Carousel items={initialImg} />;
+  // }, []);
+
+  let modifiedImgs = (currentStyle.photos || initialImg || []).map(photo => {
     return { original: photo.url, thumbnail: photo.thumbnail_url };
   });
-  console.log({ photo: images });
+
+  function onMouseOver(e) {
+    $('.tile').on('mousemove', function(e) {
+      $(this).css({
+        'transform-origin':
+          ((e.pageX - $(this).offset().left) / $(this).width()) * 50 +
+          '% ' +
+          ((e.pageY - $(this).offset().top) / $(this).height()) * 50 +
+          '%'
+      });
+    });
+  }
 
   function handleClick(event) {
-    console.log({ event });
+    event.persist();
     if (isFullScreen) {
       const img = event.target;
       image.current = img;
+      img.className = 'tile';
       if (img.style.transform === 'scale(2.5)') {
         img.style.transform = 'scale(1)';
         img.style.cursor = 'zoom-in';
@@ -30,7 +56,7 @@ function ImgGallery({ currentStyle = {}, info, images = [] }) {
       }
       img.style.transform = 'scale(2.5)';
       img.style.cursor = 'zoom-out';
-      // img.style.transformOrigin = `${event.screenX}% ${event.screenY}% 0`;
+      onMouseOver(event);
     }
   }
 
@@ -44,6 +70,7 @@ function ImgGallery({ currentStyle = {}, info, images = [] }) {
       image.current.style.cursor = 'auto';
     }
   }
+
   return (
     <Carousel
       onScreenChange={onScreenChange}
