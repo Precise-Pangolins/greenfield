@@ -23,9 +23,13 @@ const StarRatings = ({ metaData }) => {
   };
 
   const getAverage = ratings => {
-    const size = Object.keys(ratings).length;
-    let total = getTotal(ratings);
-    return total / size;
+    let totalVotes = getTotal(ratings);
+    let totalRatings = 0
+    for(let rating in ratings){
+      totalRatings+= ratings[rating]*rating
+    }
+    
+    return totalRatings / totalVotes;
   };
 
   return (
