@@ -209,3 +209,50 @@ hr {
   flex-direction: row;
   justify-content: center;
 }
+.rating-display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 20px;
+}
+.rating-star {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: -70px;
+}
+
+.rating-star-text {
+  padding-bottom: 20px;
+  margin-top: -15px;
+  font-size: 65px;
+  padding-right: 10px;
+}
+.ratingBars {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.progress-container {
+  margin: 5px 5px 5px 0;
+}
+.rating-percent {
+  margin-bottom: 10px;
+}
+
+.star-progressbar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px;
+  height: 10px;
+  margin-left: 3px;
+  background-color: rgb(240, 232, 232);
+}
+
+progress::-webkit-progress-bar {
+  background-color: #c9cbcc;
+}
+progress::-webkit-progress-value {
+  /* style rules */
+  background-color: #88e264;
+}
