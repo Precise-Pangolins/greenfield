@@ -1,4 +1,5 @@
 node_modules/
 dist/bundle.js
 coverage
+./utils/imageLoad.config.js
 imageLoad.config.js

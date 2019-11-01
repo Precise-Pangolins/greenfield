@@ -29,35 +29,42 @@ const RatingDisplay = ({
     let total = getTotal(ratings);
     return total / size;
   };
-
+  console.log("META", metaData);
+  const recommendPercent = obj => {
+    let total = 0;
+    Object.keys(obj).map(key => {
+      total += obj[key];
+    });
+    return Math.floor((obj[1] / total) * 100);
+  };
   return (
     <div>
       {metaData.ratings ? (
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            {getAverage(metaData.ratings)}
-          </Grid>
-          <Grid item xs={6}>
+        <div className="rating-display-container">
+          <div className="rating-star">
+            <h2 className="rating-star-text">
+              {getAverage(metaData.ratings).toFixed(1)}
+            </h2>
             <StarRatingsContainer />
-          </Grid>
-          <Grid item xs={12}>
-            100% of reviews found this helpful
-          </Grid>
-          <Grid item xs={12}>
-            <RatingBars
-              total={getTotal(metaData.ratings)}
-              ratings={metaData.ratings}
-              handleClick={handleFilterRatingsRequest}
-              id={productInfo.id}
-              handleClearFilter={clearFilter}
-              setFilters={setFilters}
-              filters={filters}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <ProductBreakDown characteristics={metaData.characteristics} />
-          </Grid>
-        </Grid>
+          </div>
+          <div>
+            {" "}
+            <p>
+              {recommendPercent(metaData.recommended)} % of reviews recommend
+              this product
+            </p>
+          </div>
+          <RatingBars
+            total={getTotal(metaData.ratings)}
+            ratings={metaData.ratings}
+            handleClick={handleFilterRatingsRequest}
+            id={productInfo.id}
+            handleClearFilter={clearFilter}
+            setFilters={setFilters}
+            filters={filters}
+          />
+          <ProductBreakDown characteristics={metaData.characteristics} />
+        </div>
       ) : (
         "loading..."
       )}
