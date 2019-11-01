@@ -150,22 +150,24 @@ class AnswersForm extends React.Component {
                   Upload
                 </Button>
               </div>
-              <div class='submit-close-btn-flex-container'>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={this.handleSubmitClick}
-                >
-                  Submit
-                </Button>
+              <div>
+                <div class="submit-close-btn-flex-container">
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.handleSubmitClick}
+                  >
+                    Submit
+                  </Button>
 
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  onClick={this.handleClose}
-                >
-                  Close
-                </Button>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={this.handleClose}
+                  >
+                    Close
+                  </Button>
+                </div>
               </div>
             </div>
           </Container>

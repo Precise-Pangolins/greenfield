@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import QHelpful from "./QHelpful.jsx";
 import { Typography } from "@material-ui/core";
+import formatDate from "../../../src/utils/formatDate.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,8 +28,8 @@ const QuestionEntry = ({ question, answers, productId }) => {
         />
         <Typography variant="subtitle1">
           <p>
-            by {question.asker_name}, {question.question_date} | Helpful?{" "}
-            <span>Yes</span> ({question.question_helpfulness})
+            by {question.asker_name}, {formatDate(question.question_date)} |
+            Helpful? <span>Yes</span> ({question.question_helpfulness})
           </p>
         </Typography>
       </Paper>

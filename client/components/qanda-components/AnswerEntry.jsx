@@ -2,6 +2,7 @@ import React from "react";
 import AHelpful from "./AHelpful.jsx";
 import Reported from "./Reported.jsx";
 import { Typography } from "@material-ui/core";
+import formatDate from "../../../src/utils/formatDate.js";
 
 const AnswerEntry = ({ answer }) => {
   console.log("answer in AE", answer);
@@ -12,7 +13,7 @@ const AnswerEntry = ({ answer }) => {
       </Typography>
       <div>
         <Typography variant="caption">
-          {answer.answerer_name} {answer.date} |
+          {answer.answerer_name} ({formatDate(answer.date)}) |
         </Typography>
         <Typography style={{ display: "inline-block" }}>
           <AHelpful answer={answer} />

@@ -138,20 +138,22 @@ class QuestionForm extends React.Component {
                 For authentication reasons, you will not be emailed
               </p>
             </div>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={this.handleSubmitClick}
-            >
-              Submit Question
-            </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              onClick={this.handleClose}
-            >
-              Close
-            </Button>
+            <div className="submit-close-btn-flex-container">
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={this.handleSubmitClick}
+              >
+                Submit Question
+              </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                onClick={this.handleClose}
+              >
+                Close
+              </Button>
+            </div>
           </Container>
         </Dialog>
       </div>

@@ -78,6 +78,7 @@ const AnswersList = ({ answers, productId, question }) => {
             </Button>
           </div>
         )}
+
         <AnswersForm productId={productId} question={question} />
       </div>
     </div>
