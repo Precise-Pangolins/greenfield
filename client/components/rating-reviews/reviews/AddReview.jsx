@@ -16,7 +16,6 @@ import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 import { number } from "prop-types";
 
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import AddIcon from "@material-ui/icons/Add";
 import ImageUpload from "../../shared/ImageUpload.jsx";
 
