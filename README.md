@@ -29,8 +29,8 @@ Given business a requirement docs and a mockup, this project was a a full redesi
 
 ### Quality Control and SLAs
   - Time to First Paint: 0.5 seconds
-  - Time to First Meaningful Paint: 2.0 seconds
-  - Time to Interactive: 2.5 seconds
+  - Time to First Meaningful Paint: 0.7 seconds
+  - Time to Interactive: 1.0 seconds
 
 ## Getting Started
 
