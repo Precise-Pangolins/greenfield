@@ -67,7 +67,7 @@ const RatingsReviews = ({
         <Grid item xs={12}>
           <h2>Ratings and Reviews</h2>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12}  md={4}>
           <Ratings
             productInfo={productInfo}
             handleGetRatingsRequest={handleGetRatingsRequest}
@@ -78,7 +78,7 @@ const RatingsReviews = ({
             handleClearFilterRequest={handleClearFilterRequest}
           />
         </Grid>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} md={8}>
           <Reviews
             reviews={reviews}
             handleGetReviewsRequest={handleGetReviewsRequest}
