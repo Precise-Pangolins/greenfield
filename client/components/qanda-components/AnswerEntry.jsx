@@ -5,7 +5,6 @@ import { Typography } from "@material-ui/core";
 import formatDate from "../../../src/utils/formatDate.js";
 
 const AnswerEntry = ({ answer }) => {
-  console.log("answer in AE", answer);
   return (
     <div>
       <Typography style={{ display: "inline-block" }} variant="body2">

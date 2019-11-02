@@ -35,7 +35,7 @@ describe("get info reducer", function() {
       type: "FETCH_PRODUCT_INFO_SUCCESS",
       payload: emptyProduct
     });
-    console.log({ info });
+
     return expect(info.id).toBe(0);
   });
 });

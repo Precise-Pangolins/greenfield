@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import QuestionEntry from "./QuestionEntry.jsx";
 import QuestionForm from "./QuestionForm.jsx";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+
 import queryString from "querystring";
 import uuidv4 from "uuidv4";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
-
-const useStyles = makeStyles(theme => ({
-  button: {
-    margin: theme.spacing(1),
-    flexGrow: 1,
-    minWidth: 600
-  },
-  input: {
-    display: "none"
-  }
-}));
 
 const QuestionsList = ({
   questions,
@@ -54,12 +42,10 @@ const QuestionsList = ({
             variant="outlined"
             color="primary"
             onClick={() => {
-              console.log("counter here", counter);
               setCounter(counter + 2);
               questionsToDisplay(allQuestions);
             }}
           >
-            {/* {console.log("questions after getTwoMoreQs", questions)}; Show */}
             Show More Questions
           </Button>
         </div>
@@ -90,7 +76,6 @@ const QuestionsList = ({
             variant="outlined"
             color="primary"
             onClick={() => {
-              console.log("counter here", counter);
               setCounter(counter + 2);
               questionsToDisplay(allQuestions);
             }}

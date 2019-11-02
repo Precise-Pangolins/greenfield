@@ -2,7 +2,7 @@
   "name": "greenfield",
   "version": "1.0.0",
   "description": "FEC Project",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "jest --collectCoverage=true",
     "build-dev": "webpack -d --mode development",

@@ -3,9 +3,6 @@ import axios from "axios";
 import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
-//AHelpful receives the current answer in the answer entry,
-//from AE component as props.
-
 class AHelpful extends React.Component {
   constructor(props) {
     super(props);
@@ -14,8 +11,6 @@ class AHelpful extends React.Component {
       currentAnswer: "",
       isButtonDisabled: false
     };
-
-    //bind methods here:
   }
 
   updateAnswerHelpfulness(answer_id) {
