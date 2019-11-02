@@ -76,7 +76,7 @@ Currently the project is only set up to run on AWS EC2.
 
 * [React](https://github.com/Precise-Pangolins/greenfield/graphs/contributors) - Front end framework 
 * [Redux](https://redux.js.org/introduction/getting-started) - State management
-* [MaterialUI] (https://material-ui.com/getting-started/installation/) - CSS front end framework
+* [MaterialUI](https://material-ui.com/getting-started/installation) - CSS front end framework
 
 
 ## Authors
