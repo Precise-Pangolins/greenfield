@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const Parser = require("body-parser");
 const app = express();
-const compression = require("compression ")
+const compression = require("compression")
 const port = 3000;
 
 // app.get('/', (req, res) => res.send('Hello World!'));
