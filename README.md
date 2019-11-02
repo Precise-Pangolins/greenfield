@@ -51,8 +51,8 @@ If you have nodemon in your environment you can run the following npm scripts to
 npm run react-dev & server-dev
 
 otherwise:
-- >npm run react-dev 
-- >node server/index.js
+- `npm run react-dev` 
+- `node server/index.js`
 
 
 ## Running the tests
