@@ -9,7 +9,6 @@ const getTwoMoreQs = (product_id, page = 1, count = 2) => {
         )
         // .get(`http://18.223.1.30/qa/8/?&page=3&count=2`)
         .then(({ data }) => {
-          console.log("data in getTwoMoreAC", data.results);
           dispatch({ type: "GET_TWO_MORE_QS", questions: data.results });
         })
         .catch(err => {

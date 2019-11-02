@@ -1,13 +1,12 @@
 {
   "name": "greenfield",
   "version": "1.0.0",
-  "description": "FEC Project",
-  "main": "index.js",
+  "description": "eCommerce website",
+  "main": "server/index.js",
   "scripts": {
     "test": "jest --collectCoverage=true",
-    "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development",
+    "start": "build-prod & pm2 server/index.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch"
   },
@@ -15,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/Precise-Pangolins/greenfield.git"
   },
-  "author": "",
+  "author": "Richard Horvath, Brittany Yee, Lauren Albert",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Precise-Pangolins/greenfield/issues"
@@ -72,7 +71,7 @@
       "enzyme-to-json/serializer"
     ],
     "setupFiles": [
-      "./client/tests/setUpTest.js"
+      "./tests/setUpTest.js"
     ]
   }
 }
