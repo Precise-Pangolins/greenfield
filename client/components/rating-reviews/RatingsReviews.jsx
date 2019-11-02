@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Reviews from "./reviews/Reviews.js";
+import Reviews from "./reviews/Reviews.jsx";
 import Ratings from "./ratings/RatingDisplay";
 import queryString from "querystring";
 
@@ -32,10 +32,10 @@ const RatingsReviews = ({
   productInfo,
   reviews
 }) => {
+  /**Shared state values  **/
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState("relevant");
   const [filters, setFilters] = useState({});
-
   const filterByStar = filters => {
     handleFilterReviewsRequest(productId, filters, sort);
   };
@@ -51,13 +51,6 @@ const RatingsReviews = ({
     handleGetRatingsRequest(productId);
   }, []);
 
-  const getTotal = ratings => {
-    let total = 0;
-    for (let rating in ratings) {
-      total += ratings[rating];
-    }
-    return total;
-  };
   const classes = useStyles();
   return (
     <div className={classes.root} id="ratings-reviews">
