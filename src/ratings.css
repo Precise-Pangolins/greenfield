@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   padding-top: 20px;
-  margin-right: 50px;
+  margin-right: 10px;
 }
 .rating-star {
   display: flex;
@@ -60,17 +60,15 @@ progress::-webkit-progress-value {
   transition: opacity 0.2s;
 }
 
-.slider:hover {
-  opacity: 1;
-}
-
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 10px;
   height: 25px;
-  background: #88e264;
-  cursor: pointer;
+  background: #fd0101;
+  border: none;
+  border-radius: 30%;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
 }
 .slider::-moz-range-thumb {
   width: 15px;
