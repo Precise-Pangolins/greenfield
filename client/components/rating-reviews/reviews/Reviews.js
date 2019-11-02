@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Review from "./Review.js";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import AddReview from "../../../../src/redux/containers/ReviewsContainers/addReviews.js";
-import Grid from "@material-ui/core/Grid";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import queryString from "querystring";
+let productId = queryString.parse(location.search)["?productId"] || 1;
+
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -32,10 +34,10 @@ const Reviews = ({
     }
     return total;
   };
-  const reviewScroll = { height: "50vh", overflow: "auto" };
 
   return (
     <div className="reviews">
+      {/** Renders only the review button in the event the product has no reviews**/}
       {reviews.length === 0 ? (
         <AddReview />
       ) : (
@@ -58,6 +60,7 @@ const Reviews = ({
             </h3>
           </div>
           <div
+            /**Applies scroll css class to the reviews container if user loads more than 2 reviews **/
             className={reviews.length > 2 ? "reviews-list" : ""}
             id="reviews-list"
           >
@@ -73,9 +76,10 @@ const Reviews = ({
             {window.previousLength === reviews.length ? null : (
               <Button
                 onClick={() => {
+                  /**Keeps track of previous length of reviews. Once the user has loaded all of the reviews from the server the number wille be the same and the review button disappear**/
                   window.previousLength = reviews.length;
                   setPage(page + 1);
-                  handleGetReviewsRequest(7, page + 1, 2, sort);
+                  handleGetReviewsRequest(productId, page + 1, 2, sort);
                 }}
                 variant="outlined"
                 className={classes.button}
