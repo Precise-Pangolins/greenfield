@@ -3,10 +3,10 @@
 Greenfield eCommerce website
 
 ## Description
-Given business a requirement docs and a mockup, this project was a a full design of redesign of a retail portal. The focus of the project was to produce an MVP in approximately a two week time frame. The main focus was the Item Detail page which for us comprised of three sections: 
+Given business a requirement docs and a mockup, this project was a a full redesign of a retail web portal. The focus of the project was to produce an MVP in approximately a two week time frame. The main focus was the Item Detail page which for us comprised of three sections: 
   - Product Details/Overview 
   - Ratings & Reviews 
-  - Questions & Answers - High Priority
+  - Questions & Answers
 
 ### The overview section contains the following modules:
 1. Image gallery 
@@ -14,18 +14,18 @@ Given business a requirement docs and a mockup, this project was a a full design
 3. Style selector
 4. Add to cart
 
+### Questions and Answers Section:
+1. View questions
+2. Search for a question
+3. Asking a question
+4. Answering a question
+
 ### Ratings and Reviews section contains:
 1. Write new review
 2. Reviews List
 3. Sorting 
 4. Rating Breakdown
 5. Product Breakdown
-
-### Questions and Answers Section:
-1. View questions
-2. Search for a question
-3. Asking a question
-4. Answering a question
 
 ### Quality Control and SLAs
   - Time to First Paint: 0.5 seconds
@@ -48,16 +48,17 @@ Otherwise, comment out the APIkey import and relevant variables inside of ImageU
 
 
 If you have nodemon in your environment you can run the following npm scripts to launch the program:
-npm run react-dev & server-dev
+* `npm run react-dev` 
+* `npm run server-dev`
 
 otherwise:
-- `npm run react-dev` 
-- `node server/index.js`
+* `npm run react-dev` 
+* `node server/index.js`
 
 
 ## Running the tests
 
-Our project makes use of Jest, enzyme and pupeteer. All tests can be run using the command **npm jest**
+Our project makes use of Jest, Enzyme and Puppeteer. All tests can be run using the command **`npm jest`**
 
 ### Break down into end to end tests
 
