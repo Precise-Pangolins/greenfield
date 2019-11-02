@@ -82,7 +82,7 @@ Currently the project is only set up to run on AWS EC2.
 ## Authors
 
 **Brittany Yee** 
-**Lauren Albert**
+ **Lauren Albert**
 **Richard Horvath**
 
 See also the list of [contributors](https://github.com/Precise-Pangolins/greenfield/graphs/contributors) who participated in this project.
