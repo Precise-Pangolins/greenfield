@@ -71,7 +71,7 @@
       "enzyme-to-json/serializer"
     ],
     "setupFiles": [
-      "./client/tests/setUpTest.js"
+      "./tests/setUpTest.js"
     ]
   }
 }

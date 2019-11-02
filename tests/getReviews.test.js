@@ -1,4 +1,4 @@
-import getReviews from "../../src/redux/actionCreators/ratings-reviews/getReviews/index.js";
+import getReviews from "../src/redux/actionCreators/ratings-reviews/getReviews/index.js";
 
 describe("Get Reviews Actions and Creators", function() {
   it("Should retrieve reviews based on item ID", async () => {
