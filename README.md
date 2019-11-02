@@ -1,9 +1,9 @@
 # Project Title
 
-Greenfield Hack Reactor Front End Capstone
+Greenfield eCommerce website
 
 ## Description
-Hack Reactor NYC Project Greenfield comprises a complete redesign of a retail portal. The focus of the project was to produce an MVP in approximately a two week time frame. The main focus was the Item Detail page which for us comprised of three sections: 
+Given business a requirement docs and a mockup, this project was a a full design of redesign of a retail portal. The focus of the project was to produce an MVP in approximately a two week time frame. The main focus was the Item Detail page which for us comprised of three sections: 
   - Product Details/Overview 
   - Ratings & Reviews 
   - Questions & Answers - High Priority
