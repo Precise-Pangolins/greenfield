@@ -5,7 +5,7 @@ const getTwoMoreQs = (product_id, page = 1, count = 2) => {
     return (
       axios
         .get(
-          `http://18.223.1.30/qa/${product_id}/?&page=${page}&count=${count}`
+          `http://3.134.102.30/qa/${product_id}/?&page=${page}&count=${count}`
         )
         // .get(`http://18.223.1.30/qa/8/?&page=3&count=2`)
         .then(({ data }) => {

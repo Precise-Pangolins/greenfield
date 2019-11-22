@@ -67,7 +67,7 @@ class AnswersForm extends React.Component {
 
   componentDidMount(productId) {
     axios
-      .get(`http://18.223.1.30/products/${this.props.productId}`)
+      .get(`http://3.134.102.30/products/${this.props.productId}`)
       .then(data => {
         this.setState({
           currentProdName: data.data.name

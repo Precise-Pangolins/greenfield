@@ -3,7 +3,7 @@ import axios from "axios";
 const markQHelpful = question_id => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/qa/${question_id}/helpful`)
+      .get(`http://3.134.102.30/qa/${question_id}/helpful`)
       .then(() => {
         dispatch({ type: "INCREMENT_Q_HELPFUL" });
       })

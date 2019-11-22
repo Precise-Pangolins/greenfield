@@ -51,7 +51,7 @@ class QuestionForm extends React.Component {
     newObj.email = this.state.email;
 
     axios
-      .post(`http://18.223.1.30/qa/${this.props.productId}`, newObj)
+      .post(`http://3.134.102.30/qa/${this.props.productId}`, newObj)
       .then(() => {
         let temp = {
           body: "",
@@ -67,7 +67,7 @@ class QuestionForm extends React.Component {
 
   componentDidMount(productId) {
     axios
-      .get(`http://18.223.1.30/products/${this.props.productId}`)
+      .get(`http://3.134.102.30/products/${this.props.productId}`)
       .then(data => {
         this.setState({
           currentProdName: data.data.name
