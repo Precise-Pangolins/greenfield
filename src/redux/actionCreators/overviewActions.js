@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 import {
   fetchProductStylesSuccess,
@@ -11,9 +11,9 @@ import {
   postProductToCart,
   postProductToCartSuccess,
   postProductToCartFail
-} from '../actions/overviewActionCreators.js';
+} from "../actions/overviewActionCreators.js";
 
-const apiUrl = 'http://18.223.1.30';
+const apiUrl = "http://3.134.102.30";
 
 export const getProdInfo = id => {
   return dispatch => {
@@ -25,7 +25,7 @@ export const getProdInfo = id => {
       })
       .catch(err => {
         dispatch(fetchProductInfoFail());
-        console.log('error getting product info', err);
+        console.log("error getting product info", err);
         throw err;
       });
   };
@@ -39,7 +39,7 @@ export const getProdList = () => {
         dispatch(fetchProductListSuccess(data));
       })
       .catch(err => {
-        console.log('error getting product list', err);
+        console.log("error getting product list", err);
         throw err;
       });
   };
@@ -55,7 +55,7 @@ export const getProdStyles = id => {
       })
       .catch(err => {
         dispatch(fetchProductStylesFail());
-        console.log('error getting product styles', err);
+        console.log("error getting product styles", err);
         throw err;
       });
   };
@@ -76,7 +76,7 @@ export const postToCart = (userSession, productId) => {
       })
       .catch(err => {
         // dispatch data loaded; loading : false,
-        console.log('error posting to cart', err);
+        console.log("error posting to cart", err);
         throw err;
       });
   };

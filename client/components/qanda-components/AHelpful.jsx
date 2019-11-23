@@ -16,7 +16,7 @@ class AHelpful extends React.Component {
   updateAnswerHelpfulness(answer_id) {
     axios
       .put(
-        `http://18.223.1.30/qa/answer/${this.state.currentAnswer.id}/helpful`
+        `http://3.134.102.30/qa/answer/${this.state.currentAnswer.id}/helpful`
       )
       .then(() => {
         this.setState({ helpfulnessNumber: this.state.helpfulnessNumber + 1 });

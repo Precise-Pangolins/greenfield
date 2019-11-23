@@ -4,7 +4,7 @@ const ratings = require("../../../actions/RatingActions/getProductMeta.js");
 const getReviews = id => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${id}/meta`)
+      .get(`http://3.134.102.30/reviews/${id}/meta`)
       .then(({ data }) => {
         dispatch(ratings(data));
       })

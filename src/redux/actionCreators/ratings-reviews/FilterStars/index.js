@@ -4,7 +4,7 @@ const action = require("../../../actions/RatingActions/filterStars.js");
 const filterStars = (id, filters, sort = "relevant") => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${id}/list?count=100000&sort=${sort}`)
+      .get(`http://3.134.102.30/reviews/${id}/list?count=100000&sort=${sort}`)
       .then(({ data }) => {
         const reviews = [];
         data.results.map(review => {

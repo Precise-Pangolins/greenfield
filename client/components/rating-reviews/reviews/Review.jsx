@@ -123,7 +123,7 @@ const Review = ({ review }) => {
                   event.preventDefault();
                   setHelpful(helpful + 1);
                   Axios.put(
-                    `http://18.223.1.30/reviews/helpful/${review.review_id}`
+                    `http://3.134.102.30/reviews/helpful/${review.review_id}`
                   ).then(() => {
                     sethelpClick(true);
                   });

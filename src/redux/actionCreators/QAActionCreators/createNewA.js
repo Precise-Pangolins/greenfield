@@ -3,7 +3,7 @@ import axios from "axios";
 const createNewAnswer = question_id => {
   return dispatch => {
     return axios
-      .post(`http://18.223.1.30/qa/${question_id}/answers`)
+      .post(`http://3.134.102.30/qa/${question_id}/answers`)
       .then(() => {
         dispatch({ type: "CREATE_NEW_ANSWER", answer: answer });
       })
