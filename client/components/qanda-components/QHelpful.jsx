@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
+
 import Button from "@material-ui/core/Button";
 
 //QHelpful receives the current question in the question entry,

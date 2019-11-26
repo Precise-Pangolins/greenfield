@@ -5,9 +5,6 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 
 //Receives current product_id from QuestionList as props
 
@@ -45,8 +42,6 @@ class QuestionForm extends React.Component {
 
   //on submit click, will post to axios with obj with all entered data.
   //then reset the state to empty for next question submission.
-
-  //currently not rerendering the page again after post but prob should?
   handleSubmitClick(event) {
     event.preventDefault();
     let newObj = {};

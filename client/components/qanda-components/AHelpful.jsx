@@ -15,9 +15,11 @@ class AHelpful extends React.Component {
       isButtonDisabled: false
     };
 
-    //bind methods here:
+    this.updateAnswerHelpfulness = this.updateAnswerHelpfulness.bind(this);
   }
 
+  //after successful put request to update the answer's helpfulness,
+  //setState to increment the helpfulness by 1 and disable further button clicks
   updateAnswerHelpfulness(answer_id) {
     axios
       .put(

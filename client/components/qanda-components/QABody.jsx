@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import QuestionsListContainer from "../../../src/redux/containers/QAContainers/QuestionsListContainer.js";
 import SearchContainer from "../../../src/redux/containers/QAContainers/SearchContainer.js";
 import queryString from "querystring";
-import Typography from "@material-ui/core/Typography";
 
 let productId = queryString.parse(location.search)["?productId"] || 1;
 
@@ -14,7 +13,8 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
   const [initialQsToLoad, setInitialQsToLoad] = useState([]);
 
   const searchInQuestions = searchTerm => {
-    let results = []; //questions that meet search criteria
+    //Questions that meet search criteria
+    let results = [];
 
     for (let i = 0; i < questions.length; i++) {
       let currentQuestion = questions[i];
@@ -31,7 +31,7 @@ const QABody = ({ questions, getAllQuestionsInitialRequest }) => {
     setInitialQsToLoad(initialQs);
   };
 
-  //puts all qs in store
+  //Puts all qs in store on page load
   useEffect(() => {
     getAllQuestionsInitialRequest(productId, 1, 1000);
   }, [productId]);

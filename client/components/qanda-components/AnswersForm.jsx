@@ -1,14 +1,9 @@
 import React from "react";
 import axios from "axios";
-
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import { PassThrough } from "stream";
 
 //get prod id from QL (passed all the way down)
 
@@ -23,7 +18,7 @@ class AnswersForm extends React.Component {
       photos: "",
       open: false
     };
-    //bind methods here:
+
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -39,7 +34,6 @@ class AnswersForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log("event value in handleChangeAF", event.target.value);
     let placeholder = {};
     placeholder[event.target.name] = event.target.value;
     this.setState(placeholder);

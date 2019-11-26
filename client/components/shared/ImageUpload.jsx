@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import APIKey from "./imageLoad.config.js";
+// import APIKey from "./imageLoad.config.js";
 /***HOW TO USE****/
 
 /***move photos and setPhotos state to parent form, send both back down as props using the same naming.
@@ -21,7 +21,7 @@ const ImageUpload = ({ photos, setPhotos }) => {
 
       data.append("image", file);
 
-      return axios.post(`https://api.imgbb.com/1/upload?key=${APIKey}`, data);
+      // return axios.post(`https://api.imgbb.com/1/upload?key=${APIKey}`, data);
     });
 
     Promise.all(imgURLS)

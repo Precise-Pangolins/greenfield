@@ -18,7 +18,7 @@ class Reported extends React.Component {
       isButtonDisabled: false,
       buttonText: "Report"
     };
-    //bind method here:
+
     this.reportAnswer = this.reportAnswer.bind(this);
   }
 
