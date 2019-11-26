@@ -5,7 +5,7 @@ const getReviews = (id, page = 1, count = 2, sort = "relevance") => {
   return dispatch => {
     return axios
       .get(
-        `http://18.223.1.30/reviews/${id}/list?page=${page}&count=${count}&sort=${sort}`
+        `http://3.134.102.30/reviews/${id}/list?page=${page}&count=${count}&sort=${sort}`
       )
       .then(({ data }) => {
         dispatch(getAction(data.results));

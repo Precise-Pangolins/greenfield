@@ -34,7 +34,6 @@ class QuestionForm extends React.Component {
   }
 
   handleChange(event) {
-    console.log("event value in handleChange", event.target.value);
     let placeholder = {};
     placeholder[event.target.name] = event.target.value;
     this.setState(placeholder);
@@ -50,7 +49,7 @@ class QuestionForm extends React.Component {
     newObj.email = this.state.email;
 
     axios
-      .post(`http://18.223.1.30/qa/${this.props.productId}`, newObj)
+      .post(`http://3.134.102.30/qa/${this.props.productId}`, newObj)
       .then(() => {
         let temp = {
           body: "",
@@ -66,7 +65,7 @@ class QuestionForm extends React.Component {
 
   componentDidMount(productId) {
     axios
-      .get(`http://18.223.1.30/products/${this.props.productId}`)
+      .get(`http://3.134.102.30/products/${this.props.productId}`)
       .then(data => {
         this.setState({
           currentProdName: data.data.name

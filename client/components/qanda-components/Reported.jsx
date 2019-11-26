@@ -24,10 +24,10 @@ class Reported extends React.Component {
 
   reportAnswer(answer_id) {
     axios
-      .put(`http://18.223.1.30/qa/answer/${this.state.currentAnswer.id}/report`)
-      .then(() => {
-        console.log("succesfully reported answer");
-      })
+      .put(
+        `http://3.134.102.30/qa/answer/${this.state.currentAnswer.id}/report`
+      )
+      .then(() => {})
       .catch(err => {
         console.log("err in put request", err);
       });

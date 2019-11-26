@@ -6,7 +6,7 @@ const parseDate = require("../../../../utils/formatDate.js");
 const addReview = (id, review) => {
   return dispatch => {
     return axios
-      .post(`http://18.223.1.30/reviews/${id}/`, review)
+      .post(`http://3.134.102.30/reviews/${id}/`, review)
       .then(data => {
         let obj = { ...review };
         let photos = review.photos.map(url => {

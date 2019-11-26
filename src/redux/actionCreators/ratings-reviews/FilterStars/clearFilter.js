@@ -4,7 +4,7 @@ const getAction = require("../../../actions/RatingActions/clearFilter.js");
 const getReviews = (id, page = 1) => {
   return dispatch => {
     return axios
-      .get(`http://18.223.1.30/reviews/${id}/list?page=${page}&count=2`)
+      .get(`http://3.134.102.30/reviews/${id}/list?page=${page}&count=2`)
       .then(({ data }) => {
         dispatch(getAction(data.results));
       })

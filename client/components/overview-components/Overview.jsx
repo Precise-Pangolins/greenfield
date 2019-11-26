@@ -1,25 +1,25 @@
-import React, { Component, useEffect, useState, useRef } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import queryString from 'querystring';
+import React, { Component, useEffect, useState, useRef } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import queryString from "querystring";
 
-import Description from './ProductDescription';
-import Features from './Features';
-import AddToCartModal from '../overview-components/AddToCart';
-import StyleSelector from './StyleSelector';
-import ImgGallery from './ImgGallery/index.jsx';
-import StarRatingsContainer from '../../../src/redux/containers/RatingContainers/StarRatingsContainer.js';
+import Description from "./ProductDescription";
+import Features from "./Features";
+import AddToCartModal from "../overview-components/AddToCart";
+import StyleSelector from "./StyleSelector";
+import ImgGallery from "./ImgGallery/index.jsx";
+import StarRatingsContainer from "../../../src/redux/containers/RatingContainers/StarRatingsContainer.js";
 
-let productId = queryString.parse(location.search)['?productId'] || 1;
-
+let productId = queryString.parse(location.search)["?productId"] || 1;
+console.log("ProductID ", productId);
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary
   }
 }));
@@ -62,7 +62,7 @@ function Overview({
       if (currentStyle.sale_price > 0) {
         return (
           <>
-            <div className='sale'>${currentStyle.original_price}</div>
+            <div className="sale">${currentStyle.original_price}</div>
             <div>Now On Sale For: ${currentStyle.sale_price}!</div>
           </>
         );
@@ -75,7 +75,7 @@ function Overview({
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Grid container spacing={3} direction='row'>
+      <Grid container spacing={3} direction="row">
         <Grid item xs={7}>
           <Paper className={classes.paper}>
             {styles.loading ? <div>loading...</div> : null}
@@ -97,7 +97,7 @@ function Overview({
             <h3>
               {currentStyle.name
                 ? `style: ${currentStyle.name}`
-                : 'please select a style below for details: '}
+                : "please select a style below for details: "}
             </h3>
             <StyleSelector
               metaData={metaData}
