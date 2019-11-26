@@ -24,12 +24,12 @@ Given business a requirement docs and a mockup, this project was a a full redesi
 ### Questions and Answers Section:
 
 1. View questions
-   ![Questions Demo](demo/QAPaginate-helpful-report.gif)
+   ![Questions Demo](demo/viewQuestions.gif)
 2. Search for a question
    ![Search Demo](demo/searchQA.gif)
 3. Asking a question
 4. Answering a question
-   ![Add Question Demo](demo/AddAnswer.gif)
+   ![Add Question Demo](demo/addingAnswers.gif)
 
 ### Ratings and Reviews section contains:
 
