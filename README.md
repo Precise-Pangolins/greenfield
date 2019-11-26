@@ -28,7 +28,7 @@ Given business a requirement docs and a mockup, this project was a a full redesi
 2. Search for a question
    ![Search Demo](demo/searchQA.gif)
 3. Asking a question
-  ![Add Answer Demo](demo/addAnswer.gif)
+  ![Add Question Demo](demo/askQuestion.gif)
 4. Answering a question
    ![Add Question Demo](demo/QAAddAnswer.gif)
 
