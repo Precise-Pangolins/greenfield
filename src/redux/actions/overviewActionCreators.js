@@ -1,4 +1,4 @@
-import * as OverviewActionsTypes from '../actions-types/overviewActionsTypes';
+import * as OverviewActionsTypes from "../actions-types/overviewActionsTypes";
 
 export const fetchProductInfo = () => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_INFO
@@ -36,17 +36,17 @@ export const postProductToCartSuccess = (user_session, product_id) => ({
   payload: { user_session, product_id }
 });
 
-export const fetchProductInfoFail = () => ({
+export const fetchProductInfoFail = data => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_INFO_FAIL,
   payload: data
 });
 
-export const fetchProductListFail = () => ({
+export const fetchProductListFail = data => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_LIST_FAIL,
   payload: data
 });
 
-export const fetchProductStylesFail = () => ({
+export const fetchProductStylesFail = data => ({
   type: OverviewActionsTypes.FETCH_PRODUCT_STYLES_FAIL,
   payload: data
 });
